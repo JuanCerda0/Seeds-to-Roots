@@ -1,0 +1,30 @@
+# Archivos y carpetas de VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.swp
+*.swo
+*~
+
+# Dependencias de Node (solo si usas npm o yarn)
+node_modules/
+
+# Builds o distribuciones
+dist/
+build/
+out/
+
+# Archivos de entorno (si llegas a usar variables)
+.env
+.env.local
+.env.*.local
