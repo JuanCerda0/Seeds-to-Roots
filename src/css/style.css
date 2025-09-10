@@ -1,4 +1,10 @@
 :root {
-    --Blanco-Suave : #F7F7F ;
-    --Verde-Esmeralda : var(#2E8B57)
+    --blanco-suave : #F7F7F7;
+    --verde-esmeralda : #2E8B57;
+    --amarillo-mostaza : #FFD700;
+    --marron-claro : #8B4513;
+}
+
+body{
+    background-color: var(--marron-claro);
 }
