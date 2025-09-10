@@ -6,21 +6,65 @@
 }
 
 body {
-    background-color: var(--blanco-suave);
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2E8B57, #FFD700);
+    margin: 0;
 }
 
-.container {
-    background-color: var(--marron-claro);
-    color: var(--blanco-suave);
-    padding: 10% 100% 40%;
+.login-container {
+    background: var(--blanco-suave);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px #000000;
+    width: 350px;
 }
 
-.input-use{
-    font-size: 2rem;
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.input-pass{
-    font-size: 2rem;
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    border-color: #74ebd5;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #74ebd5;
+    border: none;
+    border-radius: 8px;
+    font-size: 0,5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #5ac0b8;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
 }
