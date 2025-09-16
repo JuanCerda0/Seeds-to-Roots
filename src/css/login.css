@@ -13,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, var(--fondo-claro) 60%, var(--acento) 100%);
+    background: linear-gradient(135deg, var(--primario) 60%, var(--acento) 100%);
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
 }
