@@ -82,6 +82,6 @@ form.addEventListener('submit', function(e) {
         alert("Registro exitoso... tampoco hay base de datos 7-7");
 
         // Redirigir al login después del registro
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
     }
 });
