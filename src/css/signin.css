@@ -6,7 +6,12 @@
 }
 
 body{
-    background-color: var(--blanco-suave)
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2E8B57, #FFD700);
+    margin: 0;
 }
 
 h1 {
