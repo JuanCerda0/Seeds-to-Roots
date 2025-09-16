@@ -206,6 +206,20 @@ main > div:nth-child(3) p {
     margin: 0.2rem 0;
 }
 
+.mapa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapa > .apiMapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background : var(--gris-claro#fff);
+    margin: 10%;
+    padding: 2%;
+}
 /* Footer */
 footer {
     background: var(--primario);
