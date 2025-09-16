@@ -1,0 +1,20 @@
+:root {
+    --blanco-suave : #F7F7F7;
+    --verde-esmeralda : #2E8B57;
+    --amarillo-mostaza : #FFD700;
+    --marron-claro : #8B4513;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2E8B57, #FFD700);
+    margin: 0;
+}
+
+h1 {
+font-size: 4rem;
+color: var(--verde-esmeralda);
+}
