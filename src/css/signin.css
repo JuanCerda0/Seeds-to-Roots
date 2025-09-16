@@ -1,8 +1,11 @@
 :root {
-    --blanco-suave : #F7F7F7;
-    --verde-esmeralda : #2E8B57;
-    --amarillo-mostaza : #FFD700;
-    --marron-claro : #8B4513;
+    --fondo-claro: #F8F6FF;
+    --primario: #7C3AED;
+    --secundario: #F472B6;
+    --acento: #38BDF8;
+    --texto-oscuro: #232946;
+    --tarjeta: #FFFFFF;
+    --gris-claro: #E5E7EB;
 }
 
 body{
@@ -10,8 +13,13 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #2E8B57, #FFD700);
+    background: linear-gradient(135deg, var(--acento), var(--primario));
     margin: 0;
+}
+
+.login-container{
+    background: var(--blanco-suave);
+
 }
 
 h1 {
