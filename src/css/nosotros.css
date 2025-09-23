@@ -7,7 +7,7 @@
     --texto-oscuro: #232946;
     --tarjeta: #FFFFFF;
     --gris-claro: #E5E7EB;
-/*Fuentes*/
+    /*Fuentes creanme plis*/ 
     --fuente-principal: "montserrat", sans-serif;
     --fuente-encabezado: "playfair display", serif;
 }
@@ -19,6 +19,7 @@ body {
     margin: 0;
     min-height: 100vh;
 }
+
 
 /* Header */
 header {
@@ -85,4 +86,55 @@ header > div:last-child h1 {
     color: var(--texto-oscuro);
     margin: 0;
     letter-spacing: 1px;
+}
+
+
+/* Footer */
+footer {
+    background: var(--primario);
+    color: var(--tarjeta);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+footer h2 {
+    color: var(--acento);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+footer form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+footer input[type="email"] {
+    padding: 0.7rem 1rem;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: var(--gris-claro);
+    color: var(--texto-oscuro);
+    width: 220px;
+}
+
+footer button {
+    background: var(--secundario);
+    color: var(--tarjeta);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+footer button:hover {
+    background: var(--acento);
+    color: var(--texto-oscuro);
 }
