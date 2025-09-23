@@ -40,8 +40,8 @@ form.addEventListener('submit', function(e) {
     if (password.value.trim() === "") {
         passwordError.textContent = "La contraseña es obligatoria.";
         valid = false;
-    } else if (password.value.length < 6) {
-        passwordError.textContent = "Mínimo 6 caracteres.";
+    } else if (password.value.length < 8) {
+        passwordError.textContent = "Mínimo 8 caracteres.";
         valid = false;
     } else {
         passwordError.textContent = "";
