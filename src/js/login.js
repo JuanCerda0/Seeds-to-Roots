@@ -34,7 +34,7 @@ form.addEventListener('submit', function(e) {
     }
 
     if (valid) {
-        //  Cuando hagamos la base de datos la conecto
+        //  Cuando hagamos la base de datos la conecto por ahora lo dejo comentado 
         /*
         fetch("Aqui pondria una url a la DB, si tan solo tuviera una" {
             method: "POST",
@@ -55,7 +55,20 @@ form.addEventListener('submit', function(e) {
         })
         .catch(err => console.error(err));
         */
-        alert("Validaciones correctas... Nope aún no hago la DB :^");
-        window.location.href = "../index.html";
+
+        const savedUser = JSON.parse(localStorage.getItem("user"));
+
+        if (savedUser) {
+            if (savedUser.email === email.value.trim() && savedUser.password === password.value) {
+                alert("Login exitoso. Bienvenido " + savedUser.username);
+                // Redirigir al inicio
+                alert("Nope aún no hago la DB :^");
+                window.location.href = "../index.html";
+            } else {
+                alert("Credenciales inválidas. Intenta de nuevo.");
+            }
+        } else {
+            alert("No hay usuarios registrados. Regístrate primero.");
+        }
     }
 });
