@@ -12,27 +12,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    height: 100vh;
-    background: linear-gradient(135deg, var(--acento), var(--primario));
-=======
     height: 100%;
-    background: linear-gradient(135deg, var(--primario) 30%, var(--acento) 100%);
->>>>>>> main
+    background: linear-gradient(135deg, var(--acento), var(--primario));
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-<<<<<<< HEAD
-.login-container{
-    background: var(--blanco-suave);
-
-}
-
-h1 {
-font-size: 4rem;
-color: var(--verde-esmeralda);
-=======
 .login-container {
     background: var(--tarjeta);
     padding: 2.5rem 2rem;
@@ -120,5 +105,4 @@ form {
         width: 95vw;
         padding: 1.5rem 0.5rem;
     }
->>>>>>> main
 }

@@ -7,12 +7,15 @@
     --texto-oscuro: #232946;
     --tarjeta: #FFFFFF;
     --gris-claro: #E5E7EB;
+/*Fuentes*/
+    --fuente-principal: "montserrat", sans-serif;
+    --fuente-encabezado: "playfair display", serif;
 }
 
 body {
     background: linear-gradient(135deg, var(--fondo-claro) 60%, var(--acento) 100%);
     color: var(--texto-oscuro);
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: var(--fuente-encabezado);
     margin: 0;
     min-height: 100vh;
 }
@@ -127,6 +130,7 @@ main h1 {
 
 main p {
     color: var(--texto-oscuro);
+    font-family: var(--fuente-principal);
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
 }
