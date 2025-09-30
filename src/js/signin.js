@@ -40,8 +40,8 @@ form.addEventListener('submit', function(e) {
     if (password.value.trim() === "") {
         passwordError.textContent = "La contraseña es obligatoria.";
         valid = false;
-    } else if (password.value.length < 6) {
-        passwordError.textContent = "Mínimo 6 caracteres.";
+    } else if (password.value.length < 8) {
+        passwordError.textContent = "Mínimo 8 caracteres.";
         valid = false;
     } else {
         passwordError.textContent = "";
@@ -77,9 +77,22 @@ form.addEventListener('submit', function(e) {
         phoneError.textContent = "";
     }
 
+
+
     if (valid) {
-        // Aquí iría la conexión a la DB si tan solo no fuera un irresponsable que deja todo a ultimo minuto
-        alert("Registro exitoso... tampoco hay base de datos 7-7");
+         // Aquí iría la conexión a la DB si tan solo no fuera un irresponsable que deja todo a ultimo minuto
+         // Por ahora esta en el localStorage
+        const userData = {
+            username: username.value.trim(),
+            email: email.value.trim(),
+            password: password.value,
+            address: address.value.trim(),
+            phone: phone.value.trim()
+        };
+
+        localStorage.setItem("user", JSON.stringify(userData));
+
+        alert("Registro exitoso. Datos guardados localmente.");
 
         // Redirigir al login después del registro
         window.location.href = "../index.html";

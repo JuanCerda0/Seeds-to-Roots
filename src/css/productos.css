@@ -1,0 +1,88 @@
+/* Nueva paleta de colores */
+:root {
+    --fondo-claro: #F8F6FF;
+    --primario: #7C3AED;
+    --secundario: #F472B6;
+    --acento: #38BDF8;
+    --texto-oscuro: #232946;
+    --tarjeta: #FFFFFF;
+    --gris-claro: #E5E7EB;
+/*Fuentes*/
+    --fuente-principal: "montserrat", sans-serif;
+    --fuente-encabezado: "playfair display", serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--fondo-claro) 60%, var(--acento) 100%);
+    color: var(--texto-oscuro);
+    font-family: var(--fuente-encabezado);
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primario);
+    padding: 1.5rem 3vw;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+header > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+header img {
+    width: 48px;
+    height: 48px;
+    background: var(--gris-claro);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: var(--acento);
+    letter-spacing: 2px;
+}
+
+header li {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header a {
+    color: var(--tarjeta);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    font-size: 1.1rem;
+}
+
+header a:hover {
+    color: var(--secundario);
+}
+
+header > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--acento);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+}
+
+header > div:last-child h1 {
+    font-size: 1rem;
+    color: var(--texto-oscuro);
+    margin: 0;
+    letter-spacing: 1px;
+}

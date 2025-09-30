@@ -4,28 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Waifu Farm</title>
-    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="../src/css/style.css">
+
+    <!-- En pruebas -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
 </head>
 <body>
 
     <header>
 
         <div>
-            <img src="" alt="Icono">
+            <img src="../src/img/HuertoHogar.png" alt="Icono">
             <h1>Waifu Farm</h1>
         </div>
 
         <li>
-            <a href="#"> Home </a>
+            <a href="../src/index.html"> Home </a>
             <a href="../src/pages/productos.html"> Productos </a>
-            <a href=""> Nosotros </a>
+            <a href="../src/pages/nosotros.html"> Nosotros </a>
             <a href=""> Blogs </a>
             <a href="../src/pages/contacto.html"> Contacto </a>
         </li>
 
         <div>
 
-            <img src="" alt="Icono Carrito">
+            <img src="../src/img/carrito.png" alt="Icono Carrito">
             <h1> Cart (0)</h1>
         </div>
 
@@ -40,15 +45,14 @@
         <div>
             <h1>Tienda Online</h1>
             <p>
-                Lorem ipsum dolor sit, amet consectetur 
-                adipisicing elit. Pariatur nostrum consequuntur omnis 
-                consequatur iure, et magnam reiciendis? Quos labore adipisci 
-                nisi debitis vero soluta ipsum, eligendi nam temporibus magnam 
-                suscipit?
+                Somos una tienda online dedicada a llevar la frescura y calidad de los productos del campo
+                directamente a la puerta de nuestros clientes en Chile. Con más de 6 años de experiencia, operamos
+                en más de 9 puntos a lo largo del país, incluyendo ciudades clave como Santiago, Puerto Montt,
+                Villarica, Nacimiento, Viña del Mar, Valparaíso, y Concepción.
             </p>
             <button> Ver Productos </button>
 
-            <img src="" alt="Banner">
+            <img src="../src/img/Huerto.png" alt="Banner">
         </div>
         
         <div>
@@ -104,16 +108,9 @@
 
     </main>
 
-        <div class="mapa">
-            <div class="apiMapa">
-            <p>
-                MAPA NO VISIBLE
-            </p> 
 
-            <img src="" alt="Api Google Maps">
-            </div>
+    <div id="map"></div>
 
-        </div>
 
     <footer>
 
@@ -127,6 +124,6 @@
         </div>
 
     </footer>
-
+    <script src="../src/js/main.js"></script>
 </body>
 </html>
