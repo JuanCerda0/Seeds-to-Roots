@@ -7,19 +7,17 @@
     --texto-oscuro: #232946;
     --tarjeta: #FFFFFF;
     --gris-claro: #E5E7EB;
-    /*Fuentes creanme plis*/ 
-    --fuente-principal: "montserrat", sans-serif;
-    --fuente-encabezado: "playfair display", serif;
+    --fuente-principal: "Montserrat", sans-serif;
+    --fuente-encabezado: "Playfair Display", serif;
 }
 
 body {
     background: linear-gradient(135deg, var(--fondo-claro) 60%, var(--acento) 100%);
     color: var(--texto-oscuro);
-    font-family: var(--fuente-encabezado);
+    font-family: var(--fuente-principal);
     margin: 0;
     min-height: 100vh;
 }
-
 
 /* Header */
 header {
@@ -50,6 +48,7 @@ header h1 {
     margin: 0;
     color: var(--acento);
     letter-spacing: 2px;
+    font-family: var(--fuente-encabezado);
 }
 
 header li {
@@ -86,8 +85,45 @@ header > div:last-child h1 {
     color: var(--texto-oscuro);
     margin: 0;
     letter-spacing: 1px;
+    font-family: var(--fuente-principal);
 }
 
+/* Main */
+main {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 0 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.nosotros, .mision, .vision {
+    background: var(--tarjeta);
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.07);
+    padding: 2rem 1.5rem;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nosotros h1, .mision h1, .vision h1 {
+    color: var(--primario);
+    font-family: var(--fuente-encabezado);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.nosotros p, .mision p, .vision p {
+    color: var(--texto-oscuro);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    font-family: var(--fuente-principal);
+    margin: 0;
+}
 
 /* Footer */
 footer {
@@ -102,6 +138,7 @@ footer h2 {
     color: var(--acento);
     margin-bottom: 1rem;
     font-size: 1.3rem;
+    font-family: var(--fuente-encabezado);
 }
 
 footer form {
@@ -120,6 +157,7 @@ footer input[type="email"] {
     background: var(--gris-claro);
     color: var(--texto-oscuro);
     width: 220px;
+    font-family: var(--fuente-principal);
 }
 
 footer button {
@@ -132,9 +170,33 @@ footer button {
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s;
+    font-family: var(--fuente-principal);
 }
 
 footer button:hover {
     background: var(--acento);
     color: var(--texto-oscuro);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 2vw;
+    }
+    main {
+        padding: 0 1vw;
+        gap: 1.5rem;
+    }
+    .nosotros, .mision, .vision {
+        padding: 1.2rem 0.7rem;
+    }
+    .nosotros h1, .mision h1, .vision h1 {
+        font-size: 1.3rem;
+    }
+    footer form {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
 }

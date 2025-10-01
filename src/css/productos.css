@@ -1,4 +1,4 @@
-/* Nueva paleta de colores */
+/* Paleta y fuentes */
 :root {
     --fondo-claro: #F8F6FF;
     --primario: #7C3AED;
@@ -7,15 +7,14 @@
     --texto-oscuro: #232946;
     --tarjeta: #FFFFFF;
     --gris-claro: #E5E7EB;
-/*Fuentes*/
-    --fuente-principal: "montserrat", sans-serif;
-    --fuente-encabezado: "playfair display", serif;
+    --fuente-principal: "Montserrat", sans-serif;
+    --fuente-encabezado: "Playfair Display", serif;
 }
 
 body {
     background: linear-gradient(135deg, var(--fondo-claro) 60%, var(--acento) 100%);
     color: var(--texto-oscuro);
-    font-family: var(--fuente-encabezado);
+    font-family: var(--fuente-principal);
     margin: 0;
     min-height: 100vh;
 }
@@ -49,6 +48,7 @@ header h1 {
     margin: 0;
     color: var(--acento);
     letter-spacing: 2px;
+    font-family: var(--fuente-encabezado);
 }
 
 header li {
@@ -85,4 +85,144 @@ header > div:last-child h1 {
     color: var(--texto-oscuro);
     margin: 0;
     letter-spacing: 1px;
+    font-family: var(--fuente-principal);
+}
+
+/* Main */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2vw;
+}
+
+main h1 {
+    font-size: 2.5rem;
+    color: var(--primario);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: var(--fuente-encabezado);
+    letter-spacing: 1px;
+}
+
+/* Productos grid */
+main > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+main > div > div {
+    background: var(--tarjeta);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(124,58,237,0.06);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main > div > div:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(124,58,237,0.10);
+}
+
+main > div > div img {
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 0.7rem;
+    background: var(--gris-claro);
+    margin-bottom: 1rem;
+    border: 2px solid var(--acento);
+}
+
+main > div > div h2 {
+    color: var(--primario);
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0.3rem 0;
+    font-family: var(--fuente-encabezado);
+}
+
+main > div > div p {
+    color: var(--texto-oscuro);
+    font-size: 1rem;
+    margin: 0.2rem 0;
+    font-family: var(--fuente-principal);
+}
+
+/* Footer */
+footer {
+    background: var(--primario);
+    color: var(--tarjeta);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+footer h2 {
+    color: var(--acento);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-family: var(--fuente-encabezado);
+}
+
+footer form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+footer input[type="email"] {
+    padding: 0.7rem 1rem;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: var(--gris-claro);
+    color: var(--texto-oscuro);
+    width: 220px;
+    font-family: var(--fuente-principal);
+}
+
+footer button {
+    background: var(--secundario);
+    color: var(--tarjeta);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: var(--fuente-principal);
+}
+
+footer button:hover {
+    background: var(--acento);
+    color: var(--texto-oscuro);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 2vw;
+    }
+    main h1 {
+        font-size: 2rem;
+    }
+    main > div {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    footer form {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
 }
