@@ -24,9 +24,9 @@ app.use(express.json());
 // app.use('/api/productos', productosRoutes); --- Aun no hago ningun endpoint ---
 
 
-app.listen(3000, () => {
+app.listen(5500, () => {
 
-    console.log('Servidor escuchando en el puerto 3000');
+    console.log('Servidor escuchando en el puerto 5500');
 });
 
 
