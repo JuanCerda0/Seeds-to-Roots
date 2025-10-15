@@ -7,7 +7,7 @@
     Es el servidor del back-end, que por ahora no hace nada, pero en un futuro
     hara muchas cosas.
 
-    Por ahora solo escucha en el puerto 3000.
+    Por ahora solo escucha en el puerto 5500.
 
     Gracias copilot por los comentarios.
 */
