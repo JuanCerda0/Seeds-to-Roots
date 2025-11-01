@@ -1,4 +1,4 @@
-/* Nueva paleta de colores */
+/* 🌿 Paleta de colores y fuentes */
 :root {
     --fondo-claro: #F8F6FF;
     --primario: #7C3AED;
@@ -7,11 +7,13 @@
     --texto-oscuro: #232946;
     --tarjeta: #FFFFFF;
     --gris-claro: #E5E7EB;
-/*Fuentes*/
+
+    /* Fuentes */
     --fuente-principal: "montserrat", sans-serif;
     --fuente-encabezado: "playfair display", serif;
 }
 
+/* 🌸 Body */
 body {
     background: linear-gradient(135deg, var(--fondo-claro) 60%, var(--acento) 100%);
     color: var(--texto-oscuro);
@@ -20,8 +22,11 @@ body {
     min-height: 100vh;
 }
 
-/* Header */
-header {
+/* ====================== */
+/* HEADER */
+/* ====================== */
+
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,13 +35,14 @@ header {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-header > div:first-child {
+/* Logo */
+.header__logo {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-header img {
+.logo__img {
     width: 48px;
     height: 48px;
     background: var(--gris-claro);
@@ -44,14 +50,15 @@ header img {
     object-fit: cover;
 }
 
-header h1 {
+.logo__title {
     font-size: 2rem;
     margin: 0;
     color: var(--acento);
     letter-spacing: 2px;
 }
 
-header li {
+/* Navegación */
+.header__nav .nav__list {
     display: flex;
     gap: 2rem;
     list-style: none;
@@ -59,7 +66,7 @@ header li {
     padding: 0;
 }
 
-header a {
+.nav__link {
     color: var(--tarjeta);
     text-decoration: none;
     font-weight: 500;
@@ -67,34 +74,49 @@ header a {
     font-size: 1.1rem;
 }
 
-header a:hover {
+.nav__link:hover {
     color: var(--secundario);
 }
 
-header > div:last-child {
+/* Carrito */
+.header__cart {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 0.6rem;
     background: var(--acento);
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.9rem;
     border-radius: 2rem;
 }
 
-header > div:last-child h1 {
+
+.cart__icon {
+    width: 28px;           /* controla el tamaño del ícono */
+    height: 28px;
+    object-fit: contain;   /* evita que se deforme */
+    display: block;        /* elimina espacios fantasma */
+}
+
+
+.cart__text {
     font-size: 1rem;
     color: var(--texto-oscuro);
     margin: 0;
     letter-spacing: 1px;
 }
 
-/* Main */
-main {
+/* ====================== */
+/* MAIN */
+/* ====================== */
+
+#main-content {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 2vw;
 }
 
-main > div:first-child {
+/* Autenticación */
+.auth {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -102,18 +124,19 @@ main > div:first-child {
     margin-bottom: 1.5rem;
 }
 
-main > div:first-child a {
+.auth__link {
     color: var(--primario);
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
 }
 
-main > div:first-child a:hover {
+.auth__link:hover {
     color: var(--secundario);
 }
 
-main > div:nth-child(2) {
+/* Intro */
+.intro {
     background: var(--tarjeta);
     border-radius: 1.5rem;
     padding: 2rem;
@@ -122,20 +145,20 @@ main > div:nth-child(2) {
     box-shadow: 0 4px 16px rgba(124,58,237,0.07);
 }
 
-main h1 {
+.intro__title {
     font-size: 2.5rem;
     color: var(--primario);
     margin-bottom: 1rem;
 }
 
-main p {
+.intro__text {
     color: var(--texto-oscuro);
     font-family: var(--fuente-principal);
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
 }
 
-main button {
+.intro__button {
     background: var(--secundario);
     color: var(--tarjeta);
     border: none;
@@ -148,12 +171,12 @@ main button {
     margin-bottom: 1.5rem;
 }
 
-main button:hover {
+.intro__button:hover {
     background: var(--primario);
     color: var(--tarjeta);
 }
 
-main img[alt="Banner"] {
+.intro__banner {
     width: 100%;
     max-width: 600px;
     margin-top: 1.5rem;
@@ -167,14 +190,14 @@ main img[alt="Banner"] {
 }
 
 /* Productos */
-main > div:nth-child(3) {
+.productos__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
 
-main > div:nth-child(3) > div {
+.producto-card {
     background: var(--tarjeta);
     border-radius: 1rem;
     padding: 1.2rem;
@@ -183,12 +206,12 @@ main > div:nth-child(3) > div {
     transition: transform 0.15s, box-shadow 0.15s;
 }
 
-main > div:nth-child(3) > div:hover {
+.producto-card:hover {
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 8px 24px rgba(124,58,237,0.10);
 }
 
-main > div:nth-child(3) img {
+.producto__img {
     width: 100%;
     max-width: 120px;
     height: 120px;
@@ -198,25 +221,37 @@ main > div:nth-child(3) img {
     margin-bottom: 1rem;
 }
 
-main > div:nth-child(3) h2 {
+.producto__nombre {
     color: var(--primario);
     font-size: 1.2rem;
     margin: 0.5rem 0 0.3rem 0;
 }
 
-main > div:nth-child(3) p {
+.producto__atributos,
+.producto__precio {
     color: var(--texto-oscuro);
     font-size: 1rem;
     margin: 0.2rem 0;
 }
 
-#map{
-    height: 400px; /* Altura del mapa */
-    width: 100%; /* Ancho del mapa */
+/* ====================== */
+/* MAPA */
+/* ====================== */
+
+#map-container {
+    width: 100%;
 }
 
-/* Footer */
-footer {
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+/* ====================== */
+/* FOOTER */
+/* ====================== */
+
+#main-footer {
     background: var(--primario);
     color: var(--tarjeta);
     padding: 2rem 0;
@@ -224,20 +259,20 @@ footer {
     margin-top: 3rem;
 }
 
-footer h2 {
+.footer__title {
     color: var(--acento);
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
 
-footer form {
+.footer__form {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 1rem;
 }
 
-footer input[type="email"] {
+.footer__input {
     padding: 0.7rem 1rem;
     border-radius: 2rem;
     border: none;
@@ -248,7 +283,7 @@ footer input[type="email"] {
     width: 220px;
 }
 
-footer button {
+.footer__button {
     background: var(--secundario);
     color: var(--tarjeta);
     border: none;
@@ -260,25 +295,31 @@ footer button {
     transition: background 0.2s;
 }
 
-footer button:hover {
+.footer__button:hover {
     background: var(--acento);
     color: var(--texto-oscuro);
 }
 
-/* Responsive */
+/* ====================== */
+/* RESPONSIVE */
+/* ====================== */
+
 @media (max-width: 700px) {
-    header {
+    #main-header {
         flex-direction: column;
         gap: 1rem;
         padding: 1rem 2vw;
     }
-    main > div:nth-child(2) {
+
+    .intro {
         padding: 1rem;
     }
-    main > div:nth-child(3) {
+
+    .productos__grid {
         grid-template-columns: 1fr;
     }
-    footer form {
+
+    .footer__form {
         flex-direction: column;
         gap: 0.7rem;
     }
