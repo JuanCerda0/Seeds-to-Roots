@@ -7,130 +7,136 @@
     <link rel="stylesheet" href="/src/front-end/css/productos.css">
 </head>
 <body>
-    <header>
 
-        <div>
-            <img src="../img/HuertoHogar.png" alt="Icono">
-            <h1>Waifu Farm</h1>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+
+        <div class="header__logo">
+            <img src="../img/HuertoHogar.png" alt="Icono" class="logo__img">
+            <h1 class="logo__title">Waifu Farm</h1>
         </div>
 
-        <li>
-            <a href="../index.html"> Home </a>
-            <a href="../pages/productos.html"> Productos </a>
-            <a href="../pages/nosotros.html"> Nosotros </a>
-            <a href=""> Blogs </a>
-            <a href="../pages/contacto.html"> Contacto </a>
-        </li>
+        <nav class="header__nav">
+            <ul class="nav__list">
+                <li><a href="../index.html" class="nav__link">Home</a></li>
+                <li><a href="../pages/productos.html" class="nav__link">Productos</a></li>
+                <li><a href="../pages/nosotros.html" class="nav__link">Nosotros</a></li>
+                <li><a href="" class="nav__link">Blogs</a></li>
+                <li><a href="../pages/contacto.html" class="nav__link">Contacto</a></li>
+            </ul>
+        </nav>
 
-        <div>
-
-            <img src="../img/carrito.png" alt="Icono Carrito">
-            <h1> Cart (0)</h1>
+        <div class="header__cart">
+            <img src="../img/carrito.png" alt="Icono Carrito" class="cart__icon">
+            <h1 class="cart__text">Cart (0)</h1>
         </div>
 
     </header>
 
-    <main>
+    <!-- ===== MAIN ===== -->
+    <main class="main">
 
-        <h1> Productos </h1>
+        <h1 class="main__title">Productos</h1>
         
-        <div>
+        <div class="product-grid">
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/ManzanaFuji.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Manzanas Fuji</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$1,200</p>
             </div>
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/Naranjas Valencia.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Naranjas Valencia</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$1,000</p>
             </div>
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/Plátanos Cavendish.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Plátanos Cavendish</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$800</p>
             </div>
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/Zanahorias Orgánicas.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Zanahorias Orgánicas</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$900</p>
             </div>
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/Espinacas Frescas.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Espinacas Frescas</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$700</p>
             </div>
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/Pimientos Tricolores.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Pimientos Tricolores</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$1,500</p>
             </div>
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/Miel Orgánica.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Miel Orgánica</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$5,000</p>
             </div>
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/Leche.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Leche Pura</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$1,200</p>
             </div>
 
-             <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/queso.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Queso Sin Lactosa</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$3,200</p>
             </div>
             
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/Crema de Leche.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Crema de Leche</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$900</p>
             </div>
 
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="../img/zapallo.webp" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Zapallo Organico</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$5,000</p>
             </div>
             
-            <div>
-                <img src="" alt="Imagen Producto">
-                <h2>Nombre Producto</h2>
-                <p>Atributos</p>
-                <p>$0.00</p>
+            <div class="product-card">
+                <img src="" alt="Imagen Producto" class="product-card__img">
+                <h2 class="product-card__title">Nombre Producto</h2>
+                <p class="product-card__desc">Atributos</p>
+                <p class="product-card__price">$0.00</p>
             </div>
+
         </div>
 
     </main>
 
-    <footer>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
 
-        <div>
-            <h2>Stay in Touch! Join our Newsletter</h2>
+        <div class="footer__newsletter">
+            <h2 class="newsletter__title">Stay in Touch! Join our Newsletter</h2>
 
-            <form action="">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
+            <form class="newsletter__form" action="">
+                <input type="email" placeholder="Enter your email" required class="newsletter__input">
+                <button type="submit" class="newsletter__button">Subscribe</button>
             </form>
         </div>
 
