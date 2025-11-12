@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario - Administrador</title>
+    <link rel="stylesheet" href="../css/formularioUsuario.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span>🧔 Company</span>
+            </div>
+            
+            <nav class="menu">
+                <ul>
+                    <li><a href="HomeAdmin.html">📊 Dashboard</a></li>
+                    <li><a href="#">📦 Productos</a></li>
+                    <li><a href="HomeAdmin.html">👥 Usuarios</a></li>
+                    <li><a href="#">📝 Pedidos</a></li>
+                    <li><a href="#">💬 Opiniones</a></li>
+                    <li><a href="#">⚙️ Configuración</a></li>
+                </ul>
+            </nav>
+
+            <div class="bottom-menu">
+                <ul>
+                    <li><a href="#">💾 Backup</a></li>
+                    <li><a href="#">📧 Correo</a></li>
+                    <li><a href="#">🔍 Búsqueda</a></li>
+                    <li><a href="#">🔔 Alertas</a></li>
+                    <li><a href="#">👤 Perfil</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>✏️ Editar Usuario</h1>
+                <button class="menu-toggle">☰</button>
+            </header>
+
+            <div class="content">
+                <section class="form-section">
+                    <form id="formularioUsuario" class="formulario">
+                        <input type="hidden" id="usuarioId" name="usuarioId">
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre *</label>
+                            <input 
+                                type="text" 
+                                id="nombre" 
+                                name="nombre" 
+                                placeholder="Ingresa el nombre del usuario" 
+                                required
+                            >
+                            <small class="error-message" id="error-nombre"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Ingresa el email del usuario" 
+                                required
+                            >
+                            <small class="error-message" id="error-email"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input 
+                                type="tel" 
+                                id="telefono" 
+                                name="telefono" 
+                                placeholder="Ingresa el teléfono (opcional)"
+                            >
+                            <small class="error-message" id="error-telefono"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="estado">Estado *</label>
+                            <select id="estado" name="estado" required>
+                                <option value="">-- Selecciona un estado --</option>
+                                <option value="activo">Activo</option>
+                                <option value="inactivo">Inactivo</option>
+                            </select>
+                            <small class="error-message" id="error-estado"></small>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">
+                                ✓ Actualizar Usuario
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="mostrarConfirmacionEliminar()">
+                                🗑️ Eliminar Usuario
+                            </button>
+                            <a href="HomeAdmin.html" class="btn btn-secondary">
+                                ✕ Cancelar
+                            </a>
+                        </div>
+
+                        <div id="mensaje-exito" class="mensaje mensaje-exito"></div>
+                        <div id="mensaje-error" class="mensaje mensaje-error"></div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div id="modalEliminar" class="modal">
+        <div class="modal-content">
+            <h2>⚠️ Confirmar Eliminación</h2>
+            <p>¿Estás seguro de que deseas eliminar este usuario? Esta acción no se puede deshacer.</p>
+            <div class="modal-buttons">
+                <button class="btn btn-danger" onclick="confirmarEliminar()">Sí, Eliminar</button>
+                <button class="btn btn-secondary" onclick="cerrarModalEliminar()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/formularioUsuario.js"></script>
+</body>
+</html>

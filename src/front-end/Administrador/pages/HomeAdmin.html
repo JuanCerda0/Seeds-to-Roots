@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡HOLA Administrador!</title>
+    <link rel="stylesheet" href="../css/HomeAdmin.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span>🧔 Company</span>
+            </div>
+            
+            <nav class="menu">
+                <ul>
+                    <li><a href="#" class="active">📊 Dashboard</a></li>
+                    <li><a href="#">📦 Productos</a></li>
+                    <li><a href="#">👥 Usuarios</a></li>
+                    <li><a href="#">📝 Pedidos</a></li>
+                    <li><a href="#">💬 Opiniones</a></li>
+                    <li><a href="#">⚙️ Configuración</a></li>
+                </ul>
+            </nav>
+
+            <div class="bottom-menu">
+                <ul>
+                    <li><a href="#">💾 Backup</a></li>
+                    <li><a href="#">📧 Correo</a></li>
+                    <li><a href="#">🔍 Búsqueda</a></li>
+                    <li><a href="#">🔔 Alertas</a></li>
+                    <li><a href="#">👤 Perfil</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>¡HOLA Administrador!</h1>
+                <button class="menu-toggle">☰</button>
+            </header>
+
+            <div class="content">
+                <!-- Usuarios Section -->
+                <section class="section usuarios-section">
+                    <div class="section-header">
+                        <h2>👥 Gestión de Usuarios</h2>
+                        <a href="crearUsuario.html" class="btn btn-primary">+ Agregar Usuario</a>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usuarios-tbody">
+                                <!-- Los datos de usuarios se cargarán aquí desde la BD -->
+                                <tr class="placeholder">
+                                    <td colspan="7" class="text-center">Cargando usuarios...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Productos Section -->
+                <section class="section productos-section">
+                    <div class="section-header">
+                        <h2>📦 Gestión de Productos</h2>
+                        <button class="btn btn-primary">+ Agregar Producto</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Fecha Creación</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productos-tbody">
+                                <!-- Los datos de productos se cargarán aquí desde la BD -->
+                                <tr class="placeholder">
+                                    <td colspan="8" class="text-center">Cargando productos...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/HomeAdmin.js"></script>
+</body>
+</html>
