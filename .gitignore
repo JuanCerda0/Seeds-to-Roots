@@ -1,0 +1,122 @@
+# =========================
+#       SISTEMA
+# =========================
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# =========================
+#       EDITORES
+# =========================
+.vscode/
+.code-workspace
+.idea/
+
+# =========================
+#       FRONTEND
+# =========================
+# Build outputs (vite, webpack, parcel, etc.)
+dist/
+build/
+.cache/
+out/
+tmp/
+
+# =========================
+#       NODE / JS
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+pnpm-lock.yaml
+package-lock.json
+
+# Coverage (si usas tests)
+coverage/
+*.lcov
+
+# =========================
+#       JAVA BACKEND
+# =========================
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle
+.gradle/
+build/
+!src/**/build/   # mantiene builds que sean parte del código fuente
+gradle-app.setting
+gradle-app.properties
+
+# Compiled Java
+*.class
+*.jar
+*.war
+*.ear
+
+# =========================
+#       C / C++
+# =========================
+*.o
+*.so
+*.a
+*.out
+*.exe
+
+# =========================
+#       PYTHON (por si usas scripts)
+# =========================
+__pycache__/
+*.pyc
+
+# =========================
+#       VARIABLES DE ENTORNO
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+#       LOGS
+# =========================
+*.log
+logs/
+debug.log
+
+# =========================
+#       BASES DE DATOS
+# =========================
+# SQLite, si se usa en Entrega 2 o 3
+*.sqlite
+*.sqlite3
+*.db
+
+# Dumps
+*.sql
+*.dump
+
+# =========================
+#       DEPLOY
+# =========================
+.netlify/
+.vercel/
+.esbuild/
+
+# =========================
+#       OTROS
+# =========================
+*.pid
+*.seed
+*.pid.lock
+*.orig
+
+# Para mantener carpetas vacías, usa:
+#   .gitkeep
