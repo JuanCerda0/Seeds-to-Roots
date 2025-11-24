@@ -18,7 +18,8 @@
       "activo": true,
       "fechaRegistro": "2024-10-15",
       "fechaActualizacion": "2024-11-20",
-      "ultimoLogin": "2024-11-23"
+      "ultimoLogin": "2024-11-23",
+      "password": "1234"
     },
     {
       "id": 2,
@@ -37,7 +38,8 @@
       "activo": true,
       "fechaRegistro": "2024-10-18",
       "fechaActualizacion": "2024-11-21",
-      "ultimoLogin": "2024-11-24"
+      "ultimoLogin": "2024-11-24",
+      "password": "1234"
     },
     {
       "id": 3,
@@ -56,7 +58,8 @@
       "activo": false,
       "fechaRegistro": "2024-09-20",
       "fechaActualizacion": "2024-10-30",
-      "ultimoLogin": "2024-10-28"
+      "ultimoLogin": "2024-10-28",
+      "password": "1234"
     },
     {
       "id": 4,
@@ -75,7 +78,8 @@
       "activo": true,
       "fechaRegistro": "2024-11-05",
       "fechaActualizacion": "2024-11-22",
-      "ultimoLogin": "2024-11-22"
+      "ultimoLogin": "2024-11-22",
+      "password": "1234"
     },
     {
       "id": 5,
@@ -94,7 +98,8 @@
       "activo": true,
       "fechaRegistro": "2024-11-10",
       "fechaActualizacion": "2024-11-23",
-      "ultimoLogin": "2024-11-23"
+      "ultimoLogin": "2024-11-23",
+      "password": "1234"
     },
     {
       "id": 6,
@@ -113,7 +118,8 @@
       "activo": true,
       "fechaRegistro": "2024-11-12",
       "fechaActualizacion": "2024-11-24",
-      "ultimoLogin": "2024-11-24"
+      "ultimoLogin": "2024-11-24",
+      "password": "1234"
     },
     {
       "id": 7,
@@ -132,7 +138,8 @@
       "activo": false,
       "fechaRegistro": "2024-08-25",
       "fechaActualizacion": "2024-09-15",
-      "ultimoLogin": "2024-09-10"
+      "ultimoLogin": "2024-09-10",
+      "password": "1234"
     },
     {
       "id": 8,
@@ -151,7 +158,8 @@
       "activo": true,
       "fechaRegistro": "2024-11-01",
       "fechaActualizacion": "2024-11-23",
-      "ultimoLogin": "2024-11-23"
+      "ultimoLogin": "2024-11-23",
+      "password": "1234"
     },
     {
       "id": 9,
@@ -170,7 +178,8 @@
       "activo": true,
       "fechaRegistro": "2024-10-28",
       "fechaActualizacion": "2024-11-21",
-      "ultimoLogin": "2024-11-21"
+      "ultimoLogin": "2024-11-21",
+      "password": "1234"
     },
     {
       "id": 10,
@@ -189,7 +198,8 @@
       "activo": true,
       "fechaRegistro": "2024-11-08",
       "fechaActualizacion": "2024-11-24",
-      "ultimoLogin": "2024-11-24"
+      "ultimoLogin": "2024-11-24",
+      "password": "1234"
     }
   ],
   "total": 10,
