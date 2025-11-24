@@ -1,4 +1,4 @@
-/**
+    /**
  * Dashboard Script
  * Controla la lógica del dashboard de administrador
  */

@@ -83,16 +83,16 @@ frontend/
 ```
 
 **Campos importantes:**
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| `id` | number | Identificador único del producto |
-| `nombre` | string | Nombre del producto |
-| `precio` | number | Precio en dólares |
-| `stock` | number | Cantidad disponible |
-| `categoria` | string | Categoría (Hortalizas, Verduras, etc.) |
-| `activo` | boolean | Si el producto está disponible |
-| `fechaCreacion` | string | Cuándo se agregó |
-| `fechaActualizacion` | string | Última modificación |
+| Campo             | Tipo      | Descripción                               |
+|-------------------|-----------|-------------------------------------------|
+| `id`              | number    | Identificador único del producto          |
+| `nombre`          | string    | Nombre del producto                       |
+| `precio`          | number    | Precio en dólares                         |
+| `stock`           | number    | Cantidad disponible                       |
+| `categoria`       | string    | Categoría (Hortalizas, Verduras, etc.)    |
+| `activo`          | boolean   | Si el producto está disponible            |
+| `fechaCreacion`   | string    | Cuándo se agregó                          |
+| `fechaActualizacion` | string | Última modificación                       |
 
 ### Estructura de `usuarios.json`
 
@@ -122,15 +122,15 @@ frontend/
 ```
 
 **Campos importantes:**
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| `id` | number | Identificador único |
-| `nombre` | string | Nombre del usuario |
-| `email` | string | Correo electrónico |
-| `estado` | string | "activo" o "inactivo" |
-| `rol` | string | Tipo de usuario (cliente, admin) |
-| `fechaRegistro` | string | Cuándo se registró |
-| `ultimoLogin` | string | Último acceso |
+| Campo             | Tipo      | Descripción                       |
+|-------------------|-----------|-----------------------------------|
+| `id`              | number    | Identificador único               |
+| `nombre`          | string    | Nombre del usuario                |
+| `email`           | string    | Correo electrónico                |
+| `estado`          | string    | "activo" o "inactivo"             |
+| `rol`             | string    | Tipo de usuario (cliente, admin)  |
+| `fechaRegistro`   | string    | Cuándo se registró                |
+| `ultimoLogin`     | string    | Último acceso                     |
 
 ### Por qué es importante
 - Define la **estructura de datos** que usará la API
