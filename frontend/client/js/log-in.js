@@ -29,7 +29,7 @@ loginForm.addEventListener("submit", async (e) => {
     if (res.data.rol === 'admin') {
       window.location.href = '../admin/pages/dashboard.html';
     } else {
-      window.location.href = 'index.html';
+      window.location.href = '../index.html';
     }
   } else {
     alert(res.error || "Error al iniciar sesión");
