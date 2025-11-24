@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - Seeds to Roots Admin</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/users.css">
+</head>
+<body>
+    <!-- Scripts de API y Controllers -->
+    <script src="../../api/api.js"></script>
+    <script src="../js/users.js"></script>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Seeds to Roots</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="products.html" class="nav-link">Productos</a></li>
+                    <li><a href="users.html" class="nav-link active">Usuarios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <h1>Usuarios</h1>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="btn-crear-usuario">
+                            + Nuevo Usuario
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <section class="content">
+                <!-- Filtros y búsqueda -->
+                <div class="filters-container">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Buscar por nombre, email o RUN..."
+                            class="search-input"
+                        >
+                    </div>
+                    <div class="filter-group">
+                        <select id="rol-filter" class="filter-select">
+                            <option value="">Todos los roles</option>
+                            <option value="admin">Administrador</option>
+                            <option value="vendedor">Vendedor</option>
+                            <option value="cliente">Cliente</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select id="status-filter" class="filter-select">
+                            <option value="">Todos los estados</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tabla de Usuarios -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>Listado de Usuarios</h2>
+                        <span class="user-count" id="user-count">0 usuarios</span>
+                    </div>
+                    <table class="table table-users">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>RUN</th>
+                                <th>Nombre Completo</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th>Región</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuarios-tbody">
+                            <tr>
+                                <td colspan="8" class="text-center">Cargando usuarios...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Paginación -->
+                <div class="pagination-container" id="pagination-container">
+                    <button class="btn-pagination" id="btn-prev">← Anterior</button>
+                    <span class="pagination-info" id="pagination-info">Página 1</span>
+                    <button class="btn-pagination" id="btn-next">Siguiente →</button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

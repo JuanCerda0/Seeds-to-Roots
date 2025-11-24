@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Seeds to Roots Admin</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/products.css">
+</head>
+<body>
+    <!-- Scripts de API y Controllers -->
+    <script src="../../api/api.js"></script>
+    <script src="../js/products.js"></script>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Seeds to Roots</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="products.html" class="nav-link active">Productos</a></li>
+                    <li><a href="users.html" class="nav-link">Usuarios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <h1>Productos</h1>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="btn-crear-producto">
+                            + Nuevo Producto
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <section class="content">
+                <!-- Filtros y búsqueda -->
+                <div class="filters-container">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Buscar por nombre o código..."
+                            class="search-input"
+                        >
+                    </div>
+                    <div class="filter-group">
+                        <select id="category-filter" class="filter-select">
+                            <option value="">Todas las categorías</option>
+                            <option value="Hortalizas">Hortalizas</option>
+                            <option value="Verduras">Verduras</option>
+                            <option value="Condimentos">Condimentos</option>
+                            <option value="Frutas">Frutas</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select id="stock-filter" class="filter-select">
+                            <option value="">Todos los estados</option>
+                            <option value="en-stock">En Stock</option>
+                            <option value="bajo-stock">Bajo Stock</option>
+                            <option value="sin-stock">Sin Stock</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tabla de Productos -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>Listado de Productos</h2>
+                        <span class="product-count" id="product-count">0 productos</span>
+                    </div>
+                    <table class="table table-products">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productos-tbody">
+                            <tr>
+                                <td colspan="8" class="text-center">Cargando productos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Paginación -->
+                <div class="pagination-container" id="pagination-container">
+                    <button class="btn-pagination" id="btn-prev">← Anterior</button>
+                    <span class="pagination-info" id="pagination-info">Página 1</span>
+                    <button class="btn-pagination" id="btn-next">Siguiente →</button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
