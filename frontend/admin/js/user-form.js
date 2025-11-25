@@ -8,6 +8,11 @@ class UserFormController {
     this.api = new APIClient();
     this.userId = this.getUserIdFromURL();
     this.validationRules = {
+      password: {
+        required: true,
+        minLength: 6,
+        message: 'La contraseña es requerida y debe tener al menos 6 caracteres'
+      },
       run: {
         required: true,
         minLength: 7,
@@ -118,6 +123,7 @@ class UserFormController {
       document.getElementById('direccion').value = usuario.direccion;
       document.getElementById('rol').value = usuario.rol;
       document.getElementById('activo').checked = usuario.activo;
+      document.getElementById('password').value = usuario.password || '';
 
       // Actualizar botón
       document.getElementById('btn-submit').textContent = 'Actualizar Usuario';
@@ -284,7 +290,8 @@ class UserFormController {
       direccion: document.getElementById('direccion').value,
       rol: document.getElementById('rol').value,
       activo: document.getElementById('activo').checked,
-      estado: document.getElementById('activo').checked ? 'activo' : 'inactivo'
+      estado: document.getElementById('activo').checked ? 'activo' : 'inactivo',
+      password: document.getElementById('password').value
     };
 
     try {

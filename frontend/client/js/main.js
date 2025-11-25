@@ -1,5 +1,13 @@
 
 /**
+ * Advertencia este proyecto fue escrito entre las 12 y las 6 a.m. a base de de cafeína y lagrimas de sangre
+ * No sabemos como funciona realmente nada aquí, pero de alguna manera todo parece andar
+ * Si encuentras un bug, felicidades nosotros ya quitamos el 90% anterior 
+ * Juan se quedo sin sangre invocando a los demonios del código (Se acabo los promps del mes de copilot)
+ * Jeremías entro en modo zen y escribió código con la mente vacía (No sabe que hizo)
+ */
+
+/**
  * Seeds to Roots - Main JavaScript
  * Maneja carruseles, interacciones y funcionalidades generales
  */
@@ -126,3 +134,5 @@ function handleContactForm(event) {
   // Limpiar formulario
   event.target.reset();
 }
+
+
