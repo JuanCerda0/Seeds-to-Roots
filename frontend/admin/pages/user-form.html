@@ -17,7 +17,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h2>Seeds to Roots</h2>
+                <div class="logo"><a href="/frontend/client/pages/index.html"><h2>🌱 Seeds to Roots</h2></a></div>
             </div>
             <nav class="sidebar-nav">
                 <ul>
@@ -114,6 +114,7 @@
                         <fieldset class="form-fieldset">
                             <legend>Información de Contacto</legend>
 
+
                             <!-- Email -->
                             <div class="form-group full-width">
                                 <label for="email">
@@ -129,6 +130,22 @@
                                 >
                                 <small>Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com</small>
                                 <div class="error-message" id="error-email"></div>
+                            </div>
+
+                            <!-- Contraseña -->
+                            <div class="form-group full-width">
+                                <label for="password">
+                                    Contraseña <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="Mínimo 6 caracteres"
+                                    minlength="6"
+                                    required
+                                >
+                                <div class="error-message" id="error-password"></div>
                             </div>
 
                             <!-- Teléfono -->

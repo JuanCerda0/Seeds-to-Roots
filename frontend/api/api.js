@@ -4,6 +4,172 @@
  */
 
 class APIClient {
+    /**
+     * Obtiene el carrito de un usuario por su ID
+     * @param {number} usuarioId
+     * @returns {Promise}
+     */
+    async getCart(usuarioId) {
+      try {
+        const data = await this._fetchData(`${this.baseUrl}/carritos.json`);
+        const carrito = data.data.find(c => c.usuarioId === usuarioId);
+        if (!carrito) {
+          return {
+            success: false,
+            error: 'Carrito no encontrado',
+            data: null
+          };
+        }
+        return {
+          success: true,
+          data: carrito,
+          timestamp: new Date().toISOString()
+        };
+      } catch (error) {
+        console.error('Error al obtener carrito:', error);
+        return {
+          success: false,
+          error: error.message,
+          data: null
+        };
+      }
+    }
+
+    /**
+     * Agrega un producto al carrito de un usuario
+     * @param {number} usuarioId
+     * @param {Object} item - { productoId, nombre, precio, cantidad }
+     * @returns {Promise}
+     */
+    async addToCart(usuarioId, item) {
+      // Simulación: solo retorna el item agregado
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            success: true,
+            data: { usuarioId, item },
+            message: 'Producto agregado al carrito',
+            timestamp: new Date().toISOString()
+          });
+        }, this.timeout);
+      });
+    }
+
+    /**
+     * Elimina un producto del carrito de un usuario
+     * @param {number} usuarioId
+     * @param {number} productoId
+     * @returns {Promise}
+     */
+    async removeFromCart(usuarioId, productoId) {
+      // Simulación: solo retorna el producto eliminado
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            success: true,
+            data: { usuarioId, productoId },
+            message: 'Producto eliminado del carrito',
+            timestamp: new Date().toISOString()
+          });
+        }, this.timeout);
+      });
+    }
+
+    /**
+     * Actualiza la cantidad de un producto en el carrito
+     * @param {number} usuarioId
+     * @param {number} productoId
+     * @param {number} cantidad
+     * @returns {Promise}
+     */
+    async updateCart(usuarioId, productoId, cantidad) {
+      // Simulación: solo retorna la actualización
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            success: true,
+            data: { usuarioId, productoId, cantidad },
+            message: 'Cantidad actualizada en el carrito',
+            timestamp: new Date().toISOString()
+          });
+        }, this.timeout);
+      });
+    }
+
+    /**
+     * Simula el login de usuario (por email y password)
+     * @param {string} email
+     * @param {string} password
+     * @returns {Promise}
+     */
+    async loginUser(email, password) {
+      try {
+        const data = await this._fetchData(`${this.baseUrl}/usuarios.json`);
+        const usuario = data.data.find(u => u.email === email);
+        if (!usuario) {
+          return { success: false, error: 'Usuario no encontrado', data: null };
+        }
+        // Validar contra el campo password real
+        if (usuario.password !== password) {
+          return { success: false, error: 'Contraseña incorrecta', data: null };
+        }
+        return {
+          success: true,
+          data: usuario,
+          message: 'Login exitoso',
+          timestamp: new Date().toISOString()
+        };
+      } catch (error) {
+        return { success: false, error: error.message, data: null };
+      }
+    }
+
+    /**
+     * Simula el registro de usuario
+     * @param {Object} usuario - { nombre, email, password, ... }
+     * @returns {Promise}
+     */
+    async registerUser(usuario) {
+      // Simulación: retorna el usuario con id aleatorio
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            success: true,
+            data: {
+              id: Math.floor(Math.random() * 10000),
+              ...usuario,
+              fechaRegistro: new Date().toISOString(),
+              fechaActualizacion: new Date().toISOString(),
+              ultimoLogin: null
+            },
+            message: 'Usuario registrado exitosamente',
+            timestamp: new Date().toISOString()
+          });
+        }, this.timeout);
+      });
+    }
+
+    /**
+     * Obtiene un usuario por email
+     * @param {string} email
+     * @returns {Promise}
+     */
+    async getUserByEmail(email) {
+      try {
+        const data = await this._fetchData(`${this.baseUrl}/usuarios.json`);
+        const usuario = data.data.find(u => u.email === email);
+        if (!usuario) {
+          return { success: false, error: 'Usuario no encontrado', data: null };
+        }
+        return {
+          success: true,
+          data: usuario,
+          timestamp: new Date().toISOString()
+        };
+      } catch (error) {
+        return { success: false, error: error.message, data: null };
+      }
+    }
   constructor(baseUrl = null) {
     // Detecta automáticamente la ruta correcta
     if (!baseUrl) {

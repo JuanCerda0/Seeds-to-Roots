@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrarse | Seeds to Roots</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="auth-bg">
+  <main class="auth-container">
+    <section class="auth-form-section">
+      <h1 class="auth-title">Crear Cuenta</h1>
+      <form id="registerForm" class="auth-form">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="apellidos">Apellidos</label>
+          <input type="text" id="apellidos" name="apellidos" required autocomplete="family-name">
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+        <div class="auth-links">
+          <a href="log-in.html">¿Ya tienes cuenta? Inicia sesión</a>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="../js/sign-in.js"></script>
+</body>
+</html>
