@@ -1,4 +1,22 @@
 /* ========================================
+   SEEDS TO ROOTS - Estilos Globales
+   ======================================== */
+
+:root {
+  /* Paleta de colores - A */
+  --verde-natural: #2E8B57;
+  --blanco: #FFFFFF;
+  --dorado: #FFD700;
+  --gris-claro: #F7F7F7;
+  --gris-oscuro: #333333;
+  --gris-medio: #666666;
+  --verde-claro: #90EE90;
+  
+  /* Tipografías */
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-titles: 'Georgia', serif;
+}
+/* ========================================
    Formularios de Autenticación (Login/Registro)
    ======================================== */
 
@@ -111,24 +129,6 @@
   .auth-title {
     font-size: 1.5rem;
   }
-}
-/* ========================================
-   SEEDS TO ROOTS - Estilos Globales
-   ======================================== */
-
-:root {
-  /* Paleta de colores - A */
-  --verde-natural: #2E8B57;
-  --blanco: #FFFFFF;
-  --dorado: #FFD700;
-  --gris-claro: #F7F7F7;
-  --gris-oscuro: #333333;
-  --gris-medio: #666666;
-  --verde-claro: #90EE90;
-  
-  /* Tipografías */
-  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-titles: 'Georgia', serif;
 }
 
 /* ========================================
