@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seeds to Roots - Administración de Productos</title>
-    <link rel="stylesheet" href="../css/producto.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header>
@@ -18,77 +18,139 @@
         </div>
     </header>
 
-    <div class="admin-container">
-        <div class="admin-header">
-            <h1>🌱 Catalogo Seed To Roots 🌱</h1>
-        </div>
-        
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab('catalog')">🛒 Nuestros Productos</button>
-        </div>  
-        
-        <div class="content">
-            <!-- Página de Catálogo -->
-            <div id="catalog" class="page active">
-                <h2>Productos Disponibles</h2>
-                <div id="productsList" class="products-grid"></div>
-            </div>
-            
-            <!-- Página de Detalle -->
-            <div id="detail" class="page">
-                <button class="btn back-btn" onclick="switchTab('catalog')">← Volver al catálogo</button>
-                <div id="productDetail"></div>
-            </div>
-            
-            <!-- Página de Administración -->
-            <div id="admin" class="page">
-                <h2>Administrar Productos</h2>
-                <div class="admin-form">
-                    <div class="form-group">
-                        <label>Nombre del Producto</label>
-                        <input type="text" id="productName" placeholder="Ej: Manzanas Fuji">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Precio (CLP)</label>
-                        <input type="number" id="productPrice" placeholder="2990">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Categoría</label>
-                        <select id="productCategory">
-                            <option value="Frutas">Frutas</option>
-                            <option value="Verduras">Verduras</option>
-                            <option value="Lácteos">Lácteos</option>
-                            <option value="Miel y Endulzantes">Miel y Endulzantes</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Ruta de la Imagen</label>
-                        <input type="text" id="productImage" placeholder="../components/img/producto.webp">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Descripción</label>
-                        <textarea id="productDescription" placeholder="Descripción del producto..."></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Características Especiales</label>
-                        <input type="text" id="productCustom" placeholder="Ej: Orgánico, Sin pesticidas, etc.">
-                    </div>
-                    
-                    <button class="btn" onclick="addProduct()">Agregar Producto</button>
+       <main class="main-content">
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/1-TomateCherry.jpg" alt="Producto 1">
                 </div>
-                
-                <div class="products-list">
-                    <h3>Productos Guardados</h3>
-                    <div id="adminProductsList"></div>
+                <div class="product-info">
+                    <p class="product-price">$5.990</p>
+                    <h3 class="product-title">Tomate Cherry</h3>
+                    <p class="product-category">Producto 1</p>
+                    <p class="product-custom">Tomates cherry frescos de cultivo orgánico</p>
                 </div>
-            </div>
+            </article>
+
+            <!-- Producto 2 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/2-LechugaRomana.jpg" alt="Producto 2">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$3.500</p>
+                    <h3 class="product-title">Lechuga Romana</h3>
+                    <p class="product-category">Producto 2</p>
+                    <p class="product-custom">Lechuga romana fresca y crujiente</p>
+                </div>
+            </article>
+
+            <!-- Producto 3 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/3-BrocoliOrganico.jpg" alt="Producto 3">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$4.990</p>
+                    <h3 class="product-title">Brócoli Orgánico</h3>
+                    <p class="product-category">Producto 3</p>
+                    <p class="product-custom">Brócoli 100% orgánico, sin pesticidas</p>
+                </div>
+            </article>
+
+            <!-- Producto 4 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/4-Zanahoria.jpg" alt="Producto 4">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$2.990</p>
+                    <h3 class="product-title">Zanahoria</h3>
+                    <p class="product-category">Producto 4</p>
+                    <p class="product-custom">Zanahorias frescas de la mejor calidad</p>
+                </div>
+            </article>
+
+            <!-- Producto 5 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/5-EspinacFresca.jpg" alt="Producto 5">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$4.500</p>
+                    <h3 class="product-title">Espinaca Fresca</h3>
+                    <p class="product-category">Producto 5</p>
+                    <p class="product-custom">Espinaca tierna y fresca</p>
+                </div>
+            </article>
+
+            <!-- Producto 6 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/6-PimientoRojo.jpg" alt="Producto 6">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$3.750</p>
+                    <h3 class="product-title">Pimiento Rojo</h3>
+                    <p class="product-category">Producto 6</p>
+                    <p class="product-custom">Pimientos rojos dulces y jugosos</p>
+                </div>
+            </article>
+
+            <!-- Producto 7 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/7-CebollaBlanca.jpg" alt="Producto 7">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$1.990</p>
+                    <h3 class="product-title">Cebolla Blanca</h3>
+                    <p class="product-category">Producto 7</p>
+                    <p class="product-custom">Cebolla blanca dulce</p>
+                </div>
+            </article>
+
+            <!-- Producto 8 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/8-AjoFresco.jpg" alt="Producto 8">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$2.500</p>
+                    <h3 class="product-title">Ajo Fresco</h3>
+                    <p class="product-category">Producto 8</p>
+                    <p class="product-custom">Ajo natural sin aditivos</p>
+                </div>
+            </article>
+
+            <!-- Producto 9 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/9-Rucula.jpg" alt="Producto 9">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$5.250</p>
+                    <h3 class="product-title">Rúcula</h3>
+                    <p class="product-category">Producto 9</p>
+                    <p class="product-custom">Rúcula fresca con sabor picante/p>
+                </div>
+            </article>
+
+            <!-- Producto 10 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../components/img/10-PepinoIngles.jpg" alt="Producto 10">
+                </div>
+                <div class="product-info">
+                    <p class="product-price">$4.000</p>
+                    <h3 class="product-title">Pepino Inglés</h3>
+                    <p class="product-category">Producto 10</p>
+                    <p class="product-custom">Pepinos ingleses sin semillas grandes</p>
+                </div>
+            </article>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-container">
