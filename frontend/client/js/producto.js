@@ -1,256 +1,358 @@
-/* 
-==================================
-Productos
-==================================
-*/
-let products = [
-    {
-        id: 1,
-        name: "Manzanas Fuji",
-        price: 2990,
-        category: "Frutas",
-        image: "../components/img/ManzanaFuji.webp",
-        description: "Manzanas Fuji frescas y crujientes, cultivadas localmente. Perfectas para comer directamente o en ensaladas. Alto contenido de fibra y antioxidantes.",
-        custom: "Orgánicas - Sin pesticidas"
-    },
-    {
-        id: 2,
-        name: "Naranjas Valencia",
-        price: 2490,
-        category: "Frutas",
-        image: "../components/img/Naranjas Valencia.webp",
-        description: "Naranjas Valencia jugosas y dulces, ideales para jugo fresco. Rica fuente de vitamina C y perfectas para fortalecer el sistema inmunológico.",
-        custom: "De temporada - Recién cosechadas"
-    },
-    {
-        id: 3,
-        name: "Plátanos Cavendish",
-        price: 1990,
-        category: "Frutas",
-        image: "../components/img/Plátanos Cavendish.webp",
-        description: "Plátanos Cavendish maduros y dulces. Excelente fuente de potasio y energía natural. Perfectos para batidos, postres o como snack saludable.",
-        custom: "Maduración perfecta"
-    },
-    {
-        id: 4,
-        name: "Zanahorias Orgánicas",
-        price: 1790,
-        category: "Verduras",
-        image: "../components/img/Zanahorias Orgánicas.webp",
-        description: "Zanahorias orgánicas frescas del campo. Ricas en betacaroteno y vitamina A. Perfectas para ensaladas, jugos o preparaciones cocidas.",
-        custom: "100% Orgánico - Certificado"
-    },
-    {
-        id: 5,
-        name: "Espinacas Frescas",
-        price: 2290,
-        category: "Verduras",
-        image: "../components/img/Espinacas Frescas.webp",
-        description: "Espinacas frescas y tiernas, cosechadas en el día. Alto contenido de hierro y nutrientes esenciales. Ideales para ensaladas y smoothies verdes.",
-        custom: "Cosecha del día"
-    },
-    {
-        id: 6,
-        name: "Pimientos Tricolores",
-        price: 3490,
-        category: "Verduras",
-        image: "../components/img/Pimientos Tricolores.webp",
-        description: "Mix de pimientos rojos, amarillos y verdes. Crujientes y llenos de sabor. Excelente fuente de vitamina C y perfectos para cualquier preparación.",
-        custom: "Pack variado"
-    },
-    {
-        id: 7,
-        name: "Miel Orgánica",
-        price: 5990,
-        category: "Miel y Endulzantes",
-        image: "../components/img/Miel Orgánica.webp",
-        description: "Miel pura y orgánica de producción local. Sin aditivos ni conservantes. Endulzante natural con propiedades antibacterianas y antioxidantes.",
-        custom: "500g - Producción artesanal"
-    },
-    {
-        id: 8,
-        name: "Leche Fresca",
-        price: 1290,
-        category: "Lácteos",
-        image: "../components/img/Leche.webp",
-        description: "Leche fresca de vaca, de granjas locales. Pasteurizada y enriquecida con vitaminas A y D. Perfecta para toda la familia.",
-        custom: "1 Litro - Granja local"
-    }
-];
+/**
+ * Sistema de Visualización de Productos - Cliente
+ * Solo muestra catálogo y detalles (sin administración)
+ */
 
-let selectedProductId = null;
-
-// ===========================================
-// FUNCIONES DE RENDERIZADO
-// ===========================================
-
-// Renderizar catálogo de productos
-function renderCatalog() {
-    const container = document.getElementById('productsList');
-    
-    if (products.length === 0) {
-        container.innerHTML = `
-            <div class="no-product">
-                <h2>No hay productos disponibles</h2>
-                <p>Agrega productos desde la sección de Administración</p>
-            </div>
-        `;
-        return;
-    }
-    
-    container.innerHTML = products.map(product => `
-        <article class="category-card" onclick="selectProduct(${product.id})">
-            <div class="product-image">
-                <img src="${product.image}" alt="${product.name}">
-            </div>
-            <div class="product-info">
-                <p class="product-price">$${product.price.toLocaleString('es-CL')}</p>
-                <h3 class="product-title">${product.name}</h3>
-                <p class="product-category">${product.category}</p>
-                <p class="product-custom">${product.custom}</p>
-            </div>
-            <button class="btn">🛒 Ver Detalles 🛒</button>
-        </article>
-    `).join('');
-}
-
-// Renderizar detalle del producto
-function renderProductDetail() {
-    const container = document.getElementById('productDetail');
-    const product = products.find(p => p.id === selectedProductId);
-    
-    if (!product) {
-        container.innerHTML = `
-            <div class="no-product">
-                <h2>Producto no encontrado</h2>
-                <p>Selecciona un producto del catálogo</p>
-            </div>
-        `;
-        return;
-    }
-    
-    container.innerHTML = `
-        <div class="product-detail">
-            <div>
-                <img src="${product.image}" alt="${product.name}">
-            </div>
-            <div class="product-detail-info">
-                <h2>${product.name}</h2>
-                <div class="price">$${product.price.toLocaleString('es-CL')}</div>
-                <span class="category">${product.category}</span>
-                <div class="description">${product.description}</div>
-                <div class="custom">${product.custom}</div>
-                <button class="btn">🛒 Agregar al Carrito 🛒</button>
-            </div>
-        </div>
-    `;
-}
-
-// Renderizar lista en administración
-function renderAdminList() {
-    const container = document.getElementById('adminProductsList');
-    
-    if (products.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #999;">No hay productos guardados</p>';
-        return;
-    }
-    
-    container.innerHTML = products.map(product => `
-        <div class="admin-product-item">
-            <img src="${product.image}" alt="${product.name}">
-            <div class="admin-product-info">
-                <h4>${product.name}</h4>
-                <p>$${product.price.toLocaleString('es-CL')} - ${product.category}</p>
-            </div>
-            <button class="btn delete-btn" onclick="deleteProduct(${product.id})">Eliminar</button>
-        </div>
-    `).join('');
-}
+const api = new APIClient();
+let currentProduct = null;
 
 // ===========================================
 // FUNCIONES DE NAVEGACIÓN
 // ===========================================
 
-// Cambiar entre pestañas
+/**
+ * Cambia entre vista de catálogo y detalle
+ */
 function switchTab(tabName) {
-    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+    const catalog = document.getElementById('catalog');
+    const detail = document.getElementById('detail');
     
-    if (event && event.target) {
-        event.target.classList.add('active');
+    if (tabName === 'catalog') {
+        catalog.classList.add('active');
+        detail.classList.remove('active');
+    } else if (tabName === 'detail') {
+        catalog.classList.remove('active');
+        detail.classList.add('active');
     }
     
-    document.getElementById(tabName).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===========================================
+// FUNCIONES DEL CATÁLOGO
+// ===========================================
+
+/**
+ * Carga todos los productos desde la API
+ */
+async function loadProducts() {
+    const container = document.getElementById('productsList');
+    container.innerHTML = '<div class="loading-message">🌱 Cargando productos frescos...</div>';
     
-    if (!event || !event.target) {
-        const tabs = document.querySelectorAll('.tab');
-        if (tabName === 'catalog') tabs[0].classList.add('active');
-        if (tabName === 'detail') tabs[1].classList.add('active');
-        if (tabName === 'admin') tabs[2].classList.add('active');
+    try {
+        const response = await api.getProductos();
+        
+        if (!response.success) {
+            throw new Error(response.error || 'Error al cargar productos');
+        }
+        
+        const productos = response.data;
+        
+        if (!productos || productos.length === 0) {
+            container.innerHTML = `
+                <div class="no-products-message">
+                    <h3>No hay productos disponibles</h3>
+                    <p>Vuelve pronto para ver nuestros productos frescos</p>
+                </div>
+            `;
+            return;
+        }
+        
+        renderProducts(productos);
+        
+    } catch (error) {
+        console.error('Error al cargar productos:', error);
+        container.innerHTML = `
+            <div class="error-message">
+                <h3>❌ Error al cargar productos</h3>
+                <p>${error.message}</p>
+                <button class="btn" onclick="loadProducts()">🔄 Reintentar</button>
+            </div>
+        `;
     }
 }
 
-// Seleccionar producto y mostrar detalle
-function selectProduct(id) {
-    selectedProductId = id;
-    renderProductDetail();
+/**
+ * Renderiza los productos en el grid
+ */
+function renderProducts(productos) {
+    const container = document.getElementById('productsList');
+    
+    container.innerHTML = productos.map(producto => {
+        // Determinar estado del stock
+        let stockClass = 'stock-disponible';
+        let stockText = `Stock: ${producto.stock} disponibles`;
+        
+        if (producto.stock === 0) {
+            stockClass = 'stock-agotado';
+            stockText = 'Agotado';
+        } else if (producto.stock <= 10) {
+            stockClass = 'stock-bajo';
+            stockText = `¡Últimas ${producto.stock} unidades!`;
+        }
+        
+        return `
+            <article class="product-card" onclick="viewProductDetail(${producto.id})">
+                <div class="product-image">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">${producto.nombre}</h3>
+                    <p class="product-category">${producto.categoria}</p>
+                    <p class="product-price">$${producto.precio.toLocaleString('es-CL')}</p>
+                    <span class="product-stock ${stockClass}">${stockText}</span>
+                    ${producto.caracteristicas ? `
+                        <p class="product-custom">✨ ${producto.caracteristicas}</p>
+                    ` : ''}
+                </div>
+                <button class="btn btn-primary" onclick="viewProductDetail(${producto.id}); event.stopPropagation();">
+                    👁️ Ver Detalles
+                </button>
+            </article>
+        `;
+    }).join('');
+}
+
+// ===========================================
+// FUNCIONES DE DETALLE DE PRODUCTO
+// ===========================================
+
+/**
+ * Muestra el detalle de un producto
+ */
+async function viewProductDetail(productId) {
+    const container = document.getElementById('productDetail');
+    container.innerHTML = '<div class="loading-message">Cargando detalles del producto...</div>';
+    
+    // Cambiar a vista de detalle
     switchTab('detail');
+    
+    try {
+        const response = await api.getProductoById(productId);
+        
+        if (!response.success) {
+            throw new Error(response.error || 'Producto no encontrado');
+        }
+        
+        currentProduct = response.data;
+        renderProductDetail(currentProduct);
+        
+    } catch (error) {
+        console.error('Error al cargar detalle:', error);
+        container.innerHTML = `
+            <div class="error-message">
+                <h3>❌ Error al cargar el producto</h3>
+                <p>${error.message}</p>
+                <button class="btn" onclick="switchTab('catalog')">← Volver al catálogo</button>
+            </div>
+        `;
+    }
+}
+
+/**
+ * Renderiza el detalle completo del producto
+ */
+function renderProductDetail(producto) {
+    const container = document.getElementById('productDetail');
+    
+    // Determinar estado del stock
+    let stockClass = 'stock-disponible';
+    let stockText = `${producto.stock} unidades disponibles`;
+    let btnDisabled = '';
+    let btnText = '🛒 Agregar al Carrito';
+    
+    if (producto.stock === 0) {
+        stockClass = 'stock-agotado';
+        stockText = 'Producto agotado';
+        btnDisabled = 'disabled';
+        btnText = '❌ Producto Agotado';
+    } else if (producto.stock <= 10) {
+        stockClass = 'stock-bajo';
+        stockText = `¡Solo quedan ${producto.stock} unidades!`;
+    }
+    
+    container.innerHTML = `
+        <div class="product-detail-container">
+            <div class="product-detail-image">
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                ${producto.caracteristicas ? `
+                    <div class="product-badge">✨ ${producto.caracteristicas}</div>
+                ` : ''}
+            </div>
+            
+            <div class="product-detail-content">
+                <div class="product-detail-header">
+                    <span class="product-detail-category">📦 ${producto.categoria}</span>
+                    <h1 class="product-detail-title">${producto.nombre}</h1>
+                </div>
+                
+                <div class="product-detail-price-section">
+                    <span class="product-detail-price">$${producto.precio.toLocaleString('es-CL')}</span>
+                    <span class="product-detail-stock ${stockClass}">
+                        ${stockText}
+                    </span>
+                </div>
+                
+                <div class="product-detail-description">
+                    <h3>📝 Descripción</h3>
+                    <p>${producto.descripcion}</p>
+                </div>
+                
+                <div class="product-detail-actions">
+                    <button class="btn btn-primary btn-large" ${btnDisabled} onclick="addToCart(${producto.id})">
+                        ${btnText}
+                    </button>
+                    <button class="btn btn-secondary" onclick="switchTab('catalog')">
+                        ← Seguir Comprando
+                    </button>
+                </div>
+                
+                <div class="product-detail-info">
+                    <div class="info-item">
+                        <span class="info-icon">🚚</span>
+                        <span>Envío gratis en compras sobre $30.000</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌱</span>
+                        <span>Productos frescos directo del campo</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">💚</span>
+                        <span>Apoyamos a agricultores locales</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 // ===========================================
-// FUNCIONES DE ADMINISTRACIÓN
+// FUNCIÓN DE CARRITO
 // ===========================================
 
-// Agregar nuevo producto
-function addProduct() {
-    const name = document.getElementById('productName').value;
-    const price = document.getElementById('productPrice').value;
-    const category = document.getElementById('productCategory').value;
-    const image = document.getElementById('productImage').value;
-    const description = document.getElementById('productDescription').value;
-    const custom = document.getElementById('productCustom').value;
-    
-    if (!name || !price || !image || !description) {
-        alert('Por favor completa todos los campos obligatorios');
+/**
+ * Agrega un producto al carrito
+ */
+async function addToCart(productId) {
+    if (!currentProduct) {
+        alert('❌ Error: Producto no encontrado');
         return;
     }
     
-    const newProduct = {
-        id: Date.now(),
-        name,
-        price: parseFloat(price),
-        category,
-        image,
-        description,
-        custom: custom || 'Producto fresco'
-    };
+    // Obtener usuario logueado (simulado - ajustar según tu sistema de login)
+    const userId = getUserId();
     
-    products.push(newProduct);
+    if (!userId) {
+        alert('⚠️ Debes iniciar sesión para agregar productos al carrito');
+        // Redirigir al login
+        window.location.href = 'log-in.html';
+        return;
+    }
     
-    // Limpiar formulario
-    document.getElementById('productName').value = '';
-    document.getElementById('productPrice').value = '';
-    document.getElementById('productImage').value = '';
-    document.getElementById('productDescription').value = '';
-    document.getElementById('productCustom').value = '';
-    
-    renderAdminList();
-    renderCatalog();
-    
-    alert('Producto agregado exitosamente ✅');
+    try {
+        const item = {
+            productoId: currentProduct.id,
+            nombre: currentProduct.nombre,
+            precio: currentProduct.precio,
+            cantidad: 1,
+            imagen: currentProduct.imagen
+        };
+        
+        const response = await api.addToCart(userId, item);
+        
+        if (response.success) {
+            // Mostrar notificación de éxito
+            showNotification(`✅ ${currentProduct.nombre} agregado al carrito`, 'success');
+            
+            // Opcional: Actualizar contador del carrito en el header
+            updateCartCount();
+        } else {
+            throw new Error(response.error);
+        }
+        
+    } catch (error) {
+        console.error('Error al agregar al carrito:', error);
+        showNotification('❌ Error al agregar al carrito. Intenta nuevamente.', 'error');
+    }
 }
 
-// Eliminar producto
-function deleteProduct(id) {
-    if (confirm('¿Estás seguro de eliminar este producto?')) {
-        products = products.filter(p => p.id !== id);
-        renderAdminList();
-        renderCatalog();
+// ===========================================
+// FUNCIONES AUXILIARES
+// ===========================================
+
+/**
+ * Obtiene el ID del usuario logueado
+ * (Ajustar según tu sistema de autenticación)
+ */
+function getUserId() {
+    // Buscar en localStorage o sessionStorage
+    const userSession = localStorage.getItem('userSession');
+    if (userSession) {
+        try {
+            const session = JSON.parse(userSession);
+            return session.userId || session.id;
+        } catch (e) {
+            console.error('Error al parsear sesión:', e);
+        }
     }
+    return null;
+}
+
+/**
+ * Actualiza el contador del carrito en el header
+ */
+function updateCartCount() {
+    // Implementar según tu sistema de carrito
+    const cartIcon = document.querySelector('[title="Carrito"]');
+    if (cartIcon) {
+        // Agregar badge o actualizar contador
+        console.log('Carrito actualizado');
+    }
+}
+
+/**
+ * Muestra una notificación temporal
+ */
+function showNotification(message, type = 'info') {
+    // Crear elemento de notificación
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remover después de 3 segundos
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
 }
 
 // ===========================================
 // INICIALIZACIÓN
 // ===========================================
-renderCatalog();
-renderAdminList();
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Cargar productos al iniciar
+    loadProducts();
+    
+    // Verificar si hay un producto específico en la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    
+    if (productId) {
+        viewProductDetail(parseInt(productId));
+    }
+});
