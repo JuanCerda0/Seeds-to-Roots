@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const SeedsToRoots = () => {
+export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentAboutSlide, setCurrentAboutSlide] = useState(0);
 
-  // Auto-advance carousel
+  // Auto-advance main carousel
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % 3);
@@ -28,52 +28,58 @@ const SeedsToRoots = () => {
   const nextAboutSlide = () => setCurrentAboutSlide((prev) => (prev + 1) % 3);
   const prevAboutSlide = () => setCurrentAboutSlide((prev) => (prev - 1 + 3) % 3);
 
-  const handleContactForm = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
+  const handleContactForm = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
       message: formData.get('message')
     };
-    console.log('Formulario de contacto enviado:', data);
+    console.log('Formulario de contacto:', data);
     alert('¡Gracias por tu mensaje! Nos pondremos en contacto pronto.');
-    event.target.reset();
+    e.target.reset();
   };
 
-  const subscribeNewsletter = (event) => {
-    event.preventDefault();
-    const email = event.target.elements[0].value;
+  const subscribeNewsletter = (e) => {
+    e.preventDefault();
+    const email = e.target.elements[0].value;
     console.log('Suscripción al newsletter:', email);
     alert('¡Gracias por suscribirte!');
-    event.target.reset();
+    e.target.reset();
   };
 
   return (
     <div>
-      {/* HEADER Y NAVEGACIÓN */}
+      {/* ======================================== 
+           HEADER Y NAVEGACIÓN
+           ======================================== */}
       <header>
         <div className="header-container">
           <div className="logo">
-            <a href="#inicio"> 🌱 Seeds to Roots </a>
+            <a href="/"> 🌱 Seeds to Roots </a>
           </div>
           <nav>
             <ul>
-              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="/">Inicio</a></li>
               <li><a href="#categorias">Productos</a></li>
               <li><a href="#como-funciona">Cómo Funciona</a></li>
               <li><a href="#contacto">Contacto</a></li>
+              {/* Debo Eliminar esto luego */}
+              <li><a href="---RUTA-DASHBOARD---">Catálogo</a></li>
             </ul>
           </nav>
           <div className="nav-icons">
             <span className="nav-icon" title="Buscar">🔍</span>
             <span className="nav-icon" title="Carrito">🛒</span>
-            <a href="#login" className="nav-icon" id="navCuenta" title="Cuenta">👤</a>
+            <a href="/login" className="nav-icon" id="navCuenta" title="Cuenta">👤</a>
           </div>
         </div>
       </header>
 
-      {/* CARRUSEL (HERO SECTION) */}
+      {/* ======================================== 
+           CARRUSEL (HERO SECTION)
+           ======================================== */}
       <section className="carousel-container" id="inicio">
         <div className="carousel-wrapper">
           {/* Slide 1 */}
@@ -125,7 +131,9 @@ const SeedsToRoots = () => {
         </div>
       </section>
 
-      {/* ABOUT US - MINI CARRUSEL */}
+      {/* ======================================== 
+           ABOUT US - MINI CARRUSEL
+           ======================================== */}
       <section className="about-carousel-container" id="about-carousel">
         <div className="about-carousel-wrapper">
           {/* Slide 1 - Quiénes Somos */}
@@ -206,19 +214,19 @@ const SeedsToRoots = () => {
         <section id="categorias">
           <h2>Nuestras Categorías</h2>
           <div className="categories-grid">
-            <div className="category-card" onClick={() => window.location.href='products.html'}>
+            <div className="category-card" onClick={() => window.location.href='---RUTA-PRODUCTS---'}>
               <h3>🍎 Frutas Frescas</h3>
               <p>Manzanas, naranjas, plátanos, uvas y más</p>
             </div>
-            <div className="category-card" onClick={() => window.location.href='products.html'}>
+            <div className="category-card" onClick={() => window.location.href='---RUTA-PRODUCTS---'}>
               <h3>🥬 Verduras Orgánicas</h3>
               <p>Lechugas, espinacas, tomates, pimientos</p>
             </div>
-            <div className="category-card" onClick={() => window.location.href='products.html'}>
+            <div className="category-card" onClick={() => window.location.href='---RUTA-PRODUCTS---'}>
               <h3>🌽 Productos Locales</h3>
               <p>Productos de temporada de nuestros agricultores</p>
             </div>
-            <div className="category-card" onClick={() => window.location.href='products.html'}>
+            <div className="category-card" onClick={() => window.location.href='---RUTA-PRODUCTS---'}>
               <h3>🥛 Lácteos y Granos</h3>
               <p>Leche fresca, quesos, quinua y cereales</p>
             </div>
@@ -292,7 +300,9 @@ const SeedsToRoots = () => {
         </section>
       </main>
 
-      {/* SECCIÓN: CONTACTO */}
+      {/* ======================================== 
+           SECCIÓN: CONTACTO
+           ======================================== */}
       <section style={{ backgroundColor: 'var(--gris-claro)', padding: '5rem 2rem' }} id="contacto">
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>¿Preguntas? ¡Contáctanos!</h2>
@@ -303,7 +313,10 @@ const SeedsToRoots = () => {
           <form onSubmit={handleContactForm} style={{ display: 'grid', gap: '1.5rem' }}>
             {/* Nombre */}
             <div>
-              <label htmlFor="contact-name" style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--gris-oscuro)' }}>
+              <label 
+                htmlFor="contact-name" 
+                style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--gris-oscuro)' }}
+              >
                 Nombre *
               </label>
               <input 
@@ -312,13 +325,23 @@ const SeedsToRoots = () => {
                 name="name" 
                 placeholder="Tu nombre completo" 
                 required 
-                style={{ width: '100%', padding: '0.8rem', border: '1px solid #ddd', borderRadius: '5px', fontSize: '1rem', fontFamily: 'var(--font-main)' }}
+                style={{ 
+                  width: '100%', 
+                  padding: '0.8rem', 
+                  border: '1px solid #ddd', 
+                  borderRadius: '5px', 
+                  fontSize: '1rem', 
+                  fontFamily: 'var(--font-main)' 
+                }}
               />
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="contact-email" style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--gris-oscuro)' }}>
+              <label 
+                htmlFor="contact-email" 
+                style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--gris-oscuro)' }}
+              >
                 Correo Electrónico *
               </label>
               <input 
@@ -327,13 +350,23 @@ const SeedsToRoots = () => {
                 name="email" 
                 placeholder="tu.email@ejemplo.com" 
                 required 
-                style={{ width: '100%', padding: '0.8rem', border: '1px solid #ddd', borderRadius: '5px', fontSize: '1rem', fontFamily: 'var(--font-main)' }}
+                style={{ 
+                  width: '100%', 
+                  padding: '0.8rem', 
+                  border: '1px solid #ddd', 
+                  borderRadius: '5px', 
+                  fontSize: '1rem', 
+                  fontFamily: 'var(--font-main)' 
+                }}
               />
             </div>
 
             {/* Mensaje */}
             <div>
-              <label htmlFor="contact-message" style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--gris-oscuro)' }}>
+              <label 
+                htmlFor="contact-message" 
+                style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--gris-oscuro)' }}
+              >
                 Mensaje *
               </label>
               <textarea 
@@ -342,7 +375,15 @@ const SeedsToRoots = () => {
                 placeholder="Cuéntanos tu consulta o comentario..." 
                 rows="5" 
                 required 
-                style={{ width: '100%', padding: '0.8rem', border: '1px solid #ddd', borderRadius: '5px', fontSize: '1rem', fontFamily: 'var(--font-main)', resize: 'vertical' }}
+                style={{ 
+                  width: '100%', 
+                  padding: '0.8rem', 
+                  border: '1px solid #ddd', 
+                  borderRadius: '5px', 
+                  fontSize: '1rem', 
+                  fontFamily: 'var(--font-main)', 
+                  resize: 'vertical' 
+                }}
               ></textarea>
             </div>
 
@@ -354,7 +395,9 @@ const SeedsToRoots = () => {
         </div>
       </section>
 
-      {/* SECCIÓN: NEWSLETTER */}
+      {/* ======================================== 
+           SECCIÓN: NEWSLETTER
+           ======================================== */}
       <section className="newsletter-section">
         <h2>¿Prefieres Suscribirte?</h2>
         <p>Recibe ofertas exclusivas, recetas y consejos sobre alimentación saludable directamente en tu correo</p>
@@ -364,7 +407,9 @@ const SeedsToRoots = () => {
         </form>
       </section>
 
-      {/* FOOTER */}
+      {/* ======================================== 
+           FOOTER
+           ======================================== */}
       <footer>
         <div className="footer-container">
           {/* Sobre Nosotros */}
@@ -380,7 +425,7 @@ const SeedsToRoots = () => {
               <li><a href="#inicio">Inicio</a></li>
               <li><a href="#categorias">Productos</a></li>
               <li><a href="#como-funciona">Cómo Funciona</a></li>
-              <li><a href="#catalogo">Catálogo</a></li>
+              <li><a href="---RUTA-PRODUCTS---">Catálogo</a></li>
             </ul>
           </div>
 
@@ -389,9 +434,9 @@ const SeedsToRoots = () => {
             <h4>Atención al Cliente</h4>
             <ul>
               <li><a href="#contacto">Contacto</a></li>
-              <li><a href="#faq">Preguntas Frecuentes</a></li>
-              <li><a href="#privacy">Política de Privacidad</a></li>
-              <li><a href="#terms">Términos de Servicio</a></li>
+              <li><a href="---RUTA-FAQ---">Preguntas Frecuentes</a></li>
+              <li><a href="---RUTA-PRIVACY---">Política de Privacidad</a></li>
+              <li><a href="---RUTA-TERMS---">Términos de Servicio</a></li>
             </ul>
           </div>
 
@@ -399,10 +444,10 @@ const SeedsToRoots = () => {
           <div className="footer-section">
             <h4>Síguenos</h4>
             <div className="social-links">
-              <a href="#facebook" className="social-link" title="Facebook">f</a>
-              <a href="#instagram" className="social-link" title="Instagram">📷</a>
-              <a href="#twitter" className="social-link" title="Twitter">𝕏</a>
-              <a href="#youtube" className="social-link" title="YouTube">▶</a>
+              <a href="---RUTA-FACEBOOK---" className="social-link" title="Facebook">f</a>
+              <a href="---RUTA-INSTAGRAM---" className="social-link" title="Instagram">📷</a>
+              <a href="---RUTA-TWITTER---" className="social-link" title="Twitter">𝕏</a>
+              <a href="---RUTA-YOUTUBE---" className="social-link" title="YouTube">▶</a>
             </div>
           </div>
         </div>
@@ -413,6 +458,4 @@ const SeedsToRoots = () => {
       </footer>
     </div>
   );
-};
-
-export default SeedsToRoots;
+}
