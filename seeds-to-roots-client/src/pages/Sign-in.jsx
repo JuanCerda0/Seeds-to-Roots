@@ -1,69 +1,207 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import authService from '../services/authService';
 
-export default function Register() {
+function SignIn() {
   const [formData, setFormData] = useState({
-    name: '',
+    run: '',
+    nombre: '',
+    apellidos: '',
     email: '',
+    telefono: '',
+    direccion: '',
+    region: '',
+    comuna: '',
+    ciudad: '',
+    fechaNacimiento: '',
     password: ''
   });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Register:', formData);
-    alert('Función de registro - Conectar con API');
+    setError('');
+    setLoading(true);
+
+    try {
+      const response = await authService.register(formData);
+      console.log('Registro exitoso:', response);
+      
+      // Redirigir al home después del registro
+      navigate('/');
+    } catch (err) {
+      setError('Error al registrar. Por favor, verifica los datos.');
+      console.error('Error en registro:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="auth-bg">
-      <div className="auth-container">
-        <section className="auth-form-section">
-          <h2 className="auth-title">Crear Cuenta</h2>
-          
-          <form onSubmit={handleSubmit} className="auth-form">
-            <div className="form-group">
-              <label htmlFor="name">Nombre Completo</label>
-              <input
-                type="text"
-                id="name"
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-                required
-              />
-            </div>
+    <div className="signin-container">
+      <h2>Registrarse</h2>
+      
+      {error && <div className="error-message">{error}</div>}
+      
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="run">RUN:</label>
+          <input
+            type="text"
+            id="run"
+            name="run"
+            value={formData.run}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
 
-            <div className="form-group">
-              <label htmlFor="email">Correo Electrónico</label>
-              <input
-                type="email"
-                id="email"
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-                required
-              />
-            </div>
+        <div className="form-group">
+          <label htmlFor="nombre">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
 
-            <div className="form-group">
-              <label htmlFor="password">Contraseña</label>
-              <input
-                type="password"
-                id="password"
-                value={formData.password}
-                onChange={(e) => setFormData({...formData, password: e.target.value})}
-                required
-              />
-            </div>
+        <div className="form-group">
+          <label htmlFor="apellidos">Apellidos:</label>
+          <input
+            type="text"
+            id="apellidos"
+            name="apellidos"
+            value={formData.apellidos}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
 
-            <button type="submit" className="btn btn-primary">
-              Registrarse
-            </button>
-          </form>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
 
-          <div className="auth-links">
-            <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
-            <p><a href="/">Volver al inicio</a></p>
-          </div>
-        </section>
-      </div>
+        <div className="form-group">
+          <label htmlFor="telefono">Teléfono:</label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            value={formData.telefono}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="direccion">Dirección:</label>
+          <input
+            type="text"
+            id="direccion"
+            name="direccion"
+            value={formData.direccion}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="region">Región:</label>
+          <input
+            type="text"
+            id="region"
+            name="region"
+            value={formData.region}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="comuna">Comuna:</label>
+          <input
+            type="text"
+            id="comuna"
+            name="comuna"
+            value={formData.comuna}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="ciudad">Ciudad:</label>
+          <input
+            type="text"
+            id="ciudad"
+            name="ciudad"
+            value={formData.ciudad}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="fechaNacimiento">Fecha de Nacimiento:</label>
+          <input
+            type="date"
+            id="fechaNacimiento"
+            name="fechaNacimiento"
+            value={formData.fechaNacimiento}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Contraseña:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            disabled={loading}
+          />
+        </div>
+
+        <button type="submit" disabled={loading}>
+          {loading ? 'Registrando...' : 'Registrarse'}
+        </button>
+      </form>
     </div>
   );
 }
+
+export default SignIn;

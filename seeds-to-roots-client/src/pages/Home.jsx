@@ -65,13 +65,12 @@ export default function Home() {
               <li><a href="#categorias">Productos</a></li>
               <li><a href="#como-funciona">Cómo Funciona</a></li>
               <li><a href="#contacto">Contacto</a></li>
-              {/* Debo Eliminar esto luego */}
-              <li><a href="---RUTA-DASHBOARD---">Catálogo</a></li>
+              <li><a href="/blog">Blog</a></li>
             </ul>
           </nav>
           <div className="nav-icons">
             <span className="nav-icon" title="Buscar">🔍</span>
-            <span className="nav-icon" title="Carrito">🛒</span>
+            <span className="nav-icon" title="Carrito" onClick={() => window.location.href='/carrito'}>🛒</span>
             <a href="/login" className="nav-icon" id="navCuenta" title="Cuenta">👤</a>
           </div>
         </div>
@@ -210,30 +209,30 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Sección: Categorías */}
-        <section id="categorias">
-          <h2>Nuestras Categorías</h2>
-          <div className="categories-grid">
-            <div className="category-card" onClick={() => window.location.href='---RUTA-PRODUCTS---'}>
-              <h3>🍎 Frutas Frescas</h3>
-              <p>Manzanas, naranjas, plátanos, uvas y más</p>
+          {/* Sección: Categorías de Productos */}
+          <section id="categorias">
+            <h2>Nuestras Categorías</h2>
+            <div className="categories-grid">
+              <div className="category-card" onClick={() => window.location.href='/productos'}>
+                <h3>🍎 Frutas Frescas</h3>
+                <p>Manzanas, naranjas, plátanos, uvas y más</p>
+              </div>
+              <div className="category-card" onClick={() => window.location.href='/productos'}>
+                <h3>🥬 Verduras Orgánicas</h3>
+                <p>Lechugas, espinacas, tomates, pimientos</p>
+              </div>
+              <div className="category-card" onClick={() => window.location.href='/productos'}>
+                <h3>🌽 Productos Locales</h3>
+                <p>Productos de temporada de nuestros agricultores</p>
+              </div>
+              <div className="category-card" onClick={() => window.location.href='/productos'}>
+                <h3>🥛 Lácteos y Granos</h3>
+                <p>Leche fresca, quesos, quinua y cereales</p>
+              </div>
             </div>
-            <div className="category-card" onClick={() => window.location.href='---RUTA-PRODUCTS---'}>
-              <h3>🥬 Verduras Orgánicas</h3>
-              <p>Lechugas, espinacas, tomates, pimientos</p>
-            </div>
-            <div className="category-card" onClick={() => window.location.href='---RUTA-PRODUCTS---'}>
-              <h3>🌽 Productos Locales</h3>
-              <p>Productos de temporada de nuestros agricultores</p>
-            </div>
-            <div className="category-card" onClick={() => window.location.href='---RUTA-PRODUCTS---'}>
-              <h3>🥛 Lácteos y Granos</h3>
-              <p>Leche fresca, quesos, quinua y cereales</p>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Sección: Cómo Funciona */}
+          {/* Sección: Cómo Funciona */}
         <section id="como-funciona">
           <h2>¿Cómo Funciona?</h2>
           <div className="steps-container">
