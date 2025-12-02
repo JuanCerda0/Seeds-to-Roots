@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/useCart';
+import NavBar from '../components/navBar';
 import '../components/css/Carrito.css';
 
 const Carrito = () => {
@@ -10,13 +11,17 @@ const Carrito = () => {
 
   // Códigos de cupón válidos (simulado)
   const cupónesValidos = {
-    'DESCUENTO10': 0.10,
-    'DESCUENTO20': 0.20,
+    'DESCUENTO10': 0.1,
+    'DESCUENTO20': 0.2,
     'ENVIOGRATIS': 0.05
   };
 
-  // Calcular totales
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+  // Calcular totales de forma más segura
+  const subtotal = cartItems.reduce((sum, item) => {
+    const precio = Number(item.precio) || 0;
+    const cantidad = Number(item.cantidad) || 0;
+    return sum + (precio * cantidad);
+  }, 0);
   const descuentoMonto = subtotal * descuento;
   const envio = subtotal > 50000 ? 0 : 5000;
   const total = subtotal - descuentoMonto + envio;
@@ -48,7 +53,7 @@ const Carrito = () => {
 
   // Vaciar carrito
   const vaciarCarrito = () => {
-    if (window.confirm('¿Estás seguro de que deseas vaciar el carrito?')) {
+    if (globalThis.confirm('¿Estás seguro de que deseas vaciar el carrito?')) {
       clearCart();
       limpiarCupón();
     }
@@ -65,20 +70,11 @@ const Carrito = () => {
 
   return (
     <div className="carrito-container">
+      <NavBar />
       <section className="carrito-header">
         <h1>🛒 Tu carrito 🛒</h1>
         <p>{cartItems.length} producto{cartItems.length !== 1 ? 's' : ''} en el carrito</p>
       </section>
-
-    <section className='navBar'>
-        <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/productos">Productos</a></li>
-            </ul>
-        </nav>
-    </section>
 
       <div className="carrito-content">
         {/* Tabla de productos */}
@@ -99,18 +95,22 @@ const Carrito = () => {
                   {cartItems.map(item => (
                     <tr key={item.id} className="item-row">
                       <td className="item-producto">
-                        <img src={item.imagen} alt={item.nombre} />
+                        <img 
+                          src={item.imagen || item.foto || 'https://via.placeholder.com/80x80?text=' + item.nombre} 
+                          alt={item.nombre} 
+                        />
                         <div>
                           <h4>{item.nombre}</h4>
                           <span className="stock-info">Stock: {item.stock}</span>
                         </div>
                       </td>
-                      <td className="item-precio">${item.precio.toLocaleString('es-CL')}</td>
+                      <td className="item-precio">${(item.precio || 0).toLocaleString('es-CL')}</td>
                       <td className="item-cantidad">
                         <div className="cantidad-control">
                           <button
                             className="btn-qty"
                             onClick={() => updateQuantity(item.id, item.cantidad - 1)}
+                            disabled={item.cantidad <= 1}
                           >
                             −
                           </button>
@@ -118,7 +118,7 @@ const Carrito = () => {
                             type="number"
                             value={item.cantidad}
                             onChange={(e) =>
-                              updateQuantity(item.id, parseInt(e.target.value) || 1)
+                              updateQuantity(item.id, Number.parseInt(e.target.value) || 1)
                             }
                             min="1"
                             max={item.stock}
@@ -126,19 +126,21 @@ const Carrito = () => {
                           <button
                             className="btn-qty"
                             onClick={() => updateQuantity(item.id, item.cantidad + 1)}
+                            disabled={item.cantidad >= item.stock}
                           >
                             +
                           </button>
                         </div>
                       </td>
                       <td className="item-subtotal">
-                        ${(item.precio * item.cantidad).toLocaleString('es-CL')}
+                        ${((item.precio || 0) * (item.cantidad || 0)).toLocaleString('es-CL')}
                       </td>
                       <td className="item-acciones">
                         <button
                           className="btn-eliminar"
                           onClick={() => removeFromCart(item.id)}
                           title="Eliminar producto"
+                          aria-label="Eliminar producto"
                         >
                           🗑️
                         </button>

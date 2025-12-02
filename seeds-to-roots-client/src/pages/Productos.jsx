@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import productoService from '../services/productoService';
 import { useCart } from '../context/useCart';
+import NavBar from '../components/navBar';
 import '../components/css/Productos.css';
 
 function Productos() {
@@ -38,24 +39,13 @@ function Productos() {
 
   if (loading) return <div className="loading">Cargando productos...</div>;
   if (error) return <div className="error">{error}</div>;
-
   return (
     <div className="productos-container">
+      <NavBar />
       <section className="productos-header">
         <h1>🌱 Nuestros Productos</h1>
         <p>Productos frescos y de calidad directamente del huerto a tu puerta</p>
       </section>
-
-    <section className='navBar'>
-        <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/productos">Productos</a></li>
-            </ul>
-        </nav>
-    </section>
-    
       <div className="productos-grid">
         {productos.map((producto) => (
           <div key={producto.id} className="producto-card">

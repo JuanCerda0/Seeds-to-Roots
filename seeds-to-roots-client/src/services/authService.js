@@ -9,11 +9,11 @@ const authService = {
   async login(credentials) {
     try {
       const response = await api.post('/auth/login', credentials);
-      const { token, email, rol, id } = response.data;
+      const { token, email, rol, id, nombre } = response.data;
       
       // Guardar en localStorage
       localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify({ email, rol, id }));
+      localStorage.setItem('user', JSON.stringify({ email, rol, id, nombre }));
       
       return response.data;
     } catch (error) {
@@ -30,11 +30,11 @@ const authService = {
   async register(userData) {
     try {
       const response = await api.post('/auth/register', userData);
-      const { token, email, rol, id } = response.data;
+      const { token, email, rol, id, nombre } = response.data;
       
       // Guardar en localStorage
       localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify({ email, rol, id }));
+      localStorage.setItem('user', JSON.stringify({ email, rol, id, nombre }));
       
       return response.data;
     } catch (error) {
