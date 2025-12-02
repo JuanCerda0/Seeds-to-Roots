@@ -1,7 +1,4 @@
-import productosData from '../../../frontend/api/mockData/productos.json';
-
-// Simular una base de datos local con los datos del JSON
-let productosDB = productosData.data || [];
+import api from './api';
 
 const productoService = {
   /**
@@ -10,9 +7,8 @@ const productoService = {
    */
   async getAll() {
     try {
-      // Simular delay de red
-      await new Promise(resolve => setTimeout(resolve, 300));
-      return productosDB;
+      const response = await api.get('/api/productos');
+      return response.data;
     } catch (error) {
       console.error('Error al obtener productos:', error);
       throw error;
@@ -26,14 +22,25 @@ const productoService = {
    */
   async getById(id) {
     try {
-      await new Promise(resolve => setTimeout(resolve, 200));
-      const producto = productosDB.find(p => p.id === parseInt(id));
-      if (!producto) {
-        throw new Error('Producto no encontrado');
-      }
-      return producto;
+      const response = await api.get(`/api/productos/${id}`);
+      return response.data;
     } catch (error) {
       console.error('Error al obtener producto:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Obtener productos recientes
+   * @param {number} limit - Número de productos a retornar
+   * @returns {Promise<Array>}
+   */
+  async getRecientes(limit = 5) {
+    try {
+      const response = await api.get(`/api/productos/recientes?limit=${limit}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener productos recientes:', error);
       throw error;
     }
   },
@@ -45,16 +52,8 @@ const productoService = {
    */
   async create(producto) {
     try {
-      await new Promise(resolve => setTimeout(resolve, 200));
-      const nuevoId = Math.max(...productosDB.map(p => p.id), 0) + 1;
-      const nuevoProducto = {
-        id: nuevoId,
-        ...producto,
-        fechaCreacion: new Date().toISOString().split('T')[0],
-        fechaActualizacion: new Date().toISOString().split('T')[0],
-      };
-      productosDB.push(nuevoProducto);
-      return nuevoProducto;
+      const response = await api.post('/api/productos', producto);
+      return response.data;
     } catch (error) {
       console.error('Error al crear producto:', error);
       throw error;
@@ -69,24 +68,14 @@ const productoService = {
    */
   async update(id, producto) {
     try {
-      await new Promise(resolve => setTimeout(resolve, 200));
-      const indice = productosDB.findIndex(p => p.id === parseInt(id));
-      if (indice === -1) {
-        throw new Error('Producto no encontrado');
-      }
-      const productoActualizado = {
-        ...productosDB[indice],
-        ...producto,
-        id: parseInt(id),
-        fechaActualizacion: new Date().toISOString().split('T')[0],
-      };
-      productosDB[indice] = productoActualizado;
-      return productoActualizado;
+      const response = await api.put(`/api/productos/${id}`, producto);
+      return response.data;
     } catch (error) {
       console.error('Error al actualizar producto:', error);
       throw error;
     }
   },
+
   /**
    * Eliminar un producto (solo ADMIN)
    * @param {number} id
@@ -94,12 +83,7 @@ const productoService = {
    */
   async delete(id) {
     try {
-      await new Promise(resolve => setTimeout(resolve, 200));
-      const indice = productosDB.findIndex(p => p.id === parseInt(id));
-      if (indice === -1) {
-        throw new Error('Producto no encontrado');
-      }
-      productosDB.splice(indice, 1);
+      await api.delete(`/api/productos/${id}`);
     } catch (error) {
       console.error('Error al eliminar producto:', error);
       throw error;
@@ -107,17 +91,17 @@ const productoService = {
   },
 
   /**
-   * Buscar productos por nombre o categoría
+   * Buscar productos por nombre o categoría (filtrado en cliente)
    * @param {string} termino
    * @returns {Promise<Array>}
    */
   async buscar(termino) {
     try {
-      await new Promise(resolve => setTimeout(resolve, 200));
+      const productos = await this.getAll();
       const terminoLower = termino.toLowerCase();
-      return productosDB.filter(p =>
+      return productos.filter(p =>
         p.nombre.toLowerCase().includes(terminoLower) ||
-        p.categoria.toLowerCase().includes(terminoLower)
+        p.categoria?.toLowerCase().includes(terminoLower)
       );
     } catch (error) {
       console.error('Error al buscar productos:', error);
@@ -126,14 +110,14 @@ const productoService = {
   },
 
   /**
-   * Obtener productos por categoría
+   * Obtener productos por categoría (filtrado en cliente)
    * @param {string} categoria
    * @returns {Promise<Array>}
    */
   async getByCategoria(categoria) {
     try {
-      await new Promise(resolve => setTimeout(resolve, 200));
-      return productosDB.filter(p => p.categoria === categoria);
+      const productos = await this.getAll();
+      return productos.filter(p => p.categoria === categoria);
     } catch (error) {
       console.error('Error al obtener productos por categoría:', error);
       throw error;

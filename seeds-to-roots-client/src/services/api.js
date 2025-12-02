@@ -8,7 +8,8 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Importante para CORS con credenciales
+  // CAMBIO: NO usar withCredentials si el backend no lo requiere
+  // withCredentials: true,
 });
 
 // Interceptor para agregar el token JWT a cada petición
@@ -34,7 +35,6 @@ api.interceptors.response.use(
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';
-      // Si no sirve lo cambio a GlobalThis.location.href = '/login';
     }
     return Promise.reject(error);
   }
