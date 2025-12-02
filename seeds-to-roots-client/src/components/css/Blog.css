@@ -2,16 +2,16 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-main);
 }
 
 /* Hero Section */
 .blog-hero {
   text-align: center;
   padding: 60px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--verde-natural) 0%, var(--verde-claro) 100%);
   border-radius: 15px;
-  color: white;
+  color: var(--blanco);
   margin-bottom: 50px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -35,7 +35,7 @@
 .filter-section h3 {
   margin-bottom: 15px;
   font-size: 1.3em;
-  color: #333;
+  color: var(--gris-oscuro);
 }
 
 .filter-buttons {
@@ -47,7 +47,7 @@
 .filter-btn {
   padding: 10px 20px;
   border: 2px solid #ddd;
-  background: white;
+  background: var(--blanco);
   border-radius: 25px;
   cursor: pointer;
   font-size: 0.95em;
@@ -56,14 +56,14 @@
 }
 
 .filter-btn:hover {
-  border-color: #667eea;
-  color: #667eea;
+  border-color: var(--verde-natural);
+  color: var(--verde-natural);
 }
 
 .filter-btn.active {
-  background: #667eea;
-  color: white;
-  border-color: #667eea;
+  background: var(--verde-natural);
+  color: var(--blanco);
+  border-color: var(--verde-natural);
 }
 
 /* Posts Grid */
@@ -76,7 +76,7 @@
 
 /* Post Card */
 .post-card {
-  background: white;
+  background: var(--blanco);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -105,8 +105,8 @@
 
 .post-category {
   display: inline-block;
-  background: #667eea;
-  color: white;
+  background: var(--verde-natural);
+  color: var(--blanco);
   padding: 5px 12px;
   border-radius: 20px;
   font-size: 0.75em;
@@ -118,12 +118,12 @@
 .post-card h2 {
   font-size: 1.4em;
   margin-bottom: 12px;
-  color: #333;
+  color: var(--gris-oscuro);
   line-height: 1.4;
 }
 
 .post-excerpt {
-  color: #666;
+  color: var(--gris-medio);
   font-size: 0.95em;
   line-height: 1.6;
   margin-bottom: 15px;
@@ -142,7 +142,7 @@
   display: flex;
   flex-direction: column;
   font-size: 0.85em;
-  color: #999;
+  color: var(--gris-medio);
 }
 
 .author-small,
@@ -151,8 +151,8 @@
 }
 
 .btn-read-more {
-  background: #667eea;
-  color: white;
+  background: var(--verde-natural);
+  color: var(--blanco);
   border: none;
   padding: 10px 18px;
   border-radius: 6px;
@@ -163,7 +163,7 @@
 }
 
 .btn-read-more:hover {
-  background: #764ba2;
+  background: var(--verde-claro);
 }
 
 /* Post Detail */
@@ -172,8 +172,8 @@
 }
 
 .btn-back {
-  background: #667eea;
-  color: white;
+  background: var(--verde-natural);
+  color: var(--blanco);
   border: none;
   padding: 12px 25px;
   border-radius: 6px;
@@ -185,11 +185,11 @@
 }
 
 .btn-back:hover {
-  background: #764ba2;
+  background: var(--verde-claro);
 }
 
 .post-detail {
-  background: white;
+  background: var(--blanco);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -209,7 +209,7 @@
 .post-detail h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--gris-oscuro);
   line-height: 1.3;
 }
 
@@ -218,7 +218,7 @@
   gap: 25px;
   flex-wrap: wrap;
   font-size: 0.95em;
-  color: #666;
+  color: var(--gris-medio);
 }
 
 .post-meta span {
@@ -231,7 +231,7 @@
   padding: 40px;
   font-size: 1.05em;
   line-height: 1.8;
-  color: #555;
+  color: var(--gris-medio);
 }
 
 .post-content p {
@@ -252,8 +252,8 @@
 
 .btn-share,
 .btn-comment {
-  background: #667eea;
-  color: white;
+  background: var(--verde-natural);
+  color: var(--blanco);
   border: none;
   padding: 12px 25px;
   border-radius: 6px;
@@ -265,7 +265,7 @@
 
 .btn-share:hover,
 .btn-comment:hover {
-  background: #764ba2;
+  background: var(--verde-claro);
 }
 
 /* No Posts Message */
@@ -273,7 +273,34 @@
   text-align: center;
   padding: 60px 20px;
   font-size: 1.2em;
-  color: #999;
+  color: var(--gris-medio);
+}
+
+/* Navigation Bar */
+.navBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.navBar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.navBar nav ul li a {
+  text-decoration: none;
+  color: var(--gris-oscuro);
+  font-weight: 500;
+  font-size: 1em;
+  transition: color 0.3s ease;
+}
+
+.navBar nav ul li a:hover {
+  color: var(--verde-natural);
 }
 
 /* Responsive */
@@ -311,5 +338,11 @@
   .filter-btn {
     padding: 8px 16px;
     font-size: 0.85em;
+  }
+
+  .navBar nav ul {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
   }
 }

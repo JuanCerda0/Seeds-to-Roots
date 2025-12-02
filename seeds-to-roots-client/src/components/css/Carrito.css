@@ -2,16 +2,16 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-main);
 }
 
 /* Header */
 .carrito-header {
   text-align: center;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--verde-natural) 0%, var(--verde-claro) 100%);
   border-radius: 12px;
-  color: white;
+  color: var(--blanco);
   margin-bottom: 40px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
@@ -37,7 +37,7 @@
 
 /* Carrito Items */
 .carrito-items {
-  background: white;
+  background: var(--blanco);
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -51,7 +51,7 @@
 }
 
 .items-table thead {
-  background: #f8f9fa;
+  background: var(--gris-claro);
   border-bottom: 2px solid #ddd;
 }
 
@@ -59,7 +59,7 @@
   padding: 15px;
   text-align: left;
   font-weight: 600;
-  color: #333;
+  color: var(--gris-oscuro);
   font-size: 0.95em;
 }
 
@@ -93,21 +93,21 @@
 
 .item-producto h4 {
   margin: 0;
-  color: #333;
+  color: var(--gris-oscuro);
   font-size: 1em;
 }
 
 .stock-info {
   display: block;
   font-size: 0.85em;
-  color: #999;
+  color: var(--gris-medio);
   margin-top: 3px;
 }
 
 /* Precio */
 .item-precio {
   font-weight: 600;
-  color: #667eea;
+  color: var(--verde-natural);
   font-size: 1.1em;
 }
 
@@ -129,22 +129,22 @@
 }
 
 .btn-qty {
-  background: white;
+  background: var(--blanco);
   border: 1px solid #ddd;
   width: 32px;
   height: 32px;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  color: #667eea;
+  color: var(--verde-natural);
   transition: all 0.2s ease;
   font-size: 1.1em;
 }
 
 .btn-qty:hover {
-  background: #667eea;
-  color: white;
-  border-color: #667eea;
+  background: var(--verde-natural);
+  color: var(--blanco);
+  border-color: var(--verde-natural);
 }
 
 .cantidad-control input {
@@ -163,7 +163,7 @@
 /* Subtotal */
 .item-subtotal {
   font-weight: 700;
-  color: #333;
+  color: var(--gris-oscuro);
   font-size: 1.1em;
 }
 
@@ -188,13 +188,13 @@
 .carrito-vacio {
   text-align: center;
   padding: 60px 40px;
-  color: #999;
+  color: var(--gris-medio);
 }
 
 .carrito-vacio h2 {
   font-size: 1.8em;
   margin-bottom: 10px;
-  color: #333;
+  color: var(--gris-oscuro);
 }
 
 .carrito-vacio p {
@@ -204,8 +204,8 @@
 
 .btn-volver {
   display: inline-block;
-  background: #667eea;
-  color: white;
+  background: var(--verde-natural);
+  color: var(--blanco);
   padding: 12px 30px;
   border-radius: 6px;
   text-decoration: none;
@@ -214,13 +214,13 @@
 }
 
 .btn-volver:hover {
-  background: #764ba2;
+  background: var(--verde-claro);
 }
 
 /* Botón Vaciar */
 .btn-vaciar {
   background: #dc3545;
-  color: white;
+  color: var(--blanco);
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
@@ -237,7 +237,7 @@
 
 /* Resumen */
 .carrito-resumen {
-  background: white;
+  background: var(--blanco);
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -247,7 +247,7 @@
 
 .carrito-resumen h3 {
   margin: 0 0 20px 0;
-  color: #333;
+  color: var(--gris-oscuro);
   font-size: 1.2em;
   border-bottom: 2px solid #eee;
   padding-bottom: 12px;
@@ -275,7 +275,7 @@
 
 .cupon-input input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--verde-natural);
 }
 
 .cupon-input input:disabled {
@@ -285,8 +285,8 @@
 
 .btn-aplicar,
 .btn-limpiar {
-  background: #667eea;
-  color: white;
+  background: var(--verde-natural);
+  color: var(--blanco);
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
@@ -301,7 +301,7 @@
 }
 
 .btn-aplicar:hover {
-  background: #764ba2;
+  background: var(--verde-claro);
 }
 
 .btn-limpiar:hover {
@@ -341,13 +341,13 @@
 }
 
 .precio-line span:first-child {
-  color: #666;
+  color: var(--gris-medio);
   font-weight: 500;
 }
 
 .precio-line span:last-child {
   font-weight: 600;
-  color: #333;
+  color: var(--gris-oscuro);
 }
 
 .precio-line.descuento span:last-child {
@@ -372,16 +372,16 @@
   display: flex;
   justify-content: space-between;
   padding: 15px 0;
-  border-top: 2px solid #667eea;
-  border-bottom: 2px solid #667eea;
+  border-top: 2px solid var(--verde-natural);
+  border-bottom: 2px solid var(--verde-natural);
   margin: 15px 0;
   font-size: 1.2em;
   font-weight: 700;
-  color: #333;
+  color: var(--gris-oscuro);
 }
 
 .precio-total span:last-child {
-  color: #667eea;
+  color: var(--verde-natural);
 }
 
 /* Opciones de Pago */
@@ -407,26 +407,26 @@
 }
 
 .metodo-option:hover {
-  border-color: #667eea;
+  border-color: var(--verde-natural);
   background: #f9f9f9;
 }
 
 .metodo-option input[type="radio"] {
   margin-right: 10px;
   cursor: pointer;
-  accent-color: #667eea;
+  accent-color: var(--verde-natural);
 }
 
 .metodo-option input[type="radio"]:checked + span,
 .metodo-option input[type="radio"]:checked ~ span {
-  color: #667eea;
+  color: var(--verde-natural);
 }
 
 /* Botón Checkout */
 .btn-checkout {
   width: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--verde-natural) 0%, var(--verde-claro) 100%);
+  color: var(--blanco);
   border: none;
   padding: 15px;
   border-radius: 8px;
@@ -435,12 +435,12 @@
   cursor: pointer;
   margin-bottom: 20px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
 }
 
 .btn-checkout:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(46, 139, 87, 0.4);
 }
 
 .btn-checkout:active {
@@ -460,13 +460,13 @@
   gap: 10px;
   cursor: pointer;
   font-size: 0.95em;
-  color: #666;
+  color: var(--gris-medio);
 }
 
 .opciones-adicionales input[type="checkbox"] {
   margin-top: 3px;
   cursor: pointer;
-  accent-color: #667eea;
+  accent-color: var(--verde-natural);
 }
 
 .opciones-adicionales span {
