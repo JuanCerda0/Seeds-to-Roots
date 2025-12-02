@@ -93,13 +93,15 @@ In culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga et 
         <p>Consejos, guías y historias sobre agricultura sostenible</p>
       </section>
 
+    <section className='navBar'>
         <nav>
             <ul>
                 <li><a href="/">Inicio</a></li>
-                <li><a href="/productos">Productos</a></li>
                 <li><a href="/blog">Blog</a></li>
+                <li><a href="/productos">Productos</a></li>
             </ul>
         </nav>
+    </section>
 
       {selectedPost ? (
         // Vista de Artículo Individual

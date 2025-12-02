@@ -46,6 +46,16 @@ function Productos() {
         <p>Productos frescos y de calidad directamente del huerto a tu puerta</p>
       </section>
 
+    <section className='navBar'>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/productos">Productos</a></li>
+            </ul>
+        </nav>
+    </section>
+    
       <div className="productos-grid">
         {productos.map((producto) => (
           <div key={producto.id} className="producto-card">
