@@ -3,7 +3,7 @@ import AdminLayout from '../../components/admin/AdminLayout';
 import Header from '../../components/admin/Header';
 import StatsCard from '../../components/admin/StatsCard';
 import { estadisticas, productos, usuarios } from '../../services/api';
-import './Dashboard.css';
+import '../../components/admin/Dashboard.css';
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
