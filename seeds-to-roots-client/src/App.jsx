@@ -22,7 +22,6 @@ function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/test" element={<Test />} />
           <Route path="/admin/dashboard" element={<Admin />} />
-          <Route path="/admin/products" element={<Products />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>
