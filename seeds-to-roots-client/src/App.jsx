@@ -7,6 +7,7 @@ import Productos from './pages/Productos';
 import Blog from './pages/Blog.jsx';
 import Carrito from './pages/Carrito.jsx'
 import Test from './pages/test.jsx';
+import Admin from './pages/admin/dashboard';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/admin/dashboard" element={<Admin />} />
+          <Route path="/admin/products" element={<Products />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>

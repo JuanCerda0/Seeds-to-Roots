@@ -86,7 +86,7 @@ export default function Home() {
             <div className="slide-content">
               <h2>Productos Frescos del Campo</h2>
               <p>Conectamos directamente con agricultores locales para traerte lo más fresco a tu hogar</p>
-              <button className="btn btn-secondary">Explorar Productos</button>
+              <button className="btn btn-secondary" onClick={() => window.location.href='/productos'}>Explorar Productos</button>
             </div>
           </div>
 
@@ -95,7 +95,7 @@ export default function Home() {
             <div className="slide-content">
               <h2>Agricultura Sostenible</h2>
               <p>Apoyamos prácticas agrícolas responsables con el medio ambiente</p>
-              <button className="btn btn-secondary">Conocer Más</button>
+              <button className="btn btn-secondary" onClick={() => window.location.href='/blog'}>Conocer Más</button>
             </div>
           </div>
 
@@ -104,7 +104,7 @@ export default function Home() {
             <div className="slide-content">
               <h2>Entrega Rápida a tu Puerta</h2>
               <p>Recibe tus productos frescos en menos de 24 horas</p>
-              <button className="btn btn-secondary">Ver Catálogo</button>
+              <button className="btn btn-secondary" onClick={() => window.location.href='/productos'}>Ver Catálogo</button>
             </div>
           </div>
 
