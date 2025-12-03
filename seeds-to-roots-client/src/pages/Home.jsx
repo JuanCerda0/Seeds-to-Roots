@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../components/css/styles.css'
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);

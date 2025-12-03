@@ -4,10 +4,11 @@ import Home from './pages/Home';
 import Login from './pages/Log-in';
 import Register from './pages/Sign-in';
 import Productos from './pages/Productos';
-import Blog from './pages/Blog.jsx';
-import Carrito from './pages/Carrito.jsx'
-import Test from './pages/test.jsx';
+import Blog from './pages/Blog';
+import Carrito from './pages/Carrito'
+import Test from './pages/test';
 import Admin from './pages/admin/dashboard';
+import ProdAmin from './pages/admin/ProductsAdmin';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/test" element={<Test />} />
           <Route path="/admin/dashboard" element={<Admin />} />
+          <Route path="/admin/products" element={<ProdAmin />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>
