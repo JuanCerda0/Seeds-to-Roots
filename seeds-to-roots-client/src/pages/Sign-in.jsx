@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
+import '../components/css/Sign-in.css';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -47,12 +48,14 @@ function SignIn() {
   };
 
   return (
-    <div className="signin-container">
-      <h2>Registrarse</h2>
-      
-      {error && <div className="error-message">{error}</div>}
-      
-      <form onSubmit={handleSubmit}>
+    <div className="sign-in-container">
+      <div className="auth-bg"></div>
+      <div className="sign-in-form-section">
+        <h2 className="auth-title">🌱 Crear Cuenta</h2>
+        
+        {error && <div className="error-message">{error}</div>}
+        
+        <form className="auth-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="run">RUN:</label>
           <input
@@ -193,13 +196,23 @@ function SignIn() {
             onChange={handleChange}
             required
             disabled={loading}
+            className="form-input"
           />
         </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Registrando...' : 'Registrarse'}
+        <button 
+          type="submit" 
+          disabled={loading}
+          className="btn-submit"
+        >
+          {loading ? 'Registrando...' : 'Crear Cuenta'}
         </button>
       </form>
+
+      <div className="auth-footer">
+        <p>¿Ya tienes cuenta? <a href="/login" className="link-register">Inicia sesión</a></p>
+      </div>
+      </div>
     </div>
   );
 }
