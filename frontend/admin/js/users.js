@@ -5,6 +5,12 @@
 
 class UsersController {
   constructor() {
+    // Asegurar que APIClient esté disponible
+    if (typeof APIClient === 'undefined') {
+      console.error('APIClient no está cargado. Incluye APIClient.js antes de este script.');
+      return;
+    }
+    
     this.api = new APIClient();
     this.currentPage = 1;
     this.itemsPerPage = 10;
@@ -36,10 +42,11 @@ class UsersController {
       const response = await this.api.getUsuarios({ limit: 1000 });
 
       if (!response.success) {
-        throw new Error('No se pudieron cargar los usuarios');
+        throw new Error(response.error || 'No se pudieron cargar los usuarios');
       }
 
-      this.allUsers = response.data;
+      // Normalizar respuesta - puede venir como array directo o en response.data
+      this.allUsers = Array.isArray(response.data) ? response.data : (response.data.data || []);
       this.filteredUsers = [...this.allUsers];
       this.currentPage = 1;
       this.mostrarUsuarios();
@@ -47,6 +54,7 @@ class UsersController {
       console.log('Usuarios cargados:', this.allUsers);
     } catch (error) {
       console.error('Error al cargar usuarios:', error);
+      alert('Error al cargar los usuarios');
     }
   }
 
@@ -237,8 +245,6 @@ class UsersController {
       // Crear nuevo
       window.location.href = 'user-form.html';
     }
-  }
-
   /**
    * Elimina un usuario
    */
@@ -251,12 +257,14 @@ class UsersController {
           alert('Usuario eliminado exitosamente');
           await this.cargarUsuarios();
         } else {
-          alert('Error al eliminar el usuario');
+          alert(response.error || 'Error al eliminar el usuario');
         }
       } catch (error) {
         console.error('Error:', error);
         alert('Error al eliminar el usuario');
       }
+    }
+  }   }
     }
   }
 

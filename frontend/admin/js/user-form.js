@@ -5,6 +5,12 @@
 
 class UserFormController {
   constructor() {
+    // Asegurar que APIClient esté disponible
+    if (typeof APIClient === 'undefined') {
+      console.error('APIClient no está cargado. Incluye APIClient.js antes de este script.');
+      return;
+    }
+    
     this.api = new APIClient();
     this.userId = this.getUserIdFromURL();
     this.validationRules = {
@@ -100,7 +106,7 @@ class UserFormController {
    */
   async cargarUsuario() {
     try {
-      const response = await this.api.getUsuarioById(this.userId);
+      const response = await this.api.getUsuario(this.userId);
 
       if (!response.success || !response.data) {
         alert('Usuario no encontrado');
@@ -309,7 +315,7 @@ class UserFormController {
         alert(response.message || 'Usuario guardado exitosamente');
         window.location.href = 'users.html';
       } else {
-        alert('Error al guardar el usuario');
+        alert(response.error || 'Error al guardar el usuario');
       }
     } catch (error) {
       console.error('Error:', error);

@@ -5,6 +5,12 @@
 
 class ProductsController {
   constructor() {
+    // Asegurar que APIClient esté disponible
+    if (typeof APIClient === 'undefined') {
+      console.error('APIClient no está cargado. Incluye APIClient.js antes de este script.');
+      return;
+    }
+    
     this.api = new APIClient();
     this.currentPage = 1;
     this.itemsPerPage = 10;
@@ -36,10 +42,11 @@ class ProductsController {
       const response = await this.api.getProductos({ limit: 1000 });
 
       if (!response.success) {
-        throw new Error('No se pudieron cargar los productos');
+        throw new Error(response.error || 'No se pudieron cargar los productos');
       }
 
-      this.allProducts = response.data;
+      // Normalizar respuesta - puede venir como array directo o en response.data
+      this.allProducts = Array.isArray(response.data) ? response.data : (response.data.data || []);
       this.filteredProducts = [...this.allProducts];
       this.currentPage = 1;
       this.mostrarProductos();
@@ -47,6 +54,7 @@ class ProductsController {
       console.log('Productos cargados:', this.allProducts);
     } catch (error) {
       console.error('Error al cargar productos:', error);
+      alert('Error al cargar los productos');
     }
   }
 
@@ -249,7 +257,7 @@ class ProductsController {
           alert('Producto eliminado exitosamente');
           await this.cargarProductos();
         } else {
-          alert('Error al eliminar el producto');
+          alert(response.error || 'Error al eliminar el producto');
         }
       } catch (error) {
         console.error('Error:', error);
