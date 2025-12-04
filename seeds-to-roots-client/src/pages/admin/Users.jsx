@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AdminLayout from '../../components/admin/AdminLayout';
 import userService from '../../services/userService';
-import '../admin/css/users.css';
 
 const Users = () => {
   const navigate = useNavigate();
@@ -172,7 +172,7 @@ const Users = () => {
   const usuariosEnPagina = filteredUsers.slice(inicio, fin);
 
   return (
-    <div className="admin-container">
+    <AdminLayout>
       {/* Main Content */}
       <main className="main-content">
         {/* Header */}
@@ -353,7 +353,7 @@ const Users = () => {
           )}
         </section>
       </main>
-    </div>
+    </AdminLayout>
   );
 };
 

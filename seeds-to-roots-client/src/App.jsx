@@ -7,8 +7,9 @@ import Productos from './pages/Productos';
 import Blog from './pages/Blog';
 import Carrito from './pages/Carrito'
 import Test from './pages/test';
-import Admin from './pages/admin/dashboard';
+import Admin from './pages/admin/Dashboard';
 import ProdAmin from './pages/admin/ProductsAdmin';
+import Users from './pages/admin/Users';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/test" element={<Test />} />
           <Route path="/admin/dashboard" element={<Admin />} />
           <Route path="/admin/products" element={<ProdAmin />} />
+          <Route path="/admin/users" element={<Users />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>

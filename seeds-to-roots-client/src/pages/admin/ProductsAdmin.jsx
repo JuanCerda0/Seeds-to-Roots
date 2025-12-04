@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AdminLayout from '../../components/admin/AdminLayout';
 import productoService from '../../services/productoService';
-import '../../components/css/producto.css';
+import '../../components/css/productoAdmin.css';
 
 const Products = () => {
   const navigate = useNavigate();
@@ -133,7 +134,7 @@ const Products = () => {
   const productosEnPagina = filteredProducts.slice(inicio, fin);
 
   return (
-    <div className="admin-container">
+    <AdminLayout>
       {/* Main Content */}
       <main className="main-content">
         {/* Header */}
@@ -312,7 +313,7 @@ const Products = () => {
           )}
         </section>
       </main>
-    </div>
+    </AdminLayout>
   );
 };
 
