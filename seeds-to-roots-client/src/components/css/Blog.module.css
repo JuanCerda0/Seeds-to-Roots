@@ -1,0 +1,483 @@
+/* ========================================
+   Blog Module Styles
+   Estilos modulares para el componente Blog
+   ======================================== */
+
+/* Container Principal */
+.blogContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Hero Section */
+.blogHero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #2E8B57 0%, #90EE90 100%);
+  border-radius: 15px;
+  color: #FFFFFF;
+  margin-bottom: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.blogHero h1 {
+  font-size: 3em;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #FFFFFF;
+}
+
+.blogHero p {
+  font-size: 1.2em;
+  opacity: 0.95;
+  color: #FFFFFF;
+}
+
+/* Navigation Bar - Estilo Header */
+.navBar {
+  background: linear-gradient(135deg, #2E8B57 0%, #3a9d6a 100%);
+  padding: 0;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navBar nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navBar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navBar nav ul li {
+  position: relative;
+}
+
+.navBar nav ul li a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 18px 28px;
+  display: block;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navBar nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #FFD700;
+  transition: width 0.3s ease;
+}
+
+.navBar nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navBar nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Filter Section */
+.filterSection {
+  margin-bottom: 40px;
+}
+
+.filterSection h3 {
+  margin-bottom: 15px;
+  font-size: 1.3em;
+  color: #333333;
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filterBtn {
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  background: #FFFFFF;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+  border-color: #2E8B57;
+  color: #2E8B57;
+}
+
+.filterBtn.active {
+  background: #2E8B57;
+  color: #FFFFFF;
+  border-color: #2E8B57;
+}
+
+/* Blog List Section */
+.blogList {
+  padding-top: 20px;
+}
+
+/* Posts Grid */
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+/* Post Card */
+.postCard {
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.postCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.postImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.postInfo {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.postCategory {
+  display: inline-block;
+  background: #2E8B57;
+  color: #FFFFFF;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+.postCard h2 {
+  font-size: 1.4em;
+  margin-bottom: 12px;
+  color: #333333;
+  line-height: 1.4;
+}
+
+.postExcerpt {
+  color: #666666;
+  font-size: 0.95em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.postFooterCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.postMetaCard {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85em;
+  color: #666666;
+}
+
+.authorSmall,
+.dateSmall {
+  margin-bottom: 3px;
+}
+
+.btnReadMore {
+  background: #2E8B57;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;
+  transition: background 0.3s ease;
+}
+
+.btnReadMore:hover {
+  background: #90EE90;
+}
+
+/* Post Detail */
+.blogDetail {
+  position: relative;
+  padding-top: 20px;
+}
+
+.btnBack {
+  background: #2E8B57;
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 30px;
+  transition: background 0.3s ease;
+}
+
+.btnBack:hover {
+  background: #90EE90;
+}
+
+.postDetail {
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.postDetail .postImage {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.postHeader {
+  padding: 40px;
+  border-bottom: 2px solid #eee;
+}
+
+.postDetail h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333333;
+  line-height: 1.3;
+}
+
+.postMeta {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  font-size: 0.95em;
+  color: #666666;
+}
+
+.postMeta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.author,
+.date,
+.category {
+  font-weight: 500;
+}
+
+.postContent {
+  padding: 40px;
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: #666666;
+}
+
+.postContent p {
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.postContent p:last-child {
+  margin-bottom: 0;
+}
+
+.postFooter {
+  padding: 30px 40px;
+  border-top: 2px solid #eee;
+  display: flex;
+  gap: 15px;
+}
+
+.btnShare,
+.btnComment {
+  background: #2E8B57;
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  flex: 1;
+}
+
+.btnShare:hover,
+.btnComment:hover {
+  background: #90EE90;
+}
+
+/* No Posts Message */
+.noPosts {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2em;
+  color: #666666;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .blogHero {
+    padding: 40px 15px;
+    margin-bottom: 0;
+  }
+
+  .blogHero h1 {
+    font-size: 2em;
+  }
+
+  .blogHero p {
+    font-size: 1em;
+  }
+
+  .navBar nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navBar nav ul li a {
+    padding: 14px 20px;
+    font-size: 0.95em;
+  }
+
+  .postsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .postDetail h1 {
+    font-size: 1.8em;
+  }
+
+  .postMeta {
+    gap: 15px;
+  }
+
+  .postContent,
+  .postHeader,
+  .postFooter {
+    padding: 25px;
+  }
+
+  .filterButtons {
+    gap: 8px;
+  }
+
+  .filterBtn {
+    padding: 8px 16px;
+    font-size: 0.85em;
+  }
+
+  .blogList,
+  .blogDetail {
+    padding-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blogHero {
+    padding: 30px 10px;
+  }
+
+  .blogHero h1 {
+    font-size: 1.5em;
+  }
+
+  .blogHero p {
+    font-size: 0.9em;
+  }
+
+  .navBar {
+    margin-bottom: 20px;
+  }
+
+  .navBar nav {
+    padding: 0 10px;
+  }
+
+  .navBar nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navBar nav ul li {
+    width: 100%;
+  }
+
+  .navBar nav ul li a {
+    text-align: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navBar nav ul li:last-child a {
+    border-bottom: none;
+  }
+
+  .postCard {
+    margin-bottom: 15px;
+  }
+
+  .postInfo {
+    padding: 20px;
+  }
+
+  .postDetail h1 {
+    font-size: 1.5em;
+  }
+
+  .postContent,
+  .postHeader,
+  .postFooter {
+    padding: 20px;
+  }
+
+  .postFooter {
+    flex-direction: column;
+  }
+}

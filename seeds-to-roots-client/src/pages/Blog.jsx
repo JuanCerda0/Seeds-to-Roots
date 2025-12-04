@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../components/css/Blog.css';
+import styles from '../components/css/Blog.module.css';
 
 const Blog = () => {
   // Posts simulados con Lorem Ipsum
@@ -87,64 +87,67 @@ In culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga et 
   const categories = ['todos', ...new Set(posts.map(p => p.category))];
 
   return (
-    <div className="blog-container">
-      <section className="blog-hero">
+    <div className={styles.blogContainer}>
+      {/* Hero Section */}
+      <section className={styles.blogHero}>
         <h1>🌱 Blog Seeds to Roots</h1>
         <p>Consejos, guías y historias sobre agricultura sostenible</p>
       </section>
 
-    <section className='navBar'>
+      {/* Navigation Bar - Estilo Header Verde */}
+      <section className={styles.navBar}>
         <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/productos">Productos</a></li>
-            </ul>
+          <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/productos">Productos</a></li>
+            <li><a href="/carrito">Carrito</a></li>
+          </ul>
         </nav>
-    </section>
+      </section>
 
       {selectedPost ? (
         // Vista de Artículo Individual
-        <section className="blog-detail">
-          <button className="btn-back" onClick={() => setSelectedPost(null)}>
+        <section className={styles.blogDetail}>
+          <button className={styles.btnBack} onClick={() => setSelectedPost(null)}>
             ← Volver al Blog
           </button>
           
-          <article className="post-detail">
-            <img src={selectedPost.image} alt={selectedPost.title} className="post-image" />
+          <article className={styles.postDetail}>
+            <img src={selectedPost.image} alt={selectedPost.title} className={styles.postImage} />
             
-            <div className="post-header">
+            <div className={styles.postHeader}>
               <h1>{selectedPost.title}</h1>
-              <div className="post-meta">
-                <span className="author">✍️ {selectedPost.author}</span>
-                <span className="date">📅 {selectedPost.date}</span>
-                <span className="category">📂 {selectedPost.category}</span>
+              <div className={styles.postMeta}>
+                <span className={styles.author}>✍️ {selectedPost.author}</span>
+                <span className={styles.date}>📅 {selectedPost.date}</span>
+                <span className={styles.category}>📂 {selectedPost.category}</span>
               </div>
             </div>
 
-            <div className="post-content">
+            <div className={styles.postContent}>
               {selectedPost.content.split('\n\n').map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>
               ))}
             </div>
 
-            <div className="post-footer">
-              <button className="btn-share">Compartir</button>
-              <button className="btn-comment">Comentar</button>
+            <div className={styles.postFooter}>
+              <button className={styles.btnShare}>Compartir</button>
+              <button className={styles.btnComment}>Comentar</button>
             </div>
           </article>
         </section>
       ) : (
         // Vista de Lista de Posts
-        <section className="blog-list">
+        <section className={styles.blogList}>
           {/* Filtros */}
-          <div className="filter-section">
+          <div className={styles.filterSection}>
             <h3>Categorías</h3>
-            <div className="filter-buttons">
+            <div className={styles.filterButtons}>
               {categories.map(cat => (
                 <button
                   key={cat}
-                  className={`filter-btn ${filter === cat ? 'active' : ''}`}
+                  className={`${styles.filterBtn} ${filter === cat ? styles.active : ''}`}
                   onClick={() => setFilter(cat)}
                 >
                   {cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -154,24 +157,24 @@ In culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga et 
           </div>
 
           {/* Grid de Posts */}
-          <div className="posts-grid">
+          <div className={styles.postsGrid}>
             {filteredPosts.map(post => (
-              <article key={post.id} className="post-card">
-                <img src={post.image} alt={post.title} className="post-image" />
+              <article key={post.id} className={styles.postCard}>
+                <img src={post.image} alt={post.title} className={styles.postImage} />
                 
-                <div className="post-info">
-                  <span className="post-category">{post.category}</span>
+                <div className={styles.postInfo}>
+                  <span className={styles.postCategory}>{post.category}</span>
                   <h2>{post.title}</h2>
                   
-                  <p className="post-excerpt">{post.excerpt}</p>
+                  <p className={styles.postExcerpt}>{post.excerpt}</p>
                   
-                  <div className="post-footer-card">
-                    <div className="post-meta-card">
-                      <span className="author-small">{post.author}</span>
-                      <span className="date-small">{post.date}</span>
+                  <div className={styles.postFooterCard}>
+                    <div className={styles.postMetaCard}>
+                      <span className={styles.authorSmall}>{post.author}</span>
+                      <span className={styles.dateSmall}>{post.date}</span>
                     </div>
                     <button 
-                      className="btn-read-more"
+                      className={styles.btnReadMore}
                       onClick={() => setSelectedPost(post)}
                     >
                       Leer más →
@@ -183,7 +186,7 @@ In culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga et 
           </div>
 
           {filteredPosts.length === 0 && (
-            <p className="no-posts">No hay posts en esta categoría.</p>
+            <p className={styles.noPosts}>No hay posts en esta categoría.</p>
           )}
         </section>
       )}

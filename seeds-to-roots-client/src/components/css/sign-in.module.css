@@ -1,0 +1,407 @@
+/* ========================================
+   SignIn Module Styles
+   Estilos modulares para el componente SignIn/Register
+   ======================================== */
+
+/* Contenedor principal con fondo degradado */
+.signInContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2E8B57 0%, #90EE90 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo decorativo animado */
+.authBg {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 600px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+/* Sección del formulario */
+.signInFormSection {
+  background: #FFFFFF;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 600px;
+  z-index: 10;
+  animation: slideIn 0.5s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll styling */
+.signInFormSection::-webkit-scrollbar {
+  width: 8px;
+}
+
+.signInFormSection::-webkit-scrollbar-track {
+  background: #F7F7F7;
+  border-radius: 10px;
+}
+
+.signInFormSection::-webkit-scrollbar-thumb {
+  background: #2E8B57;
+  border-radius: 10px;
+}
+
+.signInFormSection::-webkit-scrollbar-thumb:hover {
+  background: #229954;
+}
+
+/* Título */
+.authTitle {
+  font-family: 'Georgia', serif;
+  font-size: 32px;
+  color: #2E8B57;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Mensaje de error */
+.errorMessage {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  border-left: 4px solid #c33;
+  animation: shake 0.3s ease;
+  margin-bottom: 15px;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* Formulario */
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Fieldsets para organizar secciones */
+.formFieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.formFieldset:last-of-type {
+  margin-bottom: 0;
+}
+
+.formFieldset legend {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2E8B57;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #F7F7F7;
+  width: 100%;
+}
+
+/* Grupo de formulario */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Required indicator */
+.required {
+  color: #c33;
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+/* Input */
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  padding: 12px 15px;
+  border: 2px solid #F7F7F7;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+  background-color: #F7F7F7;
+  color: #333333;
+  min-height: 44px;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #2E8B57;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+}
+
+.formGroup input:disabled,
+.formGroup select:disabled,
+.formGroup textarea:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.formGroup textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Counter text for textareas */
+.formGroup small {
+  text-align: right;
+  color: #666666;
+  font-size: 12px;
+  margin-top: -3px;
+}
+
+/* Botones */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.btnSubmit {
+  background: linear-gradient(135deg, #2E8B57, #229954);
+  color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btnSubmit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 139, 87, 0.4);
+}
+
+.btnSubmit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btnSubmit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btnCancel {
+  background-color: #F7F7F7;
+  color: #333333;
+  border: 2px solid #ddd;
+  flex: 1;
+}
+
+.btnCancel:hover {
+  background-color: #e9ecef;
+  border-color: #666666;
+}
+
+/* Footer del auth */
+.authFooter {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+}
+
+.linkRegister {
+  color: #2E8B57;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.linkRegister:hover {
+  color: #FFD700;
+  text-decoration: underline;
+}
+
+/* Modal Footer para botones múltiples */
+.modalFooter {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #F7F7F7;
+  justify-content: flex-end;
+}
+
+/* Section card */
+.sectionCard {
+  padding: 0;
+}
+
+/* Form Row para layouts de columnas */
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .signInFormSection {
+    padding: 40px 25px;
+    max-width: 95%;
+  }
+
+  .authTitle {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .modalFooter {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .signInContainer {
+    padding: 15px;
+  }
+
+  .signInFormSection {
+    padding: 30px 20px;
+    border-radius: 12px;
+    max-height: calc(100vh - 40px);
+  }
+
+  .authTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .authForm {
+    gap: 15px;
+  }
+
+  .formFieldset {
+    margin-bottom: 20px;
+  }
+
+  .formFieldset legend {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .formGroup {
+    gap: 6px;
+  }
+
+  .formGroup label {
+    font-size: 12px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .formGroup textarea {
+    min-height: 80px;
+  }
+
+  .formGroup small {
+    font-size: 11px;
+  }
+
+  .modalFooter {
+    margin-top: 20px;
+    padding-top: 15px;
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 12px;
+    min-height: 40px;
+  }
+
+  .btnSubmit {
+    margin-top: 5px;
+  }
+}

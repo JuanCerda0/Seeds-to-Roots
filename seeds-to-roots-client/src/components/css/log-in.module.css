@@ -1,45 +1,21 @@
 /* ========================================
-   Login Styles - HTML Version
-   Estilos para pages/login.html
+   Login Module Styles
+   Estilos modulares para el componente Login
    ======================================== */
 
-:root {
-  /* Paleta de colores */
-  --verde-natural: #2E8B57;
-  --blanco: #FFFFFF;
-  --dorado: #FFD700;
-  --gris-claro: #F7F7F7;
-  --gris-oscuro: #333333;
-  --gris-medio: #666666;
-  --verde-claro: #90EE90;
-  
-  /* Tipografías */
-  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-titles: 'Georgia', serif;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-main);
-  background: linear-gradient(135deg, #2E8B57 0%, #90EE90 100%);
+/* Contenedor principal con fondo degradado */
+.authContainer {
   min-height: 100vh;
+  background: linear-gradient(135deg, #2E8B57 0%, #90EE90 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
 }
 
-/* ========================================
-   Login Container
-   ======================================== */
-
-.login-container {
-  background: var(--blanco);
+/* Sección del formulario */
+.authFormSection {
+  background: #FFFFFF;
   border-radius: 15px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   padding: 50px 40px;
@@ -59,76 +35,69 @@ body {
   }
 }
 
-/* ========================================
-   Title
-   ======================================== */
-
-.login-container h2 {
-  font-family: var(--font-titles);
+/* Título */
+.authTitle {
+  font-family: 'Georgia', serif;
   font-size: 32px;
-  color: var(--verde-natural);
+  color: #2E8B57;
   margin-bottom: 30px;
   text-align: center;
   font-weight: 600;
 }
 
-/* ========================================
-   Form
-   ======================================== */
-
-.login-container form {
+/* Formulario */
+.authForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.form-group {
+/* Grupo de formulario */
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.form-group label {
+.formGroup label {
   font-size: 14px;
   font-weight: 600;
-  color: var(--gris-oscuro);
+  color: #333333;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.form-group input {
+/* Input */
+.formInput {
   padding: 12px 15px;
-  border: 2px solid var(--gris-claro);
+  border: 2px solid #F7F7F7;
   border-radius: 8px;
   font-size: 14px;
-  font-family: var(--font-main);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: all 0.3s ease;
-  background-color: var(--gris-claro);
-  color: var(--gris-oscuro);
+  background-color: #F7F7F7;
+  color: #333333;
   height: 44px;
 }
 
-.form-group input:focus {
+.formInput:focus {
   outline: none;
-  border-color: var(--verde-natural);
-  background-color: var(--blanco);
+  border-color: #2E8B57;
+  background-color: #FFFFFF;
   box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
 }
 
-.form-group input:disabled {
+.formInput:disabled {
   background-color: #e9ecef;
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-/* ========================================
-   Button
-   ======================================== */
-
-.login-container button {
+/* Botón de submit */
+.btnSubmit {
   padding: 14px 24px;
   background: linear-gradient(135deg, #2E8B57, #229954);
-  color: var(--blanco);
+  color: #FFFFFF;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -141,25 +110,22 @@ body {
   box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
 }
 
-.login-container button:hover:not(:disabled) {
+.btnSubmit:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(46, 139, 87, 0.4);
 }
 
-.login-container button:active:not(:disabled) {
+.btnSubmit:active:not(:disabled) {
   transform: translateY(0);
 }
 
-.login-container button:disabled {
+.btnSubmit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* ========================================
-   Error Message
-   ======================================== */
-
-.error-message {
+/* Mensaje de error */
+.errorMessage {
   background-color: #fee;
   color: #c33;
   padding: 12px 15px;
@@ -182,55 +148,75 @@ body {
   }
 }
 
+/* Footer del auth */
+.authFooter {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+}
+
+.linkRegister {
+  color: #2E8B57;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.linkRegister:hover {
+  color: #FFD700;
+  text-decoration: underline;
+}
+
 /* ========================================
    Responsive Design
    ======================================== */
 
 @media (max-width: 768px) {
-  .login-container {
+  .authFormSection {
     padding: 40px 25px;
     max-width: 90%;
   }
 
-  .login-container h2 {
+  .authTitle {
     font-size: 28px;
     margin-bottom: 25px;
   }
 
-  .login-container form {
+  .authForm {
     gap: 18px;
   }
 }
 
 @media (max-width: 480px) {
-  body {
+  .authContainer {
     padding: 15px;
   }
 
-  .login-container {
+  .authFormSection {
     padding: 30px 20px;
     border-radius: 12px;
   }
 
-  .login-container h2 {
+  .authTitle {
     font-size: 24px;
     margin-bottom: 20px;
   }
 
-  .login-container form {
+  .authForm {
     gap: 15px;
   }
 
-  .form-group label {
+  .formGroup label {
     font-size: 12px;
   }
 
-  .form-group input {
+  .formInput {
     padding: 10px 12px;
     font-size: 13px;
   }
 
-  .login-container button {
+  .btnSubmit {
     padding: 12px 18px;
     font-size: 14px;
   }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
-import '../components/css/Auth.css';
+import styles from '../components/css/log-in.module.css';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -46,15 +46,14 @@ function Login() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-bg"></div>
-      <div className="auth-form-section">
-        <h2 className="auth-title">🌿 Iniciar Sesión</h2>
+    <div className={styles.authContainer}>
+      <div className={styles.authFormSection}>
+        <h2 className={styles.authTitle}>🌿 Iniciar Sesión</h2>
         
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className={styles.errorMessage}>{error}</div>}
         
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <div className="form-group">
+        <form className={styles.authForm} onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
             <label htmlFor="email">Correo Electrónico</label>
             <input
               type="email"
@@ -65,11 +64,11 @@ function Login() {
               onChange={handleChange}
               required
               disabled={loading}
-              className="form-input"
+              className={styles.formInput}
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="password">Contraseña</label>
             <input
               type="password"
@@ -80,21 +79,21 @@ function Login() {
               onChange={handleChange}
               required
               disabled={loading}
-              className="form-input"
+              className={styles.formInput}
             />
           </div>
 
           <button 
             type="submit" 
             disabled={loading}
-            className="btn-submit"
+            className={styles.btnSubmit}
           >
             {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
           </button>
         </form>
 
-        <div className="auth-footer">
-          <p>¿No tienes cuenta? <a href="/register" className="link-register">Regístrate aquí</a></p>
+        <div className={styles.authFooter}>
+          <p>¿No tienes cuenta? <a href="/register" className={styles.linkRegister}>Regístrate aquí</a></p>
         </div>
       </div>
     </div>

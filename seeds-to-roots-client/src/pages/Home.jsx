@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../components/css/styles.css'
+import '../components/css/global.css'; // Estilos globales
+import styles from '../components/css/Home.module.css'; // Estilos específicos de Home
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -63,7 +64,7 @@ export default function Home() {
           <nav>
             <ul>
               <li><a href="/">Inicio</a></li>
-              <li><a href="#categorias">Productos</a></li>
+              <li><a onClick={() => window.location.href='/productos'}>Productos</a></li>
               <li><a href="#como-funciona">Cómo Funciona</a></li>
               <li><a href="#contacto">Contacto</a></li>
               <li><a href="/blog">Blog</a></li>
@@ -80,11 +81,11 @@ export default function Home() {
       {/* ======================================== 
            CARRUSEL (HERO SECTION)
            ======================================== */}
-      <section className="carousel-container" id="inicio">
-        <div className="carousel-wrapper">
+      <section className={styles.carouselContainer} id="inicio">
+        <div className={styles.carouselWrapper}>
           {/* Slide 1 */}
-          <div className={`carousel-slide ${currentSlide === 0 ? 'active' : ''} slide-1`}>
-            <div className="slide-content">
+          <div className={`${styles.carouselSlide} ${currentSlide === 0 ? styles.active : ''} ${styles.slide1}`}>
+            <div className={styles.slideContent}>
               <h2>Productos Frescos del Campo</h2>
               <p>Conectamos directamente con agricultores locales para traerte lo más fresco a tu hogar</p>
               <button className="btn btn-secondary" onClick={() => window.location.href='/productos'}>Explorar Productos</button>
@@ -92,8 +93,8 @@ export default function Home() {
           </div>
 
           {/* Slide 2 */}
-          <div className={`carousel-slide ${currentSlide === 1 ? 'active' : ''} slide-2`}>
-            <div className="slide-content">
+          <div className={`${styles.carouselSlide} ${currentSlide === 1 ? styles.active : ''} ${styles.slide2}`}>
+            <div className={styles.slideContent}>
               <h2>Agricultura Sostenible</h2>
               <p>Apoyamos prácticas agrícolas responsables con el medio ambiente</p>
               <button className="btn btn-secondary" onClick={() => window.location.href='/blog'}>Conocer Más</button>
@@ -101,8 +102,8 @@ export default function Home() {
           </div>
 
           {/* Slide 3 */}
-          <div className={`carousel-slide ${currentSlide === 2 ? 'active' : ''} slide-3`}>
-            <div className="slide-content">
+          <div className={`${styles.carouselSlide} ${currentSlide === 2 ? styles.active : ''} ${styles.slide3}`}>
+            <div className={styles.slideContent}>
               <h2>Entrega Rápida a tu Puerta</h2>
               <p>Recibe tus productos frescos en menos de 24 horas</p>
               <button className="btn btn-secondary" onClick={() => window.location.href='/productos'}>Ver Catálogo</button>
@@ -110,100 +111,100 @@ export default function Home() {
           </div>
 
           {/* Controles */}
-          <div className="carousel-controls">
+          <div className={styles.carouselControls}>
             <span 
-              className={`carousel-dot ${currentSlide === 0 ? 'active' : ''}`} 
+              className={`${styles.carouselDot} ${currentSlide === 0 ? styles.active : ''}`} 
               onClick={() => goToSlide(0)}
             ></span>
             <span 
-              className={`carousel-dot ${currentSlide === 1 ? 'active' : ''}`} 
+              className={`${styles.carouselDot} ${currentSlide === 1 ? styles.active : ''}`} 
               onClick={() => goToSlide(1)}
             ></span>
             <span 
-              className={`carousel-dot ${currentSlide === 2 ? 'active' : ''}`} 
+              className={`${styles.carouselDot} ${currentSlide === 2 ? styles.active : ''}`} 
               onClick={() => goToSlide(2)}
             ></span>
           </div>
 
           {/* Flechas de navegación */}
-          <span className="carousel-arrow left" onClick={prevSlide}>❮</span>
-          <span className="carousel-arrow right" onClick={nextSlide}>❯</span>
+          <span className={`${styles.carouselArrow} ${styles.left}`} onClick={prevSlide}>❮</span>
+          <span className={`${styles.carouselArrow} ${styles.right}`} onClick={nextSlide}>❯</span>
         </div>
       </section>
 
       {/* ======================================== 
            ABOUT US - MINI CARRUSEL
            ======================================== */}
-      <section className="about-carousel-container" id="about-carousel">
-        <div className="about-carousel-wrapper">
+      <section className={styles.aboutCarouselContainer} id="about-carousel">
+        <div className={styles.aboutCarouselWrapper}>
           {/* Slide 1 - Quiénes Somos */}
-          <div className={`about-carousel-slide ${currentAboutSlide === 0 ? 'active' : ''}`}>
-            <div className="about-slide-content">
+          <div className={`${styles.aboutCarouselSlide} ${currentAboutSlide === 0 ? styles.active : ''}`}>
+            <div className={styles.aboutSlideContent}>
               <h3>🌱 Quiénes Somos</h3>
               <p>Somos Seeds to Roots, una tienda online que conecta a familias chilenas con el campo. Con más de 6 años de experiencia en 9 ciudades del país, traemos frescura y calidad directamente del campo a tu puerta.</p>
             </div>
           </div>
 
           {/* Slide 2 - Nuestra Misión */}
-          <div className={`about-carousel-slide ${currentAboutSlide === 1 ? 'active' : ''}`}>
-            <div className="about-slide-content">
+          <div className={`${styles.aboutCarouselSlide} ${currentAboutSlide === 1 ? styles.active : ''}`}>
+            <div className={styles.aboutSlideContent}>
               <h3>🎯 Nuestra Misión</h3>
               <p>Proporcionar productos frescos y de calidad desde el campo hasta tu hogar. Conectamos consumidores con agricultores locales, apoyando prácticas sostenibles y promoviendo una alimentación saludable en Chile.</p>
             </div>
           </div>
 
           {/* Slide 3 - Nuestra Visión */}
-          <div className={`about-carousel-slide ${currentAboutSlide === 2 ? 'active' : ''}`}>
-            <div className="about-slide-content">
+          <div className={`${styles.aboutCarouselSlide} ${currentAboutSlide === 2 ? styles.active : ''}`}>
+            <div className={styles.aboutSlideContent}>
               <h3>🚀 Nuestra Visión</h3>
               <p>Ser la tienda online líder en distribución de productos frescos en Chile. Reconocidos por calidad, servicio y sostenibilidad. Buscamos expandirnos nacional e internacionalmente, estableciendo un nuevo estándar en el sector.</p>
             </div>
           </div>
 
           {/* Controles */}
-          <div className="about-carousel-controls">
+          <div className={styles.aboutCarouselControls}>
             <span 
-              className={`about-carousel-dot ${currentAboutSlide === 0 ? 'active' : ''}`} 
+              className={`${styles.aboutCarouselDot} ${currentAboutSlide === 0 ? styles.active : ''}`} 
               onClick={() => goToAboutSlide(0)}
             ></span>
             <span 
-              className={`about-carousel-dot ${currentAboutSlide === 1 ? 'active' : ''}`} 
+              className={`${styles.aboutCarouselDot} ${currentAboutSlide === 1 ? styles.active : ''}`} 
               onClick={() => goToAboutSlide(1)}
             ></span>
             <span 
-              className={`about-carousel-dot ${currentAboutSlide === 2 ? 'active' : ''}`} 
+              className={`${styles.aboutCarouselDot} ${currentAboutSlide === 2 ? styles.active : ''}`} 
               onClick={() => goToAboutSlide(2)}
             ></span>
           </div>
 
           {/* Flechas */}
-          <span className="about-carousel-arrow left" onClick={prevAboutSlide}>❮</span>
-          <span className="about-carousel-arrow right" onClick={nextAboutSlide}>❯</span>
+          <span className={`${styles.aboutCarouselArrow} ${styles.left}`} onClick={prevAboutSlide}>❮</span>
+          <span className={`${styles.aboutCarouselArrow} ${styles.right}`} onClick={nextAboutSlide}>❯</span>
         </div>
       </section>
 
-      <main>
+      <main className={styles.mainContent}>
         {/* Sección: Por qué Seeds to Roots */}
-        <section className="why-section">
+        <section className={styles.whySection}>
           <h2>¿Por qué elegir Seeds to Roots?</h2>
-          <div className="why-grid">
-            <div className="why-card">
-              <div className="why-card-icon">🌾</div>
+          <div className={styles.whyGrid}>
+            <div className={styles.whyCard}>
+              <div className={styles.whyCardIcon}>🌾</div>
               <h3>100% Fresco</h3>
               <p>Recolectado el mismo día de tu compra directamente de huertos locales</p>
             </div>
-            <div className="why-card">
-              <div className="why-card-icon">🤝</div>
+            <div className={styles.whyCard}>
+              <div className={styles.whyCardIcon}>🤝</div>
               <h3>Apoyo Local</h3>
               <p>Apoyamos directamente a agricultores y comunidades de Chile</p>
             </div>
-            <div className="why-card">
-              <div className="why-card-icon">🌍</div>
+            <div className={styles.whyCard}>
+              <div className={styles.whyCardIcon}>🌍</div>
               <h3>Sostenible</h3>
               <p>Prácticas agrícolas responsables con el medio ambiente</p>
             </div>
-            <div className="why-card">
-              <div className="why-card-icon">⚡</div>
+            <div className={styles.whyCard}>
+              <div className={styles.whyCardIcon}>⚡</div>
               <h3>Entrega Rápida</h3>
               <p>Recibe tus productos en menos de 24 horas en tu domicilio</p>
             </div>
@@ -211,22 +212,22 @@ export default function Home() {
         </section>
 
           {/* Sección: Categorías de Productos */}
-          <section id="categorias">
+          <section id="categorias" className={styles.section}>
             <h2>Nuestras Categorías</h2>
-            <div className="categories-grid">
-              <div className="category-card" onClick={() => window.location.href='/productos'}>
+            <div className={styles.categoriesGrid}>
+              <div className={styles.categoryCard} onClick={() => window.location.href='/productos'}>
                 <h3>🍎 Frutas Frescas</h3>
                 <p>Manzanas, naranjas, plátanos, uvas y más</p>
               </div>
-              <div className="category-card" onClick={() => window.location.href='/productos'}>
+              <div className={styles.categoryCard} onClick={() => window.location.href='/productos'}>
                 <h3>🥬 Verduras Orgánicas</h3>
                 <p>Lechugas, espinacas, tomates, pimientos</p>
               </div>
-              <div className="category-card" onClick={() => window.location.href='/productos'}>
+              <div className={styles.categoryCard} onClick={() => window.location.href='/productos'}>
                 <h3>🌽 Productos Locales</h3>
                 <p>Productos de temporada de nuestros agricultores</p>
               </div>
-              <div className="category-card" onClick={() => window.location.href='/productos'}>
+              <div className={styles.categoryCard} onClick={() => window.location.href='/productos'}>
                 <h3>🥛 Lácteos y Granos</h3>
                 <p>Leche fresca, quesos, quinua y cereales</p>
               </div>
@@ -234,26 +235,26 @@ export default function Home() {
           </section>
 
           {/* Sección: Cómo Funciona */}
-        <section id="como-funciona">
+        <section id="como-funciona" className={styles.section}>
           <h2>¿Cómo Funciona?</h2>
-          <div className="steps-container">
-            <div className="step">
-              <div className="step-number">1</div>
+          <div className={styles.stepsContainer}>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>1</div>
               <h3>Explora</h3>
               <p>Navega nuestro catálogo de productos frescos y elige tus favoritos</p>
             </div>
-            <div className="step">
-              <div className="step-number">2</div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>2</div>
               <h3>Compra</h3>
               <p>Añade productos a tu carrito y procede al pago de forma segura</p>
             </div>
-            <div className="step">
-              <div className="step-number">3</div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>3</div>
               <h3>Prepara</h3>
               <p>Preparamos tu pedido el mismo día de tu compra</p>
             </div>
-            <div className="step">
-              <div className="step-number">4</div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>4</div>
               <h3>Recibe</h3>
               <p>Entrega rápida a tu puerta en menos de 24 horas</p>
             </div>
@@ -261,38 +262,38 @@ export default function Home() {
         </section>
 
         {/* Sección: Testimonios */}
-        <section>
+        <section className={styles.section}>
           <h2>Lo que Dicen Nuestros Clientes</h2>
-          <div className="testimonials-container">
-            <div className="testimonial">
-              <p className="testimonial-text">"Los productos son increíblemente frescos. Noto la diferencia en el sabor comparado con supermercados. Altamente recomendado!"</p>
-              <div className="testimonial-author">
-                <div className="testimonial-avatar">MC</div>
-                <div className="testimonial-info">
+          <div className={styles.testimonialsContainer}>
+            <div className={styles.testimonial}>
+              <p className={styles.testimonialText}>"Los productos son increíblemente frescos. Noto la diferencia en el sabor comparado con supermercados. Altamente recomendado!"</p>
+              <div className={styles.testimonialAuthor}>
+                <div className={styles.testimonialAvatar}>MC</div>
+                <div className={styles.testimonialInfo}>
                   <h4>María Contreras</h4>
-                  <p className="testimonial-role">Cliente desde 2023</p>
+                  <p className={styles.testimonialRole}>Cliente desde 2023</p>
                 </div>
               </div>
             </div>
 
-            <div className="testimonial">
-              <p className="testimonial-text">"Adoro la idea de apoyar a agricultores locales. Seeds to Roots hace que sea fácil ser parte del cambio hacia una alimentación más sostenible."</p>
-              <div className="testimonial-author">
-                <div className="testimonial-avatar">JR</div>
-                <div className="testimonial-info">
+            <div className={styles.testimonial}>
+              <p className={styles.testimonialText}>"Adoro la idea de apoyar a agricultores locales. Seeds to Roots hace que sea fácil ser parte del cambio hacia una alimentación más sostenible."</p>
+              <div className={styles.testimonialAuthor}>
+                <div className={styles.testimonialAvatar}>JR</div>
+                <div className={styles.testimonialInfo}>
                   <h4>Juan Ramírez</h4>
-                  <p className="testimonial-role">Cliente desde 2022</p>
+                  <p className={styles.testimonialRole}>Cliente desde 2022</p>
                 </div>
               </div>
             </div>
 
-            <div className="testimonial">
-              <p className="testimonial-text">"La entrega es rápida y los productos llegan en perfectas condiciones. Uso Seeds to Roots para toda mi familia."</p>
-              <div className="testimonial-author">
-                <div className="testimonial-avatar">SG</div>
-                <div className="testimonial-info">
+            <div className={styles.testimonial}>
+              <p className={styles.testimonialText}>"La entrega es rápida y los productos llegan en perfectas condiciones. Uso Seeds to Roots para toda mi familia."</p>
+              <div className={styles.testimonialAuthor}>
+                <div className={styles.testimonialAvatar}>SG</div>
+                <div className={styles.testimonialInfo}>
                   <h4>Sandra García</h4>
-                  <p className="testimonial-role">Cliente desde 2024</p>
+                  <p className={styles.testimonialRole}>Cliente desde 2024</p>
                 </div>
               </div>
             </div>
@@ -311,7 +312,6 @@ export default function Home() {
           </p>
           
           <form onSubmit={handleContactForm} style={{ display: 'grid', gap: '1.5rem' }}>
-            {/* Nombre */}
             <div>
               <label 
                 htmlFor="contact-name" 
@@ -336,7 +336,6 @@ export default function Home() {
               />
             </div>
 
-            {/* Email */}
             <div>
               <label 
                 htmlFor="contact-email" 
@@ -361,7 +360,6 @@ export default function Home() {
               />
             </div>
 
-            {/* Mensaje */}
             <div>
               <label 
                 htmlFor="contact-message" 
@@ -387,7 +385,6 @@ export default function Home() {
               ></textarea>
             </div>
 
-            {/* Botón */}
             <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem' }}>
               Enviar Mensaje
             </button>
@@ -398,10 +395,10 @@ export default function Home() {
       {/* ======================================== 
            SECCIÓN: NEWSLETTER
            ======================================== */}
-      <section className="newsletter-section">
+      <section className={styles.newsletterSection}>
         <h2>¿Prefieres Suscribirte?</h2>
         <p>Recibe ofertas exclusivas, recetas y consejos sobre alimentación saludable directamente en tu correo</p>
-        <form className="newsletter-form" onSubmit={subscribeNewsletter}>
+        <form className={styles.newsletterForm} onSubmit={subscribeNewsletter}>
           <input type="email" placeholder="Tu correo electrónico" required />
           <button type="submit" className="btn" style={{ cursor: 'pointer' }}>Suscribirse</button>
         </form>
@@ -412,13 +409,11 @@ export default function Home() {
            ======================================== */}
       <footer>
         <div className="footer-container">
-          {/* Sobre Nosotros */}
           <div className="footer-section">
             <h4>Sobre Seeds to Roots</h4>
             <p>Conectamos familias con agricultores locales para productos frescos, sostenibles y de calidad.</p>
           </div>
 
-          {/* Enlaces Rápidos */}
           <div className="footer-section">
             <h4>Enlaces Rápidos</h4>
             <ul>
@@ -429,7 +424,6 @@ export default function Home() {
             </ul>
           </div>
 
-          {/* Atención al Cliente */}
           <div className="footer-section">
             <h4>Atención al Cliente</h4>
             <ul>
@@ -440,7 +434,6 @@ export default function Home() {
             </ul>
           </div>
 
-          {/* Redes Sociales */}
           <div className="footer-section">
             <h4>Síguenos</h4>
             <div className="social-links">
