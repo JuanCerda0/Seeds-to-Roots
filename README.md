@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎌 Waifu-Farm
 
 **Una plataforma completa de ecommerce para comercializar productos de anime y manga.**
@@ -519,3 +520,6 @@ Si tienes preguntas o encuentras problemas:
 **Última actualización:** Noviembre 12, 2025  
 **Versión:** 1.0.0  
 **Estado:** 🟡 En Desarrollo
+=======
+# HELLO WORLD!
+>>>>>>> deployment

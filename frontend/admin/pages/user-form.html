@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Usuario - Seeds to Roots Admin</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/user-form.css">
+</head>
+<body>
+    <!-- Scripts de API y Controllers - ORDEN IMPORTANTE -->
+    <script src="../../api/APIClient.js"></script>
+    <script src="../js/user-form.js"></script>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo"><a href="/frontend/client/pages/index.html"><h2>🌱 Seeds to Roots</h2></a></div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="products.html" class="nav-link">Productos</a></li>
+                    <li><a href="users.html" class="nav-link active">Usuarios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <h1 id="page-title">Nuevo Usuario</h1>
+                    <a href="users.html" class="btn btn-secondary">← Volver</a>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <section class="content">
+                <div class="section-card form-container">
+                    <form id="user-form" class="user-form">
+                        <!-- Sección: Información Personal -->
+                        <fieldset class="form-fieldset">
+                            <legend>Información Personal</legend>
+
+                            <!-- RUN -->
+                            <div class="form-group full-width">
+                                <label for="run">
+                                    RUN <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="run" 
+                                    name="run" 
+                                    placeholder="ej: 123456789"
+                                    maxlength="9"
+                                    required
+                                >
+                                <small>Sin puntos ni guion, 7 a 9 caracteres</small>
+                                <div class="error-message" id="error-run"></div>
+                            </div>
+
+                            <!-- Nombre y Apellidos -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nombre">
+                                        Nombre <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="nombre" 
+                                        name="nombre" 
+                                        placeholder="ej: Juan"
+                                        maxlength="50"
+                                        required
+                                    >
+                                    <div class="error-message" id="error-nombre"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="apellidos">
+                                        Apellidos <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="apellidos" 
+                                        name="apellidos" 
+                                        placeholder="ej: Pérez García"
+                                        maxlength="100"
+                                        required
+                                    >
+                                    <div class="error-message" id="error-apellidos"></div>
+                                </div>
+                            </div>
+
+                            <!-- Fecha de Nacimiento -->
+                            <div class="form-group full-width">
+                                <label for="fechaNacimiento">
+                                    Fecha de Nacimiento (opcional)
+                                </label>
+                                <input 
+                                    type="date" 
+                                    id="fechaNacimiento" 
+                                    name="fechaNacimiento"
+                                >
+                                <div class="error-message" id="error-fechaNacimiento"></div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Sección: Información de Contacto -->
+                        <fieldset class="form-fieldset">
+                            <legend>Información de Contacto</legend>
+
+
+                            <!-- Email -->
+                            <div class="form-group full-width">
+                                <label for="email">
+                                    Correo Electrónico <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    placeholder="ej: usuario@duoc.cl"
+                                    maxlength="100"
+                                    required
+                                >
+                                <small>Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com</small>
+                                <div class="error-message" id="error-email"></div>
+                            </div>
+
+                            <!-- Contraseña -->
+                            <div class="form-group full-width">
+                                <label for="password">
+                                    Contraseña <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="Mínimo 6 caracteres"
+                                    minlength="6"
+                                    required
+                                >
+                                <div class="error-message" id="error-password"></div>
+                            </div>
+
+                            <!-- Teléfono -->
+                            <div class="form-group full-width">
+                                <label for="telefono">
+                                    Teléfono (opcional)
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="telefono" 
+                                    name="telefono" 
+                                    placeholder="ej: +56912345678"
+                                >
+                                <div class="error-message" id="error-telefono"></div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Sección: Ubicación -->
+                        <fieldset class="form-fieldset">
+                            <legend>Ubicación</legend>
+
+                            <!-- Región y Comuna -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="region">
+                                        Región <span class="required">*</span>
+                                    </label>
+                                    <select id="region" name="region" required>
+                                        <option value="">-- Selecciona región --</option>
+                                        <option value="Región Metropolitana">Región Metropolitana</option>
+                                        <option value="Región de Valparaíso">Región de Valparaíso</option>
+                                        <option value="Región del Libertador General Bernardo O'Higgins">Región O'Higgins</option>
+                                        <option value="Región del Bío Bío">Región del Bío Bío</option>
+                                        <option value="Región de Los Lagos">Región de Los Lagos</option>
+                                        <option value="Región de Antofagasta">Región de Antofagasta</option>
+                                        <option value="Región de Atacama">Región de Atacama</option>
+                                        <option value="Región de Coquimbo">Región de Coquimbo</option>
+                                    </select>
+                                    <div class="error-message" id="error-region"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="comuna">
+                                        Comuna <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="comuna" 
+                                        name="comuna" 
+                                        placeholder="ej: Santiago"
+                                        maxlength="50"
+                                        required
+                                    >
+                                    <div class="error-message" id="error-comuna"></div>
+                                </div>
+                            </div>
+
+                            <!-- Dirección -->
+                            <div class="form-group full-width">
+                                <label for="direccion">
+                                    Dirección <span class="required">*</span>
+                                </label>
+                                <textarea 
+                                    id="direccion" 
+                                    name="direccion" 
+                                    placeholder="ej: Calle Principal 123, Departamento 4B"
+                                    maxlength="300"
+                                    required
+                                ></textarea>
+                                <small id="direccion-count">0/300</small>
+                                <div class="error-message" id="error-direccion"></div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Sección: Rol y Permisos -->
+                        <fieldset class="form-fieldset">
+                            <legend>Rol y Permisos</legend>
+
+                            <!-- Tipo de Usuario -->
+                            <div class="form-group full-width">
+                                <label for="rol">
+                                    Tipo de Usuario <span class="required">*</span>
+                                </label>
+                                <select id="rol" name="rol" required>
+                                    <option value="">-- Selecciona tipo --</option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="vendedor">Vendedor</option>
+                                    <option value="cliente">Cliente</option>
+                                </select>
+                                <div class="error-message" id="error-rol"></div>
+                            </div>
+
+                            <!-- Activo -->
+                            <div class="form-group full-width">
+                                <label for="activo">
+                                    <input 
+                                        type="checkbox" 
+                                        id="activo" 
+                                        name="activo" 
+                                        checked
+                                    >
+                                    Usuario Activo
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Botones -->
+                        <div class="modal-footer">
+                            <a href="users.html" class="btn btn-cancel">Cancelar</a>
+                            <button type="submit" class="btn btn-submit" id="btn-submit">Guardar Usuario</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

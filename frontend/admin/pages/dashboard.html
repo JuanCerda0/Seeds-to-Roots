@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Seeds to Roots Admin</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<body>
+    <!-- Scripts de API y Dashboard -->
+    <script src="../../api/api.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo"><a href="/frontend/client/pages/index.html"><h2>🌱 Seeds to Roots</h2></a></div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                    <li><a href="products.html" class="nav-link">Productos</a></li>
+                    <li><a href="users.html" class="nav-link">Usuarios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <h1>Dashboard</h1>
+                    <div class="user-section">
+                        <span class="user-name">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <section class="content">
+                <!-- Stats Cards -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon products-icon">📦</div>
+                        <div class="stat-info">
+                            <h3>Productos</h3>
+                            <p class="stat-number" id="stat-productos">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon users-icon">👥</div>
+                        <div class="stat-info">
+                            <h3>Usuarios</h3>
+                            <p class="stat-number" id="stat-usuarios">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orders-icon">📋</div>
+                        <div class="stat-info">
+                            <h3>Pedidos</h3>
+                            <p class="stat-number" id="stat-pedidos">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Section -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>Productos Recientes</h2>
+                        <a href="products.html" class="btn-link" id="btn-ver-productos">Ver todos</a>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productos-tbody">
+                            <tr>
+                                <td colspan="5" class="text-center">Cargando productos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Users Section -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>Usuarios Recientes</h2>
+                        <a href="users.html" class="btn-link" id="btn-ver-usuarios">Ver todos</a>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Estado</th>
+                                <th>Fecha Registro</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuarios-tbody">
+                            <tr>
+                                <td colspan="5" class="text-center">Cargando usuarios...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
