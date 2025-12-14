@@ -29,8 +29,9 @@ const UserForm = () => {
     fechaNacimiento: '',
     region: '',
     comuna: '',
+    ciudad: '',
     direccion: '',
-    rol: 'cliente',
+    rol: 'CLIENTE',
     activo: true
   });
 
@@ -42,10 +43,8 @@ const UserForm = () => {
     },
     run: {
       required: true,
-      minLength: 7,
-      maxLength: 9,
-      regex: /^\d{7,9}$/,
-      message: 'El RUN debe tener 7 a 9 dígitos sin puntos ni guion'
+      regex: /^\d{7,8}-[0-9kK]$/,
+      message: 'El RUN debe tener formato 12345678-9'
     },
     nombre: {
       required: true,
@@ -79,6 +78,11 @@ const UserForm = () => {
       required: true,
       maxLength: 50,
       message: 'La comuna es requerida'
+    },
+    ciudad: {
+      required: true,
+      maxLength: 100,
+      message: 'La ciudad es requerida'
     },
     direccion: {
       required: true,
@@ -124,6 +128,7 @@ const UserForm = () => {
         fechaNacimiento: usuario.fechaNacimiento || '',
         region: usuario.region,
         comuna: usuario.comuna,
+        ciudad: usuario.ciudad || '',
         direccion: usuario.direccion,
         rol: usuario.rol,
         activo: usuario.activo
@@ -295,10 +300,10 @@ const UserForm = () => {
       fechaNacimiento: formData.fechaNacimiento,
       region: formData.region,
       comuna: formData.comuna,
+      ciudad: formData.ciudad,
       direccion: formData.direccion,
-      rol: formData.rol,
-      activo: formData.activo,
-      estado: formData.activo ? 'activo' : 'inactivo'
+      rol: formData.rol?.toUpperCase(),
+      activo: formData.activo
     };
 
     try {
@@ -315,7 +320,10 @@ const UserForm = () => {
       navigate('/admin/users');
     } catch (error) {
       console.error('Error:', error);
-      const errorMsg = error.response?.data?.message || 'Error al guardar el usuario';
+      const backendMessage = error.response?.data?.message;
+      const errorMsg = backendMessage || (error.response?.status === 400
+        ? 'Datos invalidos o duplicados.'
+        : 'Error al guardar el usuario');
       alert(errorMsg);
     } finally {
       setLoading(false);
@@ -364,14 +372,14 @@ const UserForm = () => {
                     type="text"
                     id="run"
                     name="run"
-                    placeholder="ej: 123456789"
-                    maxLength="9"
+                    placeholder="ej: 12345678-9"
+                    maxLength="10"
                     value={formData.run}
                     onChange={handleChange}
                     onBlur={() => validarCampo('run')}
                     required
                   />
-                  <small>Sin puntos ni guion, 7 a 9 caracteres</small>
+                  <small>Incluye guion y digito verificador (12345678-9)</small>
                   {errors.run && <div className="error-message show">{errors.run}</div>}
                 </div>
 
@@ -542,6 +550,23 @@ const UserForm = () => {
                   </div>
                 </div>
 
+                <div className={form-group full-width}>
+                  <label htmlFor="ciudad">
+                    Ciudad <span className="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="ciudad"
+                    name="ciudad"
+                    placeholder="ej: Santiago"
+                    maxLength="100"
+                    value={formData.ciudad}
+                    onChange={handleChange}
+                    onBlur={() => validarCampo('ciudad')}
+                    required
+                  />
+                  {errors.ciudad && <div className="error-message show">{errors.ciudad}</div>}
+                </div>
                 {/* Dirección */}
                 <div className={`form-group full-width ${errors.direccion ? 'error' : ''}`}>
                   <label htmlFor="direccion">
@@ -580,9 +605,9 @@ const UserForm = () => {
                     required
                   >
                     <option value="">-- Selecciona tipo --</option>
-                    <option value="admin">Administrador</option>
-                    <option value="vendedor">Vendedor</option>
-                    <option value="cliente">Cliente</option>
+                    <option value="ADMIN">Administrador</option>
+                    <option value="VENDEDOR">Vendedor</option>
+                    <option value="CLIENTE">Cliente</option>
                   </select>
                   {errors.rol && <div className="error-message show">{errors.rol}</div>}
                 </div>
