@@ -1,5 +1,18 @@
 import api from './api';
 
+const decodeTokenPayload = () => {
+  const token = localStorage.getItem('token');
+  if (!token) return null;
+  try {
+    const base64Payload = token.split('.')[1];
+    const jsonPayload = atob(base64Payload.replace(/-/g, '+').replace(/_/g, '/'));
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    console.error('No se pudo decodificar el token', error);
+    return null;
+  }
+};
+
 const notifyAuthChange = () => {
   if (typeof window !== 'undefined') {
     window.dispatchEvent(new Event('auth-change'));
@@ -62,11 +75,41 @@ const authService = {
     // Si no sirve lo cambio a GlobalThis.location.href = '/login';
   },
 
+  getTokenPayload() {
+    return decodeTokenPayload();
+  },
+
+  getUserIdFromToken() {
+    const payload = decodeTokenPayload();
+    if (!payload) return null;
+    return (
+      payload.id ??
+      payload.userId ??
+      (payload.sub ? Number(payload.sub) : null)
+    );
+  },
+
   /**
    * Obtener usuario actual
    * @returns {Object|null}
    */
   getCurrentUser() {
+    const payload = decodeTokenPayload();
+    if (payload) {
+      return {
+        id:
+          payload.id ??
+          payload.userId ??
+          (payload.sub ? Number(payload.sub) : null),
+        email: payload.email || payload.username || payload.sub || null,
+        rol:
+          payload.rol ||
+          payload.role ||
+          payload.authorities?.[0] ||
+          payload.authority ||
+          null,
+      };
+    }
     const userStr = localStorage.getItem('user');
     return userStr ? JSON.parse(userStr) : null;
   },
@@ -84,6 +127,15 @@ const authService = {
    * @returns {boolean}
    */
   isAdmin() {
+    const payload = decodeTokenPayload();
+    if (payload) {
+      const role =
+        payload.rol ||
+        payload.role ||
+        payload.authorities?.[0] ||
+        payload.authority;
+      return role?.toUpperCase() === 'ADMIN';
+    }
     const user = this.getCurrentUser();
     return user?.rol === 'ADMIN';
   },

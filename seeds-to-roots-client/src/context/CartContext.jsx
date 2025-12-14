@@ -25,8 +25,8 @@ const mapBackendItems = (items = []) =>
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
-  const [userId, setUserId] = useState(
-    () => authService.getCurrentUser()?.id || null
+  const [userId, setUserId] = useState(() =>
+    authService.getUserIdFromToken() || null
   );
   const [syncing, setSyncing] = useState(false);
 
@@ -54,8 +54,7 @@ export function CartProvider({ children }) {
   }, [loadCartFromServer]);
 
   const refreshAuthUser = useCallback(() => {
-    const currentUser = authService.getCurrentUser();
-    const nextUserId = currentUser?.id || null;
+    const nextUserId = authService.getUserIdFromToken() || null;
     setUserId(nextUserId);
     if (!nextUserId) {
       setCartItems([]);
