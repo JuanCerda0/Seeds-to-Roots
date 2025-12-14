@@ -1,89 +1,28 @@
-import api from './api';
+import { carrito as carritoApi } from './api';
 
 const carritoService = {
-  /**
-   * Obtener carrito del usuario
-   * @param {number} usuarioId
-   * @returns {Promise<Object>}
-   */
-  async getCarrito(usuarioId) {
-    try {
-      const response = await api.get(`/api/carrito/${usuarioId}`);
-      return response.data;
-    } catch (error) {
-      console.error('Error al obtener carrito:', error);
-      throw error;
-    }
+  async get(usuarioId) {
+    const response = await carritoApi.get(usuarioId);
+    return response.data;
   },
 
-  /**
-   * Agregar producto al carrito
-   * @param {number} usuarioId
-   * @param {number} productoId
-   * @param {number} cantidad
-   * @returns {Promise<Object>}
-   */
-  async agregarProducto(usuarioId, productoId, cantidad) {
-    try {
-      const response = await api.post(`/api/carrito/${usuarioId}/add`, {
-        productoId,
-        cantidad
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error al agregar producto al carrito:', error);
-      throw error;
-    }
+  async add(usuarioId, payload) {
+    const response = await carritoApi.add(usuarioId, payload);
+    return response.data;
   },
 
-  /**
-   * Actualizar cantidad de producto en carrito
-   * @param {number} usuarioId
-   * @param {number} productoId
-   * @param {number} cantidad
-   * @returns {Promise<Object>}
-   */
-  async actualizarCantidad(usuarioId, productoId, cantidad) {
-    try {
-      const response = await api.put(`/api/carrito/${usuarioId}/update`, {
-        productoId,
-        cantidad
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error al actualizar cantidad:', error);
-      throw error;
-    }
+  async update(usuarioId, payload) {
+    const response = await carritoApi.update(usuarioId, payload);
+    return response.data;
   },
 
-  /**
-   * Eliminar producto del carrito
-   * @param {number} usuarioId
-   * @param {number} productoId
-   * @returns {Promise<Object>}
-   */
-  async eliminarProducto(usuarioId, productoId) {
-    try {
-      const response = await api.delete(`/api/carrito/${usuarioId}/remove/${productoId}`);
-      return response.data;
-    } catch (error) {
-      console.error('Error al eliminar producto del carrito:', error);
-      throw error;
-    }
+  async remove(usuarioId, productoId) {
+    const response = await carritoApi.remove(usuarioId, productoId);
+    return response.data;
   },
 
-  /**
-   * Limpiar carrito completo
-   * @param {number} usuarioId
-   * @returns {Promise<void>}
-   */
-  async limpiarCarrito(usuarioId) {
-    try {
-      await api.delete(`/api/carrito/${usuarioId}/clear`);
-    } catch (error) {
-      console.error('Error al limpiar carrito:', error);
-      throw error;
-    }
+  async clear(usuarioId) {
+    await carritoApi.clear(usuarioId);
   },
 };
 

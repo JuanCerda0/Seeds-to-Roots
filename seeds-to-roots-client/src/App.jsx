@@ -10,6 +10,9 @@ import Test from './pages/test';
 import Admin from './pages/admin/Dashboard';
 import ProdAmin from './pages/admin/ProductsAdmin';
 import Users from './pages/admin/Users';
+import ProductForm from './pages/admin/ProductForm';
+import UserForm from './pages/admin/UserForm';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -23,9 +26,26 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/test" element={<Test />} />
-          <Route path="/admin/dashboard" element={<Admin />} />
-          <Route path="/admin/products" element={<ProdAmin />} />
-          <Route path="/admin/users" element={<Users />} />
+          <Route
+            path="/admin/dashboard"
+            element={<ProtectedRoute requireAdmin><Admin /></ProtectedRoute>}
+          />
+          <Route
+            path="/admin/products"
+            element={<ProtectedRoute requireAdmin><ProdAmin /></ProtectedRoute>}
+          />
+          <Route
+            path="/admin/users"
+            element={<ProtectedRoute requireAdmin><Users /></ProtectedRoute>}
+          />
+          <Route
+            path="/admin/product-form"
+            element={<ProtectedRoute requireAdmin><ProductForm /></ProtectedRoute>}
+          />
+          <Route
+            path="/admin/user-form"
+            element={<ProtectedRoute requireAdmin><UserForm /></ProtectedRoute>}
+          />
         </Routes>
       </BrowserRouter>
     </CartProvider>

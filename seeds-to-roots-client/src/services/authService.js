@@ -1,5 +1,11 @@
 import api from './api';
 
+const notifyAuthChange = () => {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event('auth-change'));
+  }
+};
+
 const authService = {
   /**
    * Iniciar sesión
@@ -14,6 +20,7 @@ const authService = {
       // Guardar en localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify({ email, rol, id }));
+      notifyAuthChange();
       
       return response.data;
     } catch (error) {
@@ -35,6 +42,7 @@ const authService = {
       // Guardar en localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify({ email, rol, id }));
+      notifyAuthChange();
       
       return response.data;
     } catch (error) {
@@ -49,6 +57,7 @@ const authService = {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    notifyAuthChange();
     window.location.href = '/login';
     // Si no sirve lo cambio a GlobalThis.location.href = '/login';
   },

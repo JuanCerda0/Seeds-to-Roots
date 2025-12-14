@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminLayout from '../../components/admin/AdminLayout';
+import Header from '../../components/admin/Header';
 import productoService from '../../services/productoService';
-import '../../components/css/productoAdmin.css';
+import '../../components/admin/Dashboard.css';
+import '../../components/admin/admin-global.css';
 
 const Products = () => {
   const navigate = useNavigate();
@@ -135,25 +137,16 @@ const Products = () => {
 
   return (
     <AdminLayout>
-      {/* Main Content */}
-      <main className="main-content">
-        {/* Header */}
-        <header className="header">
-          <div className="header-content">
-            <h1>Productos</h1>
-            <div className="header-actions">
-              <button
-                className="btn btn-primary"
-                onClick={() => abrirFormulario(null)}
-              >
-                + Nuevo Producto
-              </button>
-            </div>
-          </div>
-        </header>
+      <Header title="Productos">
+        <button
+          className="btn btn-primary"
+          onClick={() => abrirFormulario(null)}
+        >
+          + Nuevo Producto
+        </button>
+      </Header>
 
-        {/* Page Content */}
-        <section className="content">
+      <section className="content">
           {error && (
             <div className="alert alert-error">
               {error}
@@ -312,7 +305,6 @@ const Products = () => {
             </div>
           )}
         </section>
-      </main>
     </AdminLayout>
   );
 };
