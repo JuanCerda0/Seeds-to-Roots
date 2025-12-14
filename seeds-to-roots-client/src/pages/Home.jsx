@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../components/css/global.css'; // Estilos globales
 import styles from '../components/css/Home.module.css'; // Estilos específicos de Home
 import NavBar from '../components/navBar';
 
 export default function Home() {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentAboutSlide, setCurrentAboutSlide] = useState(0);
 
@@ -67,7 +69,7 @@ export default function Home() {
             <div className={styles.slideContent}>
               <h2>Productos Frescos del Campo</h2>
               <p>Conectamos directamente con agricultores locales para traerte lo más fresco a tu hogar</p>
-              <button className="btn btn-secondary" onClick={() => window.location.href='/productos'}>Explorar Productos</button>
+              <button className="btn btn-secondary" onClick={() => navigate('/productos')}>Explorar Productos</button>
             </div>
           </div>
 
@@ -76,7 +78,7 @@ export default function Home() {
             <div className={styles.slideContent}>
               <h2>Agricultura Sostenible</h2>
               <p>Apoyamos prácticas agrícolas responsables con el medio ambiente</p>
-              <button className="btn btn-secondary" onClick={() => window.location.href='/blog'}>Conocer Más</button>
+              <button className="btn btn-secondary" onClick={() => navigate('/blog')}>Conocer Más</button>
             </div>
           </div>
 
@@ -85,7 +87,7 @@ export default function Home() {
             <div className={styles.slideContent}>
               <h2>Entrega Rápida a tu Puerta</h2>
               <p>Recibe tus productos frescos en menos de 24 horas</p>
-              <button className="btn btn-secondary" onClick={() => window.location.href='/productos'}>Ver Catálogo</button>
+              <button className="btn btn-secondary" onClick={() => navigate('/productos')}>Ver Catálogo</button>
             </div>
           </div>
 
@@ -194,19 +196,19 @@ export default function Home() {
           <section id="categorias" className={styles.section}>
             <h2>Nuestras Categorías</h2>
             <div className={styles.categoriesGrid}>
-              <div className={styles.categoryCard} onClick={() => window.location.href='/productos'}>
+              <div className={styles.categoryCard} onClick={() => navigate('/productos')}>
                 <h3>🍎 Frutas Frescas</h3>
                 <p>Manzanas, naranjas, plátanos, uvas y más</p>
               </div>
-              <div className={styles.categoryCard} onClick={() => window.location.href='/productos'}>
+              <div className={styles.categoryCard} onClick={() => navigate('/productos')}>
                 <h3>🥬 Verduras Orgánicas</h3>
                 <p>Lechugas, espinacas, tomates, pimientos</p>
               </div>
-              <div className={styles.categoryCard} onClick={() => window.location.href='/productos'}>
+              <div className={styles.categoryCard} onClick={() => navigate('/productos')}>
                 <h3>🌽 Productos Locales</h3>
                 <p>Productos de temporada de nuestros agricultores</p>
               </div>
-              <div className={styles.categoryCard} onClick={() => window.location.href='/productos'}>
+              <div className={styles.categoryCard} onClick={() => navigate('/productos')}>
                 <h3>🥛 Lácteos y Granos</h3>
                 <p>Leche fresca, quesos, quinua y cereales</p>
               </div>

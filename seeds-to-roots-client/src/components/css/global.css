@@ -73,12 +73,18 @@ nav ul {
   gap: 2.5rem;
 }
 
+.nav-link-button,
 nav a {
   color: var(--gris-oscuro);
   font-weight: 500;
   position: relative;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
 }
 
+.nav-link-button::after,
 nav a::after {
   content: '';
   position: absolute;
@@ -90,6 +96,7 @@ nav a::after {
   transition: width 0.3s ease;
 }
 
+.nav-link-button:hover::after,
 nav a:hover::after {
   width: 100%;
 }

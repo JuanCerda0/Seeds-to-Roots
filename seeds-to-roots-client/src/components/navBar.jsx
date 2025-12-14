@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/useCart';
 import authService from '../services/authService';
 import './css/global.css';
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { cartCount } = useCart();
   const [currentUser, setCurrentUser] = useState(() =>
     authService.getCurrentUser()
@@ -27,12 +28,23 @@ const NavBar = () => {
     return undefined;
   }, []);
 
+  const scrollOrNavigate = (hash) => {
+    if (location.pathname === '/' && typeof window !== 'undefined') {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+    }
+    navigate(`/${hash}`);
+  };
+
   const navLinks = [
-    { label: 'Inicio', to: '/' },
-    { label: 'Productos', to: '/productos' },
-    { label: 'Cómo Funciona', to: '/#como-funciona' },
-    { label: 'Contacto', to: '/#contacto' },
-    { label: 'Blog', to: '/blog' },
+    { label: 'Inicio', onClick: () => navigate('/') },
+    { label: 'Productos', onClick: () => navigate('/productos') },
+    { label: 'Cómo Funciona', onClick: () => scrollOrNavigate('#como-funciona') },
+    { label: 'Contacto', onClick: () => scrollOrNavigate('#contacto') },
+    { label: 'Blog', onClick: () => navigate('/blog') },
   ];
 
   return (
@@ -45,9 +57,15 @@ const NavBar = () => {
         </div>
         <nav>
           <ul>
-            {navLinks.map(({ label, to }) => (
-              <li key={to}>
-                <Link to={to}>{label}</Link>
+            {navLinks.map(({ label, onClick }) => (
+              <li key={label}>
+                <button
+                  type="button"
+                  className="nav-link-button"
+                  onClick={onClick}
+                >
+                  {label}
+                </button>
               </li>
             ))}
           </ul>
