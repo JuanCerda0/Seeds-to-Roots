@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminLayout from '../../components/admin/AdminLayout';
+import Header from '../../components/admin/Header';
 import userService from '../../services/userService';
+import '../../components/admin/Dashboard.css';
+import '../../components/admin/admin-global.css';
 
 const Users = () => {
   const navigate = useNavigate();
@@ -173,25 +176,16 @@ const Users = () => {
 
   return (
     <AdminLayout>
-      {/* Main Content */}
-      <main className="main-content">
-        {/* Header */}
-        <header className="header">
-          <div className="header-content">
-            <h1>Usuarios</h1>
-            <div className="header-actions">
-              <button
-                className="btn btn-primary"
-                onClick={() => abrirFormulario(null)}
-              >
-                + Nuevo Usuario
-              </button>
-            </div>
-          </div>
-        </header>
+      <Header title="Usuarios">
+        <button
+          className="btn btn-primary"
+          onClick={() => abrirFormulario(null)}
+        >
+          + Nuevo Usuario
+        </button>
+      </Header>
 
-        {/* Page Content */}
-        <section className="content">
+      <section className="content">
           {error && (
             <div className="alert alert-error">
               {error}
@@ -352,7 +346,6 @@ const Users = () => {
             </div>
           )}
         </section>
-      </main>
     </AdminLayout>
   );
 };

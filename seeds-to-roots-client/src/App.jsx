@@ -10,6 +10,8 @@ import Test from './pages/test';
 import Admin from './pages/admin/Dashboard';
 import ProdAmin from './pages/admin/ProductsAdmin';
 import Users from './pages/admin/Users';
+import ProductForm from './pages/admin/ProductForm';
+import UserForm from './pages/admin/UserForm';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/admin/dashboard" element={<Admin />} />
           <Route path="/admin/products" element={<ProdAmin />} />
           <Route path="/admin/users" element={<Users />} />
+          <Route path="/admin/product-form" element={<ProductForm />} />
+          <Route path="/admin/user-form" element={<UserForm />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>

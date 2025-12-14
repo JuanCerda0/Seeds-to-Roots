@@ -101,14 +101,29 @@ nav a:hover::after {
 }
 
 .nav-icon {
+  position: relative;
   font-size: 1.3rem;
   cursor: pointer;
   color: var(--verde-natural);
   transition: transform 0.3s ease;
+  background: none;
+  border: none;
 }
 
 .nav-icon:hover {
   transform: scale(1.2);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: var(--dorado);
+  color: var(--gris-oscuro);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 999px;
 }
 
 /* ========================================

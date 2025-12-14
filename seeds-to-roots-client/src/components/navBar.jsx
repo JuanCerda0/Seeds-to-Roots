@@ -1,70 +1,64 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/useCart';
-import '../components/css/NavBar.css';
+import './css/global.css';
 
-function NavBar() {
+const NavBar = () => {
   const navigate = useNavigate();
   const { cartCount } = useCart();
 
-  const handleCartClick = () => {
-    navigate('/carrito');
-  };
-
-  const handleLoginClick = () => {
-    navigate('/login');
-  };
-
-  const handleLogoClick = () => {
-    navigate('/');
-  };
+  const navLinks = [
+    { label: 'Inicio', to: '/' },
+    { label: 'Productos', to: '/productos' },
+    { label: 'Cómo Funciona', to: '/#como-funciona' },
+    { label: 'Contacto', to: '/#contacto' },
+    { label: 'Blog', to: '/blog' },
+  ];
 
   return (
-    <header className="navbar">
+    <header>
       <div className="header-container">
         <div className="logo">
-          <button 
-            onClick={handleLogoClick}
-            className="logo-button"
-            title="Ir a inicio"
-          >
+          <Link to="/" aria-label="Inicio Seeds to Roots">
             🌱 Seeds to Roots
-          </button>
+          </Link>
         </div>
-
-        <nav className="nav-links">
+        <nav>
           <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/blog">Blog</a></li>
+            {navLinks.map(({ label, to }) => (
+              <li key={to}>
+                <Link to={to}>{label}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
-
         <div className="nav-icons">
-          <button 
-            className="nav-icon" 
+          <button
+            className="nav-icon"
             title="Buscar"
             aria-label="Buscar"
+            type="button"
           >
             🔍
           </button>
-          
-          <button 
-            className="nav-icon cart-icon" 
-            title="Carrito"
-            onClick={handleCartClick}
+          <button
+            className="nav-icon"
+            title="Ver carrito"
             aria-label="Ir al carrito"
+            type="button"
+            onClick={() => navigate('/carrito')}
           >
             🛒
             {cartCount > 0 && (
               <span className="cart-badge">{cartCount}</span>
             )}
           </button>
-
-          <button 
-            className="nav-icon" 
+          <button
+            className="nav-icon"
             title="Cuenta"
-            onClick={handleLoginClick}
             aria-label="Ir a mi cuenta"
+            type="button"
+            onClick={() => navigate('/login')}
           >
             👤
           </button>
@@ -72,6 +66,6 @@ function NavBar() {
       </div>
     </header>
   );
-}
+};
 
 export default NavBar;

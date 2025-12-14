@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import '../../components/css/paletaFuentes.css';
-import '../admin/css/product-form.css';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import AdminLayout from '../../components/admin/AdminLayout';
+import Header from '../../components/admin/Header';
 import productoService from '../../services/productoService';
+import '../../components/admin/Dashboard.css';
+import '../../components/admin/admin-global.css';
+import '../../components/admin/forms.css';
 
 const ProductForm = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     sku: '',
     nombre: '',
@@ -65,14 +71,14 @@ const ProductForm = () => {
 
   // Obtener ID del producto desde la URL
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id') ? parseInt(params.get('id')) : null;
+    const idParam = searchParams.get('id');
+    const id = idParam ? parseInt(idParam, 10) : null;
     setProductId(id);
 
     if (id) {
       cargarProducto(id);
     }
-  }, []);
+  }, [searchParams]);
 
   // Cargar producto para edición
   const cargarProducto = async (id) => {
@@ -82,7 +88,7 @@ const ProductForm = () => {
 
       if (!producto) {
         alert('Producto no encontrado');
-        window.location.href = '/admin/productos';
+        navigate('/admin/products');
         return;
       }
 
@@ -103,7 +109,7 @@ const ProductForm = () => {
     } catch (error) {
       console.error('Error al cargar producto:', error);
       alert('Error al cargar el producto');
-      window.location.href = '/admin/productos';
+      navigate('/admin/products');
     } finally {
       setIsLoading(false);
     }
@@ -273,8 +279,8 @@ const ProductForm = () => {
         await productoService.create(dataToSubmit);
         alert('Producto guardado exitosamente');
       }
-      
-      window.location.href = '/admin/productos';
+
+      navigate('/admin/products');
     } catch (error) {
       console.error('Error:', error);
       const errorMsg = error.response?.data?.message || 'Error al guardar el producto';
@@ -285,11 +291,20 @@ const ProductForm = () => {
   };
 
   return (
-    <div className="product-form-page">
-      <section className="product-form-section">
-        <div className="product-form-container">
-          <h1>{pageTitle}</h1>
-          <form onSubmit={handleSubmit}>
+    <AdminLayout>
+      <Header title={pageTitle}>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => navigate('/admin/products')}
+        >
+          {'<'} Volver
+        </button>
+      </Header>
+
+      <section className="content">
+        <div className="section-card form-container">
+          <form onSubmit={handleSubmit} className="admin-form">
             {/* Fila 1: Código y Nombre */}
             <div className="form-row">
               <div className={`form-group ${errors.sku ? 'error' : ''}`}>
@@ -467,7 +482,13 @@ const ProductForm = () => {
 
             {/* Botones */}
             <div className="form-footer">
-              <a href="/admin/productos" className="btn btn-cancel">Cancelar</a>
+              <button
+                type="button"
+                className="btn btn-cancel"
+                onClick={() => navigate('/admin/products')}
+              >
+                Cancelar
+              </button>
               <button
                 type="submit"
                 className="btn btn-submit"
@@ -479,7 +500,7 @@ const ProductForm = () => {
           </form>
         </div>
       </section>
-    </div>
+    </AdminLayout>
   );
 };
 

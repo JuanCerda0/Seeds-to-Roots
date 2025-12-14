@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../components/css/global.css'; // Estilos globales
 import styles from '../components/css/Home.module.css'; // Estilos específicos de Home
+import NavBar from '../components/navBar';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -53,30 +54,8 @@ export default function Home() {
 
   return (
     <div>
-      {/* ======================================== 
-           HEADER Y NAVEGACIÓN
-           ======================================== */}
-      <header>
-        <div className="header-container">
-          <div className="logo">
-            <a href="/"> 🌱 Seeds to Roots </a>
-          </div>
-          <nav>
-            <ul>
-              <li><a href="/">Inicio</a></li>
-              <li><a onClick={() => window.location.href='/productos'}>Productos</a></li>
-              <li><a href="#como-funciona">Cómo Funciona</a></li>
-              <li><a href="#contacto">Contacto</a></li>
-              <li><a href="/blog">Blog</a></li>
-            </ul>
-          </nav>
-          <div className="nav-icons">
-            <span className="nav-icon" title="Buscar">🔍</span>
-            <span className="nav-icon" title="Carrito" onClick={() => window.location.href='/carrito'}>🛒</span>
-            <a href="/login" className="nav-icon" id="navCuenta" title="Cuenta">👤</a>
-          </div>
-        </div>
-      </header>
+      <NavBar />
+
 
       {/* ======================================== 
            CARRUSEL (HERO SECTION)

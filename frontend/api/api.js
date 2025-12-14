@@ -1,5 +1,5 @@
 // Configuración de la API
-const API_URL = 'https://seeds-to-roots-backend.up.railway.app';
+const API_URL = 'http://localhost:8080/';
 
 // Clase para manejar todas las peticiones
 class API {

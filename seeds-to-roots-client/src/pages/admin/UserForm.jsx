@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import AdminLayout from '../../components/admin/AdminLayout';
+import Header from '../../components/admin/Header';
 import userService from '../../services/userService';
-import '../admin/css/user-form.css';
+import '../../components/admin/Dashboard.css';
+import '../../components/admin/admin-global.css';
+import '../../components/admin/forms.css';
 
 const UserForm = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const userId = searchParams.get('id') ? parseInt(searchParams.get('id')) : null;
+  const userIdParam = searchParams.get('id');
+  const userId = userIdParam ? parseInt(userIdParam, 10) : null;
 
   const [pageTitle, setPageTitle] = useState('Nuevo Usuario');
   const [submitButtonText, setSubmitButtonText] = useState('Guardar Usuario');
@@ -103,7 +108,7 @@ const UserForm = () => {
 
       if (!usuario) {
         alert('Usuario no encontrado');
-        navigate('/admin/usuarios');
+        navigate('/admin/users');
         return;
       }
 
@@ -127,7 +132,7 @@ const UserForm = () => {
     } catch (error) {
       console.error('Error al cargar usuario:', error);
       alert('Error al cargar el usuario');
-      navigate('/admin/usuarios');
+      navigate('/admin/users');
     } finally {
       setLoading(false);
     }
@@ -307,7 +312,7 @@ const UserForm = () => {
         alert('Usuario guardado exitosamente');
       }
 
-      navigate('/admin/usuarios');
+      navigate('/admin/users');
     } catch (error) {
       console.error('Error:', error);
       const errorMsg = error.response?.data?.message || 'Error al guardar el usuario';
@@ -318,30 +323,34 @@ const UserForm = () => {
   };
 
   if (loading && userId) {
-    return <div className="loading">Cargando usuario...</div>;
+    return (
+      <AdminLayout>
+        <Header title="Cargando usuario..." />
+        <section className="content">
+          <div className="section-card">
+            <div className="loading">Cargando usuario...</div>
+          </div>
+        </section>
+      </AdminLayout>
+    );
   }
 
   return (
-    <div className="admin-container">
-      {/* Main Content */}
-      <main className="main-content">
-        {/* Header */}
-        <header className="header">
-          <div className="header-content">
-            <h1>{pageTitle}</h1>
-            <button
-              onClick={() => navigate('/admin/usuarios')}
-              className="btn btn-secondary"
-            >
-              ← Volver
-            </button>
-          </div>
-        </header>
+    <AdminLayout>
+      <Header title={pageTitle}>
+        <button
+          type="button"
+          onClick={() => navigate('/admin/users')}
+          className="btn btn-secondary"
+        >
+          {'<'} Volver
+        </button>
+      </Header>
 
-        {/* Page Content */}
-        <section className="content">
-          <div className="section-card form-container">
-            <form onSubmit={handleSubmit} className="user-form">
+      {/* Page Content */}
+      <section className="content">
+        <div className="section-card form-container">
+          <form onSubmit={handleSubmit} className="user-form">
               {/* Sección: Información Personal */}
               <fieldset className="form-fieldset">
                 <legend>Información Personal</legend>
@@ -597,7 +606,7 @@ const UserForm = () => {
               <div className="modal-footer">
                 <button
                   type="button"
-                  onClick={() => navigate('/admin/usuarios')}
+                  onClick={() => navigate('/admin/users')}
                   className="btn btn-cancel"
                 >
                   Cancelar
@@ -613,8 +622,7 @@ const UserForm = () => {
             </form>
           </div>
         </section>
-      </main>
-    </div>
+    </AdminLayout>
   );
 };
 

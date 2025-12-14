@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import productoService from '../services/productoService';
 import { useCart } from '../context/useCart';
 import styles from '../components/css/Productos.module.css';
+import NavBar from '../components/navBar';
 
 function Productos() {
   const [productos, setProductos] = useState([]);
@@ -37,32 +38,33 @@ function Productos() {
   };
 
   if (loading) {
-    return <div className={styles.loading}>Cargando productos...</div>;
+    return (
+      <>
+        <NavBar />
+        <div className={styles.loading}>Cargando productos...</div>
+      </>
+    );
   }
   
   if (error) {
-    return <div className={styles.error}>{error}</div>;
+    return (
+      <>
+        <NavBar />
+        <div className={styles.error}>{error}</div>
+      </>
+    );
   }
 
   return (
-    <div className={styles.productosContainer}>
+    <>
+      <NavBar />
+      <div className={styles.productosContainer}>
       {/* Header */}
       <section className={styles.productosHeader}>
         <h1>🌱 Nuestros Productos</h1>
         <p>Productos frescos y de calidad directamente del huerto a tu puerta</p>
       </section>
 
-      {/* Navegación */}
-      <section className={styles.navBar}>
-        <nav>
-          <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/productos">Productos</a></li>
-            <li><a href="/carrito">Carrito</a></li>
-          </ul>
-        </nav>
-      </section>
     
       {/* Grid de Productos */}
       <div className={styles.productosGrid}>
@@ -137,7 +139,8 @@ function Productos() {
           <p>No hay productos disponibles en este momento</p>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }
 

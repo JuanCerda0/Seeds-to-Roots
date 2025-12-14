@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../context/useCart';
 import styles from '../components/css/Carrito.module.css';
+import NavBar from '../components/navBar';
 
 const Carrito = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
@@ -64,25 +66,16 @@ const Carrito = () => {
   };
 
   return (
-    <div className={styles.carritoContainer}>
+    <>
+      <NavBar />
+      <div className={styles.carritoContainer}>
       {/* Header */}
       <section className={styles.carritoHeader}>
         <h1>🛒 Tu carrito 🛒</h1>
         <p>{cartItems.length} producto{cartItems.length !== 1 ? 's' : ''} en el carrito</p>
       </section>
 
-      {/* Navegación - Estilo Header Verde */}
-      <section className={styles.navBar}>
-        <nav>
-          <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/productos">Productos</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/carrito">Carrito</a></li>
-          </ul>
-        </nav>
-      </section>
-
+      
       <div className={styles.carritoContent}>
         {/* Tabla de productos */}
         <section className={styles.carritoItems}>
@@ -166,9 +159,9 @@ const Carrito = () => {
             <div className={styles.carritoVacio}>
               <h2>Tu carrito está vacío 😢</h2>
               <p>Comienza a comprar nuestros productos frescos</p>
-              <a href="/productos" className={styles.btnVolver}>
+              <Link to="/productos" className={styles.btnVolver}>
                 Ir a Productos
-              </a>
+              </Link>
             </div>
           )}
         </section>
@@ -280,7 +273,8 @@ const Carrito = () => {
           </section>
         )}
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

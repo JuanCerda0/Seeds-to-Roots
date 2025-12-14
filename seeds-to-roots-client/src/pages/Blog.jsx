@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../components/css/Blog.module.css';
+import NavBar from '../components/navBar';
 
 const Blog = () => {
   // Posts simulados con Lorem Ipsum
@@ -87,25 +88,16 @@ In culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga et 
   const categories = ['todos', ...new Set(posts.map(p => p.category))];
 
   return (
-    <div className={styles.blogContainer}>
+    <>
+      <NavBar />
+      <div className={styles.blogContainer}>
       {/* Hero Section */}
       <section className={styles.blogHero}>
         <h1>🌱 Blog Seeds to Roots</h1>
         <p>Consejos, guías y historias sobre agricultura sostenible</p>
       </section>
 
-      {/* Navigation Bar - Estilo Header Verde */}
-      <section className={styles.navBar}>
-        <nav>
-          <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/productos">Productos</a></li>
-            <li><a href="/carrito">Carrito</a></li>
-          </ul>
-        </nav>
-      </section>
-
+      
       {selectedPost ? (
         // Vista de Artículo Individual
         <section className={styles.blogDetail}>
@@ -190,7 +182,8 @@ In culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga et 
           )}
         </section>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 
