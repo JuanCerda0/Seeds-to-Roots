@@ -9,7 +9,7 @@ Aplicación web para Seeds to Roots, plataforma que conecta a clientes finales c
 - **Routing:** React Router DOM. Las rutas de administración están protegidas con `ProtectedRoute` y verifican autenticación + rol.
 - **Estilos:** CSS Modules para páginas específicas y estilos globales reutilizables (`src/components/css/global.css`). Los componentes de administración tienen su propio set en `src/components/admin`.
 - **Servicios HTTP:** `src/services/*.js` centraliza llamadas REST sobre un wrapper de Axios (`src/services/api.js`) que agrega el token JWT desde `localStorage`.
-- **Autenticación:** `authService` maneja login/registro, persiste `{ token, user }` en `localStorage` y expone utilidades para conocer el usuario corriente y su rol.
+- **Autenticación:** `authService` maneja login/registro, persiste `{ token, user }` en `localStorage`, decodifica el JWT en tiempo real (para evitar confiar en IDs editables) y expone utilidades para conocer el usuario corriente y su rol.
 
 ## Estructura de carpetas (frontend)
 
@@ -58,13 +58,14 @@ seeds-to-roots-client/
 
 - **Autenticación**
   - `authService.login`/`register` consumen `/auth/**` y guardan `token` + `user` en `localStorage`.
-  - `ProtectedRoute` bloquea rutas privadas (admin) si no existe token o si `user.rol` ≠ `ADMIN`.
+  - `authService` decodifica el JWT para extraer `userId`, correo y rol directamente del token firmado; así evitamos confiar en datos editables del cliente.
+  - `ProtectedRoute` bloquea rutas privadas (admin) si no existe token o si el rol no es `ADMIN`.
   - `NavBar` escucha eventos `auth-change`/`storage` para actualizar la UI (mostrar correo y dropdown con “Cerrar sesión”).
 
 - **Carrito persistente**
-  - `CartContext` consulta `carritoService.get(usuarioId)` al montar (si hay usuario).
-  - Cada operación (`addToCart`, `updateQuantity`, `removeFromCart`, `clearCart`) intenta sincronizar con el backend (`/api/carrito/{usuarioId}`) y, si falla, cae en un fallback local para evitar perder la operación en el frontend.
-  - `useCart` expone `cartItems`, `cartCount`, `calculateTotals` y banderas (`isPersisted`, `syncing`). Las páginas `Productos` y `Carrito` consumen ese hook.
+  - `CartContext` consulta `carritoService.get(usuarioId)` al montar, usando exclusivamente el `usuarioId` extraído del token (`authService.getUserIdFromToken()`).
+  - Cada operación (`addToCart`, `updateQuantity`, `removeFromCart`, `clearCart`) construye la ruta del backend con ese ID derivado del JWT (ya no se toma desde estados mutables o `localStorage`), cumpliendo con la validación del backend.
+  - `useCart` expone `cartItems`, `cartCount`, `calculateTotals` y banderas (`isPersisted`, `syncing`). Si el backend no está disponible, se aplica un fallback en memoria para no perder la operación del usuario.
 
 - **Administración**
   - `AdminLayout` + `Sidebar` arman el shell del panel.
@@ -72,12 +73,16 @@ seeds-to-roots-client/
   - Los formularios usan `useSearchParams` para manejar modo edición (`?id=...`) y validan campos antes de enviar.
   - `productoService`, `userService` y `carritoService` centralizan las llamadas al backend, manteniendo separados los concerns de UI y datos.
 
+## CORS en desarrollo
+
+- Por defecto, Vite sirve el frontend en `http://localhost:5173`. Si necesitas otro puerto o dominio, deberás actualizar la propiedad `cors.allowed-origins` en el backend para incluirlo. Mientras se use el puerto estándar de Vite (5173) no es necesario cambiar nada.
+
 ## Buenas prácticas y notas
 
-- **Navegación SPA**: todos los botones/enlaces usan `useNavigate` o `<Link>` para evitar recargas completas y preservar el estado global.
-- **Estilos reutilizables**: la cabecera pública (NavBar) sirve tanto para el home como para las páginas internas, garantizando coherencia visual.
-- **Eventos de autenticación**: `authService` emite un evento `auth-change` al iniciar/cerrar sesión; cualquier componente que necesite reaccionar puede suscribirse a ese evento.
-- **Protección de rutas**: se recomienda mantener cualquier vista sensible detrás de `ProtectedRoute` y validar igualmente en el backend.
+- **Navegación SPA:** todos los botones/enlaces usan `useNavigate` o `<Link>` para evitar recargas completas y preservar el estado global.
+- **Estilos reutilizables:** la cabecera pública (NavBar) sirve tanto para el home como para las páginas internas, garantizando coherencia visual.
+- **Eventos de autenticación:** `authService` emite un evento `auth-change` al iniciar/cerrar sesión; cualquier componente que necesite reaccionar puede suscribirse a ese evento.
+- **Protección de rutas:** se recomienda mantener cualquier vista sensible detrás de `ProtectedRoute` y validar igualmente en el backend.
 
 ## Deploy
 
