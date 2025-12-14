@@ -606,7 +606,6 @@ const UserForm = () => {
                   >
                     <option value="">-- Selecciona tipo --</option>
                     <option value="ADMIN">Administrador</option>
-                    <option value="VENDEDOR">Vendedor</option>
                     <option value="CLIENTE">Cliente</option>
                   </select>
                   {errors.rol && <div className="error-message show">{errors.rol}</div>}
