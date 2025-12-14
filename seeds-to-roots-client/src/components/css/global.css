@@ -126,6 +126,76 @@ nav a:hover::after {
   border-radius: 999px;
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+details.user-menu {
+  position: relative;
+}
+
+.user-menu summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.user-menu[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.user-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.user-menu summary {
+  display: flex;
+  align-items: center;
+}
+
+.user-chip {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background-color: rgba(46, 139, 87, 0.1);
+  color: var(--gris-oscuro);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--blanco);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  padding: 0.75rem;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.logout-button {
+  background: none;
+  border: 1px solid var(--verde-natural);
+  color: var(--verde-natural);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: var(--verde-natural);
+  color: var(--blanco);
+}
+
 /* ========================================
    Footer (Global)
    ======================================== */

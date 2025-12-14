@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/useCart';
+import authService from '../services/authService';
 import './css/global.css';
 
 const NavBar = () => {
   const navigate = useNavigate();
   const { cartCount } = useCart();
+  const [currentUser, setCurrentUser] = useState(() =>
+    authService.getCurrentUser()
+  );
+
+  useEffect(() => {
+    const handleAuthChange = () => {
+      setCurrentUser(authService.getCurrentUser());
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('auth-change', handleAuthChange);
+      window.addEventListener('storage', handleAuthChange);
+      return () => {
+        window.removeEventListener('auth-change', handleAuthChange);
+        window.removeEventListener('storage', handleAuthChange);
+      };
+    }
+    return undefined;
+  }, []);
 
   const navLinks = [
     { label: 'Inicio', to: '/' },
@@ -53,15 +73,34 @@ const NavBar = () => {
               <span className="cart-badge">{cartCount}</span>
             )}
           </button>
-          <button
-            className="nav-icon"
-            title="Cuenta"
-            aria-label="Ir a mi cuenta"
-            type="button"
-            onClick={() => navigate('/login')}
-          >
-            👤
-          </button>
+          {currentUser ? (
+            <details className="user-menu">
+              <summary>
+                <span className="user-chip" title={currentUser.email}>
+                  👤 {currentUser.email}
+                </span>
+              </summary>
+              <div className="user-dropdown">
+                <button
+                  type="button"
+                  className="logout-button"
+                  onClick={() => authService.logout()}
+                >
+                  Cerrar sesión
+                </button>
+              </div>
+            </details>
+          ) : (
+            <button
+              className="nav-icon"
+              title="Ingresar"
+              aria-label="Ir a mi cuenta"
+              type="button"
+              onClick={() => navigate('/login')}
+            >
+              👤
+            </button>
+          )}
         </div>
       </div>
     </header>
