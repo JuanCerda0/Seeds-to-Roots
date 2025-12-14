@@ -90,11 +90,5 @@ seeds-to-roots-client/
 2. El build final queda en `seeds-to-roots-client/dist/` (HTML + JS + CSS minificado). Subirlo al servidor estático de preferencia (Nginx, S3, Vercel, etc.).
 3. Asegurar que `VITE_API_URL` apunte al backend desplegado y que los encabezados CORS del backend permitan el dominio del front.
 
-## Próximos pasos sugeridos
-
-- Internacionalizar los textos (actualmente están codificados en español y contienen caracteres corrompidos heredados de la codificación original).
-- Unificar estilos del módulo administrador mediante un tema global (hay CSS independientes por componente).
-- Añadir pruebas unitarias/integración para componentes críticos (NavBar, CartContext, formularios admin).
-
 ---
 Para dudas adicionales, revisar los servicios dentro de `src/services/` y los contextos en `src/context/`, donde reside la mayor parte de la lógica compartida.
