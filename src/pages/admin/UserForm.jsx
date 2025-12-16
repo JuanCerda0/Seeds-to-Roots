@@ -550,7 +550,7 @@ const UserForm = () => {
                   </div>
                 </div>
 
-                <div className={form-group full-width}>
+                <div className={`form-group full-width ${errors.ciudad ? 'error' : ''}`}>
                   <label htmlFor="ciudad">
                     Ciudad <span className="required">*</span>
                   </label>
